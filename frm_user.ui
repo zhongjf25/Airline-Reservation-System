@@ -28,13 +28,15 @@
      <string>用户(&amp;U)</string>
     </property>
     <addaction name="act_logout"/>
-    <addaction name="action"/>
+    <addaction name="act_change_pwd"/>
+    <addaction name="separator"/>
+    <addaction name="act_del"/>
    </widget>
    <widget class="QMenu" name="menu_S">
     <property name="title">
      <string>系统(&amp;S)</string>
     </property>
-    <addaction name="action_2"/>
+    <addaction name="act_exit"/>
    </widget>
    <addaction name="menu_S"/>
    <addaction name="menu"/>
@@ -45,14 +47,19 @@
     <string>登出</string>
    </property>
   </action>
-  <action name="action">
+  <action name="act_del">
    <property name="text">
-    <string>注销</string>
+    <string>删除账户</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="act_exit">
    <property name="text">
     <string>退出</string>
+   </property>
+  </action>
+  <action name="act_change_pwd">
+   <property name="text">
+    <string>修改密码</string>
    </property>
   </action>
  </widget>
