@@ -58,8 +58,13 @@ void Frm_Register::on_btn_register_clicked()
         QMessageBox::warning(this, "注册失败", "用户名已存在！");
         return;
     }else {
-        cmd = QString("insert into UserInfo (UserName, UserPwd) values ('%1', '%2');").arg(Username).arg(pwd);
-        if(query.exec(cmd)) {
+        query.prepare("insert into UserInfo (UserName, UserPwd) values (:username, :password);");
+        // cmd = QString("insert into UserInfo (UserName, UserPwd) values ('%1', '%2');").arg(Username).arg(pwd);
+
+        query.bindValue(":username", Username);
+        query.bindValue(":password", pwd);
+
+        if(query.exec()) {
             QMessageBox::information(this, "提示", "注册成功！即将返回登陆界面");
             on_btn_cancel_clicked();
         } else {

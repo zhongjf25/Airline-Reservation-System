@@ -67,8 +67,11 @@ void Frm_Login::on_btn_Login_clicked()  //登录
     }
 
     QSqlQuery q;
-    QString cmd = QString("select count(*) from UserInfo where Username='%1' and UserPwd='%2'").arg(username).arg(pwd);
-    if(q.exec(cmd)) {
+    q.prepare("select count(*) from UserInfo where Username=:username and UserPwd=:password");
+
+    q.bindValue(":username", username);
+    q.bindValue(":password", pwd);
+    if(q.exec()) {
         q.next();
         int cnt = q.value(0).toInt();
         if(cnt == 0) {
