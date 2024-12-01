@@ -41,7 +41,7 @@ Frm_Login::~Frm_Login()
     delete ui;
 }
 
-void Frm_Login::on_btn_Login_clicked()
+void Frm_Login::on_btn_Login_clicked()  //登录
 {
 
     QString username = ui->txt_user->text();
@@ -55,7 +55,11 @@ void Frm_Login::on_btn_Login_clicked()
         return;
     }
 
-    if(username == "admin" && pwd == "admin") {
+    if(username == "admin" && pwd == "admin") {     //管理员登录
+
+        if(!ui->chk_remb_pwd->isChecked()) {    //检查是否记住密码
+            ui->txt_pwd->clear();
+        }
         this->hide();
         Frm_Admin *frm_admin = new Frm_Admin(nullptr, this);
         frm_admin->show();
@@ -73,11 +77,16 @@ void Frm_Login::on_btn_Login_clicked()
         }
 
         //登陆成功
+        if(!ui->chk_remb_pwd->isChecked()) {    //检查是否记住密码
+            ui->txt_pwd->clear();
+        }
+
         this->hide();
         Frm_User *frm_user = new Frm_User(this, this);
         frm_user->show();
         return;
-    } else {
+    }
+    else {
         QMessageBox::warning(this, "登陆失败", "未知错误");
     }
 }

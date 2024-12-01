@@ -101,6 +101,19 @@
     <string>注册</string>
    </property>
   </widget>
+  <widget class="QCheckBox" name="chk_remb_pwd">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>230</y>
+     <width>79</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>记住密码</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

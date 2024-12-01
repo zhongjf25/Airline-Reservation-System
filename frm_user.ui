@@ -28,13 +28,31 @@
      <string>用户(&amp;U)</string>
     </property>
     <addaction name="act_logout"/>
+    <addaction name="action"/>
    </widget>
+   <widget class="QMenu" name="menu_S">
+    <property name="title">
+     <string>系统(&amp;S)</string>
+    </property>
+    <addaction name="action_2"/>
+   </widget>
+   <addaction name="menu_S"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="act_logout">
    <property name="text">
     <string>登出</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>注销</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>退出</string>
    </property>
   </action>
  </widget>

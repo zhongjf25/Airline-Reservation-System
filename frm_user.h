@@ -19,6 +19,9 @@ public:
 private:
     Ui::Frm_User *ui;
     Frm_Login *pg_login;
+
+private slots:
+    void logout();  //登出
 };
 
 #endif // FRM_USER_H

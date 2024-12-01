@@ -24,6 +24,7 @@ class Ui_Frm_User
 {
 public:
     QAction *act_logout;
+    QAction *action;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menu;
@@ -36,6 +37,8 @@ public:
         Frm_User->resize(800, 600);
         act_logout = new QAction(Frm_User);
         act_logout->setObjectName("act_logout");
+        action = new QAction(Frm_User);
+        action->setObjectName("action");
         centralwidget = new QWidget(Frm_User);
         centralwidget->setObjectName("centralwidget");
         Frm_User->setCentralWidget(centralwidget);
@@ -51,6 +54,7 @@ public:
 
         menubar->addAction(menu->menuAction());
         menu->addAction(act_logout);
+        menu->addAction(action);
 
         retranslateUi(Frm_User);
 
@@ -61,6 +65,7 @@ public:
     {
         Frm_User->setWindowTitle(QCoreApplication::translate("Frm_User", "MainWindow", nullptr));
         act_logout->setText(QCoreApplication::translate("Frm_User", "\347\231\273\345\207\272", nullptr));
+        action->setText(QCoreApplication::translate("Frm_User", "\346\263\250\351\224\200", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
     } // retranslateUi
 

@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -28,6 +29,7 @@ public:
     QLineEdit *txt_user;
     QLineEdit *txt_pwd;
     QPushButton *btn_register;
+    QCheckBox *chk_remb_pwd;
 
     void setupUi(QWidget *Frm_Login)
     {
@@ -56,6 +58,9 @@ public:
         btn_register = new QPushButton(Frm_Login);
         btn_register->setObjectName("btn_register");
         btn_register->setGeometry(QRect(450, 360, 75, 24));
+        chk_remb_pwd = new QCheckBox(Frm_Login);
+        chk_remb_pwd->setObjectName("chk_remb_pwd");
+        chk_remb_pwd->setGeometry(QRect(170, 230, 79, 20));
 
         retranslateUi(Frm_Login);
 
@@ -70,6 +75,7 @@ public:
         lbl_user->setText(QCoreApplication::translate("Frm_Login", "<html><head/><body><p>\347\224\250\346\210\267\345\220\215\357\274\232</p></body></html>", nullptr));
         lbl_pwd->setText(QCoreApplication::translate("Frm_Login", "<html><head/><body><p>\345\257\206\347\240\201\357\274\232</p></body></html>", nullptr));
         btn_register->setText(QCoreApplication::translate("Frm_Login", "\346\263\250\345\206\214", nullptr));
+        chk_remb_pwd->setText(QCoreApplication::translate("Frm_Login", "\350\256\260\344\275\217\345\257\206\347\240\201", nullptr));
     } // retranslateUi
 
 };
