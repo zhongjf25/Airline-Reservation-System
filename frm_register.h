@@ -19,6 +19,8 @@ public:
 private slots:
     void on_btn_cancel_clicked();
 
+    void on_btn_register_clicked();
+
 private:
     Ui::Frm_Register *ui;
     Frm_Login *pg_login;

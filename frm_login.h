@@ -5,6 +5,8 @@
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include <QDebug>
+#include <QSqlQuery>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

@@ -23,8 +23,20 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>用户(&amp;U)</string>
+    </property>
+    <addaction name="act_logout"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="act_logout">
+   <property name="text">
+    <string>登出</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

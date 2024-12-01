@@ -50,9 +50,11 @@ public:
         txt_pwd = new QLineEdit(Frm_Register);
         txt_pwd->setObjectName("txt_pwd");
         txt_pwd->setGeometry(QRect(102, 210, 161, 21));
+        txt_pwd->setEchoMode(QLineEdit::EchoMode::Password);
         txt_pwd2 = new QLineEdit(Frm_Register);
         txt_pwd2->setObjectName("txt_pwd2");
         txt_pwd2->setGeometry(QRect(102, 270, 161, 21));
+        txt_pwd2->setEchoMode(QLineEdit::EchoMode::Password);
         btn_register = new QPushButton(Frm_Register);
         btn_register->setObjectName("btn_register");
         btn_register->setGeometry(QRect(60, 390, 75, 24));

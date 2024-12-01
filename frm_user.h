@@ -13,7 +13,7 @@ class Frm_User : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Frm_User(QWidget *parent = nullptr);
+    explicit Frm_User(QWidget *parent = nullptr, Frm_Login *l = nullptr);
     ~Frm_User();
 
 private:
