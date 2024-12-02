@@ -17,16 +17,18 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 public:
-    explicit Frm_User(QWidget *parent = nullptr, Frm_Login *l = nullptr);
+    explicit Frm_User(QWidget *parent = nullptr, Frm_Login *l = nullptr, QString n = "");
     ~Frm_User();
 
 private:
     Ui::Frm_User *ui;
     Frm_Login *pg_login;
+    QString username;
 
 private slots:
     void logout();  //登出
     void exit();    //退出程序
+    void change_pwd();  //修改密码
 };
 
 #endif // FRM_USER_H

@@ -12,6 +12,7 @@ SOURCES += \
     frm_admin.cpp \
     frm_register.cpp \
     frm_user.cpp \
+    frm_user_changepwd.cpp \
     main.cpp \
     frm_login.cpp
 
@@ -19,13 +20,15 @@ HEADERS += \
     frm_admin.h \
     frm_login.h \
     frm_register.h \
-    frm_user.h
+    frm_user.h \
+    frm_user_changepwd.h
 
 FORMS += \
     frm_admin.ui \
     frm_login.ui \
     frm_register.ui \
-    frm_user.ui
+    frm_user.ui \
+    frm_user_changepwd.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

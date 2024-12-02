@@ -85,7 +85,7 @@ void Frm_Login::on_btn_Login_clicked()  //登录
         }
 
         this->hide();
-        Frm_User *frm_user = new Frm_User(this, this);
+        Frm_User *frm_user = new Frm_User(this, this, username);
         frm_user->show();
         return;
     }

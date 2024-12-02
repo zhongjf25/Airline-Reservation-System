@@ -27,6 +27,8 @@
     <property name="title">
      <string>用户(&amp;U)</string>
     </property>
+    <addaction name="lbl_username"/>
+    <addaction name="separator"/>
     <addaction name="act_logout"/>
     <addaction name="act_change_pwd"/>
     <addaction name="separator"/>
@@ -60,6 +62,11 @@
   <action name="act_change_pwd">
    <property name="text">
     <string>修改密码</string>
+   </property>
+  </action>
+  <action name="lbl_username">
+   <property name="text">
+    <string>用户名</string>
    </property>
   </action>
  </widget>

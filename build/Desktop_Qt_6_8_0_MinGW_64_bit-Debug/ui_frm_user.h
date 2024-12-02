@@ -27,6 +27,7 @@ public:
     QAction *act_del;
     QAction *act_exit;
     QAction *act_change_pwd;
+    QAction *lbl_username;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menu;
@@ -46,6 +47,8 @@ public:
         act_exit->setObjectName("act_exit");
         act_change_pwd = new QAction(Frm_User);
         act_change_pwd->setObjectName("act_change_pwd");
+        lbl_username = new QAction(Frm_User);
+        lbl_username->setObjectName("lbl_username");
         centralwidget = new QWidget(Frm_User);
         centralwidget->setObjectName("centralwidget");
         Frm_User->setCentralWidget(centralwidget);
@@ -63,6 +66,8 @@ public:
 
         menubar->addAction(menu_S->menuAction());
         menubar->addAction(menu->menuAction());
+        menu->addAction(lbl_username);
+        menu->addSeparator();
         menu->addAction(act_logout);
         menu->addAction(act_change_pwd);
         menu->addSeparator();
@@ -81,6 +86,7 @@ public:
         act_del->setText(QCoreApplication::translate("Frm_User", "\345\210\240\351\231\244\350\264\246\346\210\267", nullptr));
         act_exit->setText(QCoreApplication::translate("Frm_User", "\351\200\200\345\207\272", nullptr));
         act_change_pwd->setText(QCoreApplication::translate("Frm_User", "\344\277\256\346\224\271\345\257\206\347\240\201", nullptr));
+        lbl_username->setText(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267\345\220\215", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));
     } // retranslateUi

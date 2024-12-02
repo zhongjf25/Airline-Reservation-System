@@ -1,15 +1,22 @@
 #include "frm_user.h"
 #include "ui_frm_user.h"
 
-Frm_User::Frm_User(QWidget *parent, Frm_Login *l)
+#include "frm_user_changepwd.h"
+
+
+Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     : QMainWindow(parent)
     , ui(new Ui::Frm_User)
 {
     ui->setupUi(this);
     pg_login = l;
+    username = n;   //传入用户名
+
+    ui->lbl_username->setText(n);
 
     connect(ui->act_logout, &QAction::triggered, this, &Frm_User::logout);  //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_User::exit);      //退出系统
+    connect(ui->act_change_pwd, &QAction::triggered, this, &Frm_User::change_pwd);   //修改密码
 
 }
 
@@ -19,7 +26,16 @@ void Frm_User::closeEvent(QCloseEvent *event) {
         event->accept();
     }
     else {
-        exit();
+        QMessageBox::StandardButton reply;
+
+        reply = QMessageBox::question(this, "提示", "是否确定要退出系统？", QMessageBox::Yes|QMessageBox::No);
+
+        if(reply == QMessageBox::Yes)
+            QApplication::quit();
+        else {
+            event->ignore();
+            return;
+        }
     }
 }
 
@@ -41,4 +57,14 @@ void Frm_User::exit() {
 
     if(reply == QMessageBox::Yes)
         QApplication::quit();
+    else {
+        return;
+    }
+}
+
+
+
+void Frm_User::change_pwd() {
+    Frm_User_ChangePwd *frm = new Frm_User_ChangePwd(this, username);
+    frm->exec();
 }
