@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include "frm_login.h"
+#include <QStandardItemModel>
+#include <QListWidget>
+#include <QTableView>
+#include <QStackedWidget>
 
 namespace Ui {
 class Frm_Admin;
@@ -17,11 +21,19 @@ public:
     ~Frm_Admin();
 
 private slots:
-    void on_btn_Logout_clicked();
+    void exit();    //退出程序
+    void logout(); //登出
+    void onListWidgetClicked(int index); // 处理侧边栏切换
+    // void on_btn_Logout_clicked();
 
 private:
     Ui::Frm_Admin *ui;
     Frm_Login *pg_login;
+
+    QStandardItemModel *model1;
+    QStandardItemModel *model2;
+
+    void setupTables(); // 初始化表格数据
 };
 
 #endif // FRM_ADMIN_H

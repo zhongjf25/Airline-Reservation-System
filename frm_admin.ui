@@ -6,26 +6,83 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btn_Logout">
+   <widget class="QPushButton" name="btn_add">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>290</y>
-      <width>75</width>
-      <height>24</height>
+      <x>970</x>
+      <y>10</y>
+      <width>92</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>登出</string>
+     <string>添加</string>
     </property>
+   </widget>
+   <widget class="QPushButton" name="btn_delete">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>10</y>
+      <width>92</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>删除</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>80</y>
+      <width>181</width>
+      <height>671</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>80</y>
+      <width>951</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QTableView" name="tb_1">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>951</width>
+        <height>671</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QTableView" name="tb_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>951</width>
+        <height>671</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -33,12 +90,36 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>22</height>
+     <width>1200</width>
+     <height>24</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_S">
+    <property name="title">
+     <string>系统(&amp;S)</string>
+    </property>
+    <addaction name="act_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>管理员</string>
+    </property>
+    <addaction name="act_logout"/>
+   </widget>
+   <addaction name="menu_S"/>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="act_exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="act_logout">
+   <property name="text">
+    <string>登出</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -54,7 +54,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_User);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 24));
         menu = new QMenu(menubar);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar);
