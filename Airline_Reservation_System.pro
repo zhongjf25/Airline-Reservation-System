@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    flight_info.cpp \
     frm_admin.cpp \
     frm_register.cpp \
     frm_user.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     frm_login.cpp
 
 HEADERS += \
+    flight_info.h \
     frm_admin.h \
     frm_login.h \
     frm_register.h \

@@ -20,6 +20,7 @@ class Frm_Login : public QWidget
 
 public:
     Frm_Login(QWidget *parent = nullptr);
+    QSqlDatabase getDatabase();
     ~Frm_Login();
 
 private slots:

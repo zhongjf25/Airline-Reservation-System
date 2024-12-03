@@ -11,6 +11,7 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
 
     // 初始化表格数据
     setupTables();
+    addNewFlightInfo(l->getDatabase()); // 传入database 进行新增数据操作
 
     // 初始化列表项
     ui->listWidget->addItem("表格 1");
@@ -27,6 +28,26 @@ Frm_Admin::~Frm_Admin()
     delete ui;
     delete model1;
     delete model2;
+}
+
+void Frm_Admin::addNewFlightInfo(QSqlDatabase _db)
+{
+    // 使用传入的数据库对象执行 SQL 语句
+    QSqlQuery q(_db);
+
+    // 假设你要插入一条航班信息
+    q.prepare("insert into flightinfo (Flt_Number, Flt_Company, "
+              "Flt_Date, Departure, Destination, Type, EcoSeats, BusSeats, "
+              "FstSeats, price_eco, price_bus, price_fst) "
+              "values ('CA1123', 'Air China', '2019-12-01', 'Beijing', 'Shanghai', "
+              "'1', 100, 20, 5, 1000, 2000, 3000)");
+
+    // 执行插入操作
+    if (!q.exec()) {
+        qDebug() << "Error inserting data";
+    } else {
+        qDebug() << "Data inserted successfully";
+    }
 }
 
 void Frm_Admin::setupTables()

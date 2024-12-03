@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "frm_login.h"
+#include "flight_info.h"
 #include <QStandardItemModel>
 #include <QListWidget>
 #include <QTableView>
@@ -18,6 +19,7 @@ class Frm_Admin : public QMainWindow
 
 public:
     explicit Frm_Admin(QWidget *parent = nullptr, Frm_Login *l=nullptr);
+
     ~Frm_Admin();
 
 private slots:
@@ -34,6 +36,7 @@ private:
     QStandardItemModel *model2;
 
     void setupTables(); // 初始化表格数据
+    void addNewFlightInfo(QSqlDatabase _db); // 新增flight_info
 };
 
 #endif // FRM_ADMIN_H

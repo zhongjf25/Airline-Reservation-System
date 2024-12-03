@@ -36,6 +36,12 @@ Frm_Login::Frm_Login(QWidget *parent)
 
 }
 
+QSqlDatabase Frm_Login::getDatabase()
+{
+    return this->db;
+}
+
+
 Frm_Login::~Frm_Login()
 {
     delete ui;
