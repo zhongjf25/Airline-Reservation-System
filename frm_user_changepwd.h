@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QDialog>
-#include "frm_user.h"
+#include "frm_user.h"   //勿删
 
 namespace Ui {
 class Frm_User_ChangePwd;

@@ -2,6 +2,7 @@
 #include "ui_frm_user.h"
 
 #include "frm_user_changepwd.h"
+#include "frm_user_delete.h"
 
 
 Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
@@ -17,6 +18,7 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     connect(ui->act_logout, &QAction::triggered, this, &Frm_User::logout);  //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_User::exit);      //退出系统
     connect(ui->act_change_pwd, &QAction::triggered, this, &Frm_User::change_pwd);   //修改密码
+    connect(ui->act_del, &QAction::triggered, this, &Frm_User::del_user);   //删除账户
 
 }
 
@@ -42,11 +44,12 @@ void Frm_User::closeEvent(QCloseEvent *event) {
 
 Frm_User::~Frm_User()
 {
+    pg_login->show();
     delete ui;
 }
 
 void Frm_User::logout() {
-    pg_login->show();
+    // pg_login->show();
     delete this;
 }
 
@@ -66,5 +69,11 @@ void Frm_User::exit() {
 
 void Frm_User::change_pwd() {
     Frm_User_ChangePwd *frm = new Frm_User_ChangePwd(this, username);
+    frm->exec();
+}
+
+
+void Frm_User::del_user() {
+    Frm_User_Delete *frm = new Frm_User_Delete(this, username, this);
     frm->exec();
 }

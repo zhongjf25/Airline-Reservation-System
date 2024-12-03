@@ -29,6 +29,7 @@ private slots:
     void logout();  //登出
     void exit();    //退出程序
     void change_pwd();  //修改密码
+    void del_user();    //删除账户
 };
 
 #endif // FRM_USER_H
