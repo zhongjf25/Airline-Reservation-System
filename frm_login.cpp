@@ -48,6 +48,33 @@ Frm_Login::Frm_Login(QWidget *parent)
 
 Frm_Login::~Frm_Login()
 {
+    QSqlQuery q;
+    q.prepare("update PrevInfo set Username=:username where ID='1'");
+    q.bindValue(":username", ui->txt_user->text());
+    if(!q.exec()) {
+        qDebug() << "退出程序时用户名写入失败";
+    }
+
+
+    QString pwd;
+    if(ui->chk_remb_pwd->isChecked()) {
+        pwd = ui->txt_pwd->text();
+        if(!q.exec("update PrevInfo set is_rem=1 where ID='1'")) {
+            qDebug() << "退出程序时记住密码状态更新失败";
+        }
+    } else {
+        pwd = "";
+        if(!q.exec("update PrevInfo set is_rem=0 where ID='1'")) {
+            qDebug() << "退出程序时记住密码状态更新失败";
+        }
+    }
+
+    q.prepare("update PrevInfo set UserPwd=:password where ID='1'");
+    q.bindValue(":password", pwd);
+    if(!q.exec()) {
+        qDebug() << "退出程序时更新密码失败";
+    }
+
     delete ui;
 }
 

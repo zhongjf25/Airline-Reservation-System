@@ -34,3 +34,11 @@ CREATE TABLE PurchaseInfo (
     FOREIGN KEY (FlightID) REFERENCES FlightInfo(Flt_ID),
     FlightType INT  -- 0-经济 1-商务 2-头等
 );
+
+create table PrevInfo(
+	ID INT AUTO_INCREMENT PRIMARY KEY, 
+	Username varchar(30),
+    UserPwd varchar(30),
+    is_rem bool
+);
+insert into PrevInfo (Username, UserPwd, is_rem) values ('', '', 0);
