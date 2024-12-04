@@ -11,23 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Admin - Flight Information</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <!-- 添加按钮 -->
    <widget class="QPushButton" name="btn_add">
-    <property name="geometry">
-     <rect>
-      <x>970</x>
-      <y>10</y>
-      <width>92</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>添加</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_delete">
     <property name="geometry">
      <rect>
       <x>1080</x>
@@ -37,9 +25,26 @@
      </rect>
     </property>
     <property name="text">
+     <string>添加</string>
+    </property>
+   </widget>
+
+   <!-- 删除按钮 -->
+   <widget class="QPushButton" name="btn_delete">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>40</y>
+      <width>92</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
      <string>删除</string>
     </property>
    </widget>
+
+   <!-- 侧边列表 -->
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
@@ -50,6 +55,8 @@
      </rect>
     </property>
    </widget>
+
+   <!-- Stack Widget 用于展示表格 -->
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -62,7 +69,65 @@
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_2"/>
    </widget>
+
+   <!-- 航班信息输入框 -->
+   <widget class="QLineEdit" name="lineEdit_flightNumber">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>10</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>航班号</string>
+    </property>
+   </widget>
+
+   <widget class="QLineEdit" name="lineEdit_departure">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>10</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>起飞地点</string>
+    </property>
+   </widget>
+
+   <widget class="QLineEdit" name="lineEdit_destination">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>10</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>目的地</string>
+    </property>
+   </widget>
+
+   <widget class="QDateEdit" name="dateEdit_departureDate">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>10</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
+
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -87,12 +152,15 @@
    <addaction name="menu_S"/>
    <addaction name="menu"/>
   </widget>
+
   <widget class="QStatusBar" name="statusbar"/>
+
   <action name="act_exit">
    <property name="text">
     <string>退出</string>
    </property>
   </action>
+
   <action name="act_logout">
    <property name="text">
     <string>登出</string>

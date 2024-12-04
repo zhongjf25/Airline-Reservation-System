@@ -12,6 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QDateEdit>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -35,6 +37,10 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page;
     QWidget *page_2;
+    QLineEdit *lineEdit_flightNumber;
+    QLineEdit *lineEdit_departure;
+    QLineEdit *lineEdit_destination;
+    QDateEdit *dateEdit_departureDate;
     QMenuBar *menubar;
     QMenu *menu_S;
     QMenu *menu;
@@ -53,10 +59,10 @@ public:
         centralwidget->setObjectName("centralwidget");
         btn_add = new QPushButton(centralwidget);
         btn_add->setObjectName("btn_add");
-        btn_add->setGeometry(QRect(970, 10, 92, 28));
+        btn_add->setGeometry(QRect(1080, 10, 92, 28));
         btn_delete = new QPushButton(centralwidget);
         btn_delete->setObjectName("btn_delete");
-        btn_delete->setGeometry(QRect(1080, 10, 92, 28));
+        btn_delete->setGeometry(QRect(1080, 40, 92, 28));
         listWidget = new QListWidget(centralwidget);
         listWidget->setObjectName("listWidget");
         listWidget->setGeometry(QRect(15, 80, 181, 671));
@@ -69,6 +75,19 @@ public:
         page_2 = new QWidget();
         page_2->setObjectName("page_2");
         stackedWidget->addWidget(page_2);
+        lineEdit_flightNumber = new QLineEdit(centralwidget);
+        lineEdit_flightNumber->setObjectName("lineEdit_flightNumber");
+        lineEdit_flightNumber->setGeometry(QRect(210, 10, 200, 28));
+        lineEdit_departure = new QLineEdit(centralwidget);
+        lineEdit_departure->setObjectName("lineEdit_departure");
+        lineEdit_departure->setGeometry(QRect(420, 10, 200, 28));
+        lineEdit_destination = new QLineEdit(centralwidget);
+        lineEdit_destination->setObjectName("lineEdit_destination");
+        lineEdit_destination->setGeometry(QRect(630, 10, 200, 28));
+        dateEdit_departureDate = new QDateEdit(centralwidget);
+        dateEdit_departureDate->setObjectName("dateEdit_departureDate");
+        dateEdit_departureDate->setGeometry(QRect(840, 10, 200, 28));
+        dateEdit_departureDate->setCalendarPopup(true);
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
@@ -94,11 +113,14 @@ public:
 
     void retranslateUi(QMainWindow *Frm_Admin)
     {
-        Frm_Admin->setWindowTitle(QCoreApplication::translate("Frm_Admin", "MainWindow", nullptr));
+        Frm_Admin->setWindowTitle(QCoreApplication::translate("Frm_Admin", "Admin - Flight Information", nullptr));
         act_exit->setText(QCoreApplication::translate("Frm_Admin", "\351\200\200\345\207\272", nullptr));
         act_logout->setText(QCoreApplication::translate("Frm_Admin", "\347\231\273\345\207\272", nullptr));
         btn_add->setText(QCoreApplication::translate("Frm_Admin", "\346\267\273\345\212\240", nullptr));
         btn_delete->setText(QCoreApplication::translate("Frm_Admin", "\345\210\240\351\231\244", nullptr));
+        lineEdit_flightNumber->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\345\217\267", nullptr));
+        lineEdit_departure->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\265\267\351\243\236\345\234\260\347\202\271", nullptr));
+        lineEdit_destination->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\347\233\256\347\232\204\345\234\260", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_Admin", "\347\263\273\347\273\237(&S)", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_Admin", "\347\256\241\347\220\206\345\221\230", nullptr));
     } // retranslateUi

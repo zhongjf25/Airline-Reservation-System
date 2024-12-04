@@ -40,7 +40,9 @@ constexpr auto qt_meta_stringdata_CLASSFrm_AdminENDCLASS = QtMocHelpers::stringD
     "",
     "logout",
     "onListWidgetClicked",
-    "index"
+    "index",
+    "on_btn_add_clicked",
+    "on_btn_delete_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -53,7 +55,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSFrm_AdminENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,14 +63,18 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSFrm_AdminENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x08,    1 /* Private */,
-       3,    0,   33,    2, 0x08,    2 /* Private */,
-       4,    1,   34,    2, 0x08,    3 /* Private */,
+       1,    0,   44,    2, 0x08,    1 /* Private */,
+       3,    0,   45,    2, 0x08,    2 /* Private */,
+       4,    1,   46,    2, 0x08,    3 /* Private */,
+       6,    0,   49,    2, 0x08,    5 /* Private */,
+       7,    0,   50,    2, 0x08,    6 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    5,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -88,7 +94,11 @@ Q_CONSTINIT const QMetaObject Frm_Admin::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onListWidgetClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_btn_add_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_btn_delete_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -102,6 +112,7 @@ void Frm_Admin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 0: _t->exit(); break;
         case 1: _t->logout(); break;
         case 2: _t->onListWidgetClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->on_btn_add_clicked(); break;
         default: ;
         }
     }
@@ -126,13 +137,13 @@ int Frm_Admin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

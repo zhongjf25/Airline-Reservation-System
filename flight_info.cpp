@@ -10,7 +10,6 @@ flight_info::flight_info(QString _Flt_Number,
                          QString _Flt_Date,
                          QString _Departure,
                          QString _Destination,
-                         qint64 _Type,
                          qint64 _Eco_Seats,
                          qint64 _Bus_Seats,
                          qint64 _Fst_Seats,
@@ -23,7 +22,6 @@ flight_info::flight_info(QString _Flt_Number,
     this->Flt_Date = _Flt_Date;
     this->Departure = _Departure;
     this->Destination = _Destination;
-    this->Type = _Type;
     this->Eco_Seats = _Eco_Seats;
     this->Bus_Seats = _Bus_Seats;
     this->Fst_Seats = _Fst_Seats;

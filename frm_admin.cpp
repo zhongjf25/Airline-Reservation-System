@@ -9,14 +9,11 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     ui->setupUi(this);
     pg_login = l;
 
+    // 输出调试信息，查看信号是否被重复连接
+    qDebug() << "Connecting btn_add clicked signal";
+
     // 初始化表格数据
     setupTables();
-
-    // 添加新航班
-    flight_info* new_flight_info = new flight_info(
-        QString("AAAAA"), QString("Air USA"), QString("2024-12-04"),
-        QString("Los Angles"), QString("Tokyo"), 1, 100, 20, 5, 1000, 2000, 3000);
-    addNewFlightInfo(new_flight_info);
 
     // 初始化列表项
     ui->listWidget->addItem("所有航班信息");
@@ -25,7 +22,10 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_Admin::exit);      //退出系统
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &Frm_Admin::onListWidgetClicked);  // 处理侧边栏切换
+    connect(ui->btn_add, &QPushButton::clicked, this, &Frm_Admin::on_btn_add_clicked); // 添加航班信息按钮
 
+    // 输出调试信息，确认信号是否只连接一次
+    qDebug() << "btn_add connected successfully";
 }
 
 Frm_Admin::~Frm_Admin()
@@ -37,20 +37,19 @@ Frm_Admin::~Frm_Admin()
 
 void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
 {
+    qDebug() << "1111";
     QSqlQuery q;
 
-    // 假设你要插入一条航班信息
     q.prepare("insert into flightinfo (Flt_Number, Flt_Company, "
-              "Flt_Date, Departure, Destination, Type, EcoSeats, BusSeats, "
+              "Flt_Date, Departure, Destination, EcoSeats, BusSeats, "
               "FstSeats, price_eco, price_bus, price_fst) "
               "values (:_Flt_Number, :_Flt_Company, :_Flt_Date, :_Departure, :_Destination, "
-              ":_Type, :_EcoSeats, :_BusSeats, :_FstSeats, :_price_eco, :_price_bus, :_price_fst)");
+              ":_EcoSeats, :_BusSeats, :_FstSeats, :_price_eco, :_price_bus, :_price_fst)");
     q.bindValue(":_Flt_Number", new_flight_info->getFltNumber());
     q.bindValue(":_Flt_Company", new_flight_info->getFltCompany());
-    q.bindValue(":_Flt_Date", new_flight_info->getFltDate());
+    q.bindValue(":_Flt_Date",  new_flight_info->getFltDate());
     q.bindValue(":_Departure", new_flight_info->getDeparture());
     q.bindValue(":_Destination", new_flight_info->getDestination());
-    q.bindValue(":_Type", new_flight_info->getType());
     q.bindValue(":_EcoSeats", new_flight_info->getEcoSeats());
     q.bindValue(":_BusSeats", new_flight_info->getBusSeats());
     q.bindValue(":_FstSeats", new_flight_info->getFstSeats());
@@ -64,31 +63,61 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
     } else {
         qDebug() << "Data inserted successfully";
     }
+    // Load the flight data once after insertion
+    loadAllFlightInfoData();
+    qDebug() << "2222";
 }
+
+void Frm_Admin::loadAllFlightInfoData()
+{
+    QSqlQuery query;
+    query.prepare("select Flt_ID, Flt_Number, Flt_Company, "
+                  "Flt_Date, Departure, Destination, EcoSeats, BusSeats, "
+                  "FstSeats, price_eco, price_bus, price_fst from flightinfo");
+
+    if (!query.exec()) {
+        qDebug() << "Error executing query: ";
+        return;
+    }
+
+    // 清空现有数据
+    model1->removeRows(0, model1->rowCount());
+
+    int row = 0;
+    while (query.next()) {
+        model1->insertRow(row); // 插入新行
+        model1->setData(model1->index(row, 0), query.value(0).toInt()); // id
+        model1->setData(model1->index(row, 1), query.value(1).toString()); // number
+        model1->setData(model1->index(row, 2), query.value(2).toString()); // company
+        model1->setData(model1->index(row, 3), query.value(3).toString()); // date
+        model1->setData(model1->index(row, 4), query.value(4).toString()); // departure
+        model1->setData(model1->index(row, 5), query.value(5).toString()); // destination
+        model1->setData(model1->index(row, 6), query.value(6).toInt()); // ecoseats
+        model1->setData(model1->index(row, 7), query.value(7).toInt()); // busseats
+        model1->setData(model1->index(row, 8), query.value(8).toInt()); // fstseats
+        model1->setData(model1->index(row, 9), query.value(9).toInt()); // priceeco
+        model1->setData(model1->index(row, 10), query.value(10).toInt()); // pricebus
+        model1->setData(model1->index(row, 11), query.value(11).toInt()); // pricefst
+        row++;
+    }
+}
+
 
 void Frm_Admin::setupTables()
 {
     // 表格 1 数据模型
-    model1 = new QStandardItemModel(this); // 5 行 13 列
-    model1->setItem(0, 0, new QStandardItem(QString("航班ID")));
-    model1->setItem(0, 1, new QStandardItem(QString("航班编号")));
-    model1->setItem(0, 2, new QStandardItem(QString("航班公司")));
-    model1->setItem(0, 3, new QStandardItem(QString("航班日期")));
-    model1->setItem(0, 4, new QStandardItem(QString("航班起点")));
-    model1->setItem(0, 5, new QStandardItem(QString("航班终点")));
-    model1->setItem(0, 6, new QStandardItem(QString("航班种类")));
-    model1->setItem(0, 7, new QStandardItem(QString("EcoSeats")));
-    model1->setItem(0, 8, new QStandardItem(QString("BusSeats")));
-    model1->setItem(0, 9, new QStandardItem(QString("FstSeats")));
-    model1->setItem(0, 10, new QStandardItem(QString("price_eco")));
-    model1->setItem(0, 11, new QStandardItem(QString("price_bus")));
-    model1->setItem(0, 12, new QStandardItem(QString("price_fst")));
+    model1 = new QStandardItemModel(this);
+    model1->setHorizontalHeaderLabels({"航班ID", "航班编号", "航班公司", "航班日期",
+                                       "航班起点", "航班终点", "EcoSeats",
+                                       "BusSeats", "FstSeats", "price_eco", "price_bus", "price_fst"});
+
 
     // 表格 2 数据模型
-    model2 = new QStandardItemModel(4, 4, this); // 4 行 4 列
-    for (int i = 0; i < 4; ++i)
-        for (int j = 0; j < 4; ++j)
-            model2->setItem(i, j, new QStandardItem(QString("表格2: %1-%2").arg(i).arg(j)));
+    model2 = new QStandardItemModel(this);
+    model2->setHorizontalHeaderLabels({"航班ID", "航班编号", "航班公司", "航班日期",
+                                       "航班起点", "航班终点", "EcoSeats",
+                                       "BusSeats", "FstSeats", "price_eco", "price_bus", "price_fst"});
+
 
 
     // 将模型绑定到 QTableView
@@ -101,6 +130,9 @@ void Frm_Admin::setupTables()
     // 将表格添加到 QStackedWidget
     ui->stackedWidget->addWidget(tableView1);
     ui->stackedWidget->addWidget(tableView2);
+
+    // 加载数据
+    loadAllFlightInfoData();
 }
 
 void Frm_Admin::onListWidgetClicked(int index)
@@ -110,6 +142,45 @@ void Frm_Admin::onListWidgetClicked(int index)
     qDebug() << "index: " << index << ", effective index: " << index + offset;
 
 }
+
+void Frm_Admin::on_btn_add_clicked()
+{
+    qDebug() << "aaa";
+    // 获取用户输入的数据
+    QString flightNumber = ui->lineEdit_flightNumber->text();
+    QString departure = ui->lineEdit_departure->text();
+    QString destination = ui->lineEdit_destination->text();
+    QDate departureDate = ui->dateEdit_departureDate->date();
+
+    if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please fill all fields!");
+        return;
+    }
+
+    flight_info* new_flight_info = new flight_info();
+    new_flight_info->setFltNumber(flightNumber);
+    new_flight_info->setFltCompany(QString("Air China"));
+    new_flight_info->setFltDate(departureDate.toString("yyyy-MM-dd"));
+    new_flight_info->setDeparture(departure);
+    new_flight_info->setDestination(destination);
+    new_flight_info->setEcoSeats(100); // 设置经济舱座位数
+    new_flight_info->setBusSeats(50); // 设置商务舱座位数
+    new_flight_info->setFstSeats(20); // 设置头等舱座位数
+    new_flight_info->setPriceEco(1000); // 设置经济舱票价
+    new_flight_info->setPriceBus(2000); // 设置商务舱票价
+    new_flight_info->setPriceFst(3000); // 设置头等舱票价
+
+
+    qDebug() << "----on_btn----";
+    // 将数据插入到数据库
+    addNewFlightInfo(new_flight_info);
+
+    delete new_flight_info;
+
+    qDebug() << "bbb";
+
+}
+
 
 
 void Frm_Admin::exit() {
@@ -136,4 +207,6 @@ void Frm_Admin::logout() {
 //     // this->close();
 //     delete this;
 // }
+
+
 

@@ -15,7 +15,6 @@ CREATE TABLE FlightInfo (
     Flt_Date DATE,  -- 日期格式为 yyyy-mm-dd
     Departure VARCHAR(10),  -- 出发地
     Destination VARCHAR(10),  -- 目的地
-    Type INT,  -- 0, 1, 2 对应三种类型
     EcoSeats INT,  -- 经济舱余票
     BusSeats INT,  -- 商务舱余票
     FstSeats INT,   -- 头等舱余票
@@ -32,5 +31,6 @@ CREATE TABLE PurchaseInfo (
     PurchaseQuantity INT,  -- 购买数量
     OrderPrice INT,  -- 订单价格
     FOREIGN KEY (UserID) REFERENCES UserInfo(UserID),
-    FOREIGN KEY (FlightID) REFERENCES FlightInfo(Flt_ID)
+    FOREIGN KEY (FlightID) REFERENCES FlightInfo(Flt_ID),
+    FlightType INT  -- 0-经济 1-商务 2-头等
 );
