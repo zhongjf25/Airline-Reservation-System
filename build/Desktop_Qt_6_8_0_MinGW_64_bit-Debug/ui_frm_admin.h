@@ -40,6 +40,7 @@ public:
     QLineEdit *lineEdit_flightNumber;
     QLineEdit *lineEdit_departure;
     QLineEdit *lineEdit_destination;
+    QLineEdit *lineEdit_deleteId;
     QDateEdit *dateEdit_departureDate;
     QMenuBar *menubar;
     QMenu *menu_S;
@@ -84,6 +85,9 @@ public:
         lineEdit_destination = new QLineEdit(centralwidget);
         lineEdit_destination->setObjectName("lineEdit_destination");
         lineEdit_destination->setGeometry(QRect(630, 10, 200, 28));
+        lineEdit_deleteId = new QLineEdit(centralwidget);
+        lineEdit_deleteId->setObjectName("lineEdit_deleteId");
+        lineEdit_deleteId->setGeometry(QRect(840, 40, 200, 28));
         dateEdit_departureDate = new QDateEdit(centralwidget);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(840, 10, 200, 28));
@@ -121,6 +125,7 @@ public:
         lineEdit_flightNumber->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\345\217\267", nullptr));
         lineEdit_departure->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\265\267\351\243\236\345\234\260\347\202\271", nullptr));
         lineEdit_destination->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\347\233\256\347\232\204\345\234\260", nullptr));
+        lineEdit_deleteId->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\257\267\350\276\223\345\205\245\350\246\201\345\210\240\351\231\244\347\232\204\350\210\252\347\217\255\347\232\204ID", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_Admin", "\347\263\273\347\273\237(&S)", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_Admin", "\347\256\241\347\220\206\345\221\230", nullptr));
     } // retranslateUi

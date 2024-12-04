@@ -60,6 +60,21 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
     loadAllFlightInfoData();
 }
 
+void Frm_Admin::deleteFlightInfoById(qint64 deleteFlightInfoId)
+{
+    QSqlQuery q;
+    q.prepare("delete from flightinfo where Flt_ID =:_deleteFlightInfoId");
+    q.bindValue(":_deleteFlightInfoId", deleteFlightInfoId);
+
+    if (q.exec()) {
+        qDebug() << "delete flightInfo which id = " << deleteFlightInfoId << " successfully!";
+    } else {
+        qDebug() << "Error deleting data";
+    }
+
+    loadAllFlightInfoData();
+}
+
 void Frm_Admin::loadAllFlightInfoData()
 {
     QSqlQuery query;
@@ -144,7 +159,6 @@ void Frm_Admin::on_btn_add_clicked()
     if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill all fields!");
         return;
-        qDebug() << "ccc";
     }
 
     flight_info* new_flight_info = new flight_info();
@@ -166,6 +180,18 @@ void Frm_Admin::on_btn_add_clicked()
     delete new_flight_info;
 }
 
+void Frm_Admin::on_btn_delete_clicked()
+{
+    QString flightId = ui->lineEdit_deleteId->text();
+    if (flightId.isEmpty()) {
+        QMessageBox::warning(this, "Input Error", "Please fill id!");
+        return;
+    }
+
+    qint64 flightIdInt = flightId.toInt();
+
+    deleteFlightInfoById(flightIdInt);
+}
 
 
 void Frm_Admin::exit() {
@@ -205,13 +231,9 @@ void Frm_Admin::closeEvent(QCloseEvent *event) {
 }
 
 
-// 登出button
-// void Frm_Admin::on_btn_Logout_clicked()
-// {
-//     pg_login->show();
-//     // this->close();
-//     delete this;
-// }
+
+
+
 
 
 

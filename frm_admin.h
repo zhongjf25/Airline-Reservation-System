@@ -31,9 +31,7 @@ private slots:
     void logout(); //登出
     void onListWidgetClicked(int index); // 处理侧边栏切换
     void on_btn_add_clicked(); // 添加航班按钮
-    // void on_btn_Logout_clicked();
-
-    void on_btn_delete_clicked();
+    void on_btn_delete_clicked(); // 删除航班按钮
 
 private:
     Ui::Frm_Admin *ui;
@@ -45,6 +43,7 @@ private:
     void setupTables(); // 初始化表格数据
     void addNewFlightInfo(flight_info* new_flight_info); // 新增flight_info
     void loadAllFlightInfoData(); // 加载全部flight_info数据
+    void deleteFlightInfoById(qint64 deleteFlightInfoId); // 根据id删除对应航班
 };
 
 #endif // FRM_ADMIN_H

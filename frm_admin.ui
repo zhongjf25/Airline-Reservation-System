@@ -113,6 +113,20 @@
     </property>
    </widget>
 
+   <widget class="QLineEdit" name="lineEdit_deleteId">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>40</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>请输入要删除的航班的ID</string>
+    </property>
+   </widget>
+
    <widget class="QDateEdit" name="dateEdit_departureDate">
     <property name="geometry">
      <rect>
