@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include "frm_login.h"
 #include <QCloseEvent>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 
 namespace Ui {
 class Frm_User;

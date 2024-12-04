@@ -4,6 +4,13 @@
 #include "frm_user_changepwd.h"
 #include "frm_user_delete.h"
 
+#include <QApplication>
+#include <QWidget>
+#include <QLabel>
+#include <QPixmap>
+#include <QPushButton>
+#include <QIcon>
+
 
 Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     : QMainWindow(parent)
@@ -19,6 +26,56 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     connect(ui->act_exit, &QAction::triggered, this, &Frm_User::exit);      //退出系统
     connect(ui->act_change_pwd, &QAction::triggered, this, &Frm_User::change_pwd);   //修改密码
     connect(ui->act_del, &QAction::triggered, this, &Frm_User::del_user);   //删除账户
+
+    QPushButton *back = ui->back; // 获取 UI 中的按钮
+    back->setStyleSheet("QPushButton {"
+                              "border: none;"          // 去除边框
+                              "background: transparent;" // 背景透明
+                              "color: black;"  // 设置文字颜色
+                              "text-decoration: underline;" // 添加下划线
+                              "font-style: italic;"       // 文字斜体
+                              "}"
+                              "QPushButton:hover {"
+                            "font-weight: bold;"        // 鼠标悬停时文字加粗
+                              "}");
+
+    QPushButton *to_home = ui->to_home; // 获取 UI 中的按钮
+    to_home->setStyleSheet("QPushButton {"
+                        "border: none;"          // 去除边框
+                        "background: transparent;" // 背景透明
+                        "color: black;"  // 设置文字颜色
+                        "text-decoration: underline;" // 添加下划线
+                        "font-style: italic;"       // 文字斜体
+                        "}"
+                        "QPushButton:hover {"
+                        "font-weight: bold;"        // 鼠标悬停时文字加粗
+                        "}");
+
+    QLabel *graph = ui->graph;
+    QPixmap pixmap("location.jpg");  // 替换为你的图片路径
+    graph->setPixmap(pixmap);
+    graph->setScaledContents(true);
+
+    QLabel *graph_2 = ui->graph_2;
+    graph_2->setScaledContents(true);
+    graph_2->setPixmap(pixmap);
+
+    QLabel *graph_3 = ui->graph_3;
+    QPixmap pixmap_2("date.jpg");  // 替换为你的图片路径
+    graph_3->setPixmap(pixmap_2);
+    graph_3->setScaledContents(true);
+
+    QPushButton *change = ui->change;
+
+    QPixmap pixmap_3("change.jpg");
+    QPixmap scaledPixmap = pixmap_3.scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+    // 设置缩放图片为按钮图标
+    change->setIcon(QIcon(scaledPixmap));
+    change->setIconSize(QSize(20, 20));
+
+    change->setFixedSize(20, 20);
+    change->show();
 
 }
 

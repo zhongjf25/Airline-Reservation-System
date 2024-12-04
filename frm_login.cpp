@@ -33,14 +33,18 @@ Frm_Login::Frm_Login(QWidget *parent)
     else {
         QMessageBox::warning(this, "连接提示", "数据库连接失败，部分功能可能无法使用");
     }
+    QPushButton *to_manager = ui->btn_register; // 获取 UI 中的按钮
+    to_manager->setStyleSheet("QPushButton {"
+                              "border: none;"          // 去除边框
+                              "background: transparent;" // 背景透明
+                              "color: blue;"  // 设置文字颜色
+                              "text-decoration: underline;" // 添加下划线
+                              "}"
+                              "QPushButton:hover {"
+                              "color: red;"  // 鼠标悬停时文字颜色
+                              "}");
 
 }
-
-QSqlDatabase Frm_Login::getDatabase()
-{
-    return this->db;
-}
-
 
 Frm_Login::~Frm_Login()
 {
@@ -49,7 +53,6 @@ Frm_Login::~Frm_Login()
 
 void Frm_Login::on_btn_Login_clicked()  //登录
 {
-
     QString username = ui->txt_user->text();
     QString pwd = ui->txt_pwd->text();
 
@@ -115,4 +118,3 @@ void Frm_Login::on_btn_register_clicked()
 
     // qDebug() << "registered";
 }
-

@@ -9,9 +9,6 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     ui->setupUi(this);
     pg_login = l;
 
-    // 输出调试信息，查看信号是否被重复连接
-    qDebug() << "Connecting btn_add clicked signal";
-
     // 初始化表格数据
     setupTables();
 
@@ -22,10 +19,6 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_Admin::exit);      //退出系统
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &Frm_Admin::onListWidgetClicked);  // 处理侧边栏切换
-    connect(ui->btn_add, &QPushButton::clicked, this, &Frm_Admin::on_btn_add_clicked); // 添加航班信息按钮
-
-    // 输出调试信息，确认信号是否只连接一次
-    qDebug() << "btn_add connected successfully";
 }
 
 Frm_Admin::~Frm_Admin()
@@ -37,7 +30,6 @@ Frm_Admin::~Frm_Admin()
 
 void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
 {
-    qDebug() << "1111";
     QSqlQuery q;
 
     q.prepare("insert into flightinfo (Flt_Number, Flt_Company, "
@@ -65,7 +57,6 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
     }
     // Load the flight data once after insertion
     loadAllFlightInfoData();
-    qDebug() << "2222";
 }
 
 void Frm_Admin::loadAllFlightInfoData()
@@ -139,13 +130,10 @@ void Frm_Admin::onListWidgetClicked(int index)
 {
     int offset = ui->stackedWidget->count() - 2; // 动态计算偏移量 其中2为表格数量
     ui->stackedWidget->setCurrentIndex(index + offset);
-    qDebug() << "index: " << index << ", effective index: " << index + offset;
-
 }
 
 void Frm_Admin::on_btn_add_clicked()
 {
-    qDebug() << "aaa";
     // 获取用户输入的数据
     QString flightNumber = ui->lineEdit_flightNumber->text();
     QString departure = ui->lineEdit_departure->text();
@@ -170,15 +158,10 @@ void Frm_Admin::on_btn_add_clicked()
     new_flight_info->setPriceBus(2000); // 设置商务舱票价
     new_flight_info->setPriceFst(3000); // 设置头等舱票价
 
-
-    qDebug() << "----on_btn----";
     // 将数据插入到数据库
     addNewFlightInfo(new_flight_info);
 
     delete new_flight_info;
-
-    qDebug() << "bbb";
-
 }
 
 
