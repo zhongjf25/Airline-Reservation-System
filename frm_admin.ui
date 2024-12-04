@@ -18,7 +18,7 @@
    <widget class="QPushButton" name="btn_add">
     <property name="geometry">
      <rect>
-      <x>1080</x>
+      <x>870</x>
       <y>10</y>
       <width>92</width>
       <height>28</height>
@@ -29,11 +29,26 @@
     </property>
    </widget>
 
+   <!-- 搜索按钮 -->
+   <widget class="QPushButton" name="btn_search">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>10</y>
+      <width>92</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>搜索</string>
+    </property>
+   </widget>
+
    <!-- 删除按钮 -->
    <widget class="QPushButton" name="btn_delete">
     <property name="geometry">
      <rect>
-      <x>1080</x>
+      <x>870</x>
       <y>40</y>
       <width>92</width>
       <height>28</height>
@@ -74,7 +89,7 @@
    <widget class="QLineEdit" name="lineEdit_flightNumber">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>15</x>
       <y>10</y>
       <width>200</width>
       <height>28</height>
@@ -88,7 +103,7 @@
    <widget class="QLineEdit" name="lineEdit_departure">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>225</x>
       <y>10</y>
       <width>200</width>
       <height>28</height>
@@ -102,7 +117,7 @@
    <widget class="QLineEdit" name="lineEdit_destination">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>435</x>
       <y>10</y>
       <width>200</width>
       <height>28</height>
@@ -116,7 +131,7 @@
    <widget class="QLineEdit" name="lineEdit_deleteId">
     <property name="geometry">
      <rect>
-      <x>840</x>
+      <x>645</x>
       <y>40</y>
       <width>200</width>
       <height>28</height>
@@ -130,7 +145,7 @@
    <widget class="QDateEdit" name="dateEdit_departureDate">
     <property name="geometry">
      <rect>
-      <x>840</x>
+      <x>645</x>
       <y>10</y>
       <width>200</width>
       <height>28</height>

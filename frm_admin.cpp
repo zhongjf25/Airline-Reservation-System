@@ -109,6 +109,60 @@ void Frm_Admin::loadAllFlightInfoData()
     }
 }
 
+void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number, QString _departure,
+                                          QString _destination, QString _departure_date)
+{
+    QSqlQuery query;
+    QString queryStr = "select Flt_ID, Flt_Number, Flt_Company, Flt_Date, Departure, "
+                       "Destination, EcoSeats, BusSeats, FstSeats, price_eco, "
+                       "price_bus, price_fst from flightinfo where 1=1";
+
+    if (!_Flt_Number.isEmpty()) {
+        queryStr += " and Flt_Number = " + _Flt_Number;
+    }
+    if (!_departure.isEmpty()) {
+        queryStr += " and Departure = " + _departure;
+    }
+    if (!_destination.isEmpty()) {
+        queryStr += " and Destination = " + _destination;
+    }
+    if (!_departure_date.isEmpty()) {
+        queryStr += " and Flt_Date = '" + _departure_date + "'";
+    }
+
+    qDebug() << queryStr;
+
+    query.prepare(queryStr);
+    if (!query.exec()) {
+        qDebug() << "Error executing query";
+        return;
+    }
+
+    // Clear existing data
+    model1->removeRows(0, model1->rowCount());
+
+    int row = 0;
+    while (query.next()) {
+        model1->insertRow(row);
+        model1->setData(model1->index(row, 0), query.value(0).toInt());
+        model1->setData(model1->index(row, 1), query.value(1).toString());
+        model1->setData(model1->index(row, 2), query.value(2).toString());
+        model1->setData(model1->index(row, 3), query.value(3).toString());
+        model1->setData(model1->index(row, 4), query.value(4).toString());
+        model1->setData(model1->index(row, 5), query.value(5).toString());
+        model1->setData(model1->index(row, 6), query.value(6).toInt());
+        model1->setData(model1->index(row, 7), query.value(7).toInt());
+        model1->setData(model1->index(row, 8), query.value(8).toInt());
+        model1->setData(model1->index(row, 9), query.value(9).toInt());
+        model1->setData(model1->index(row, 10), query.value(10).toInt());
+        model1->setData(model1->index(row, 11), query.value(11).toInt());
+        row++;
+    }
+
+}
+
+
+
 
 void Frm_Admin::setupTables()
 {
@@ -128,9 +182,9 @@ void Frm_Admin::setupTables()
 
 
     // 将模型绑定到 QTableView
-    QTableView *tableView1 = new QTableView(this);
+    tableView1 = new QTableView(this);
     tableView1->setModel(model1);
-    QTableView *tableView2 = new QTableView(this);
+    tableView2 = new QTableView(this);
     tableView2->setModel(model2);
 
 
@@ -193,6 +247,19 @@ void Frm_Admin::on_btn_delete_clicked()
     deleteFlightInfoById(flightIdInt);
 }
 
+void Frm_Admin::on_btn_search_clicked()
+{
+    // 获取用户输入的数据
+    QString flightNumber = ui->lineEdit_flightNumber->text();
+    QString departure = ui->lineEdit_departure->text();
+    QString destination = ui->lineEdit_destination->text();
+    QDate departureDate = ui->dateEdit_departureDate->date();
+
+    qDebug() << flightNumber << " " << departure << " " << destination << " " << departureDate;
+    loadCertainFlightInfoData(flightNumber, departure, destination, departureDate.toString("yyyy-MM-dd"));
+
+}
+
 
 void Frm_Admin::exit() {
     QMessageBox::StandardButton reply;
@@ -229,6 +296,9 @@ void Frm_Admin::closeEvent(QCloseEvent *event) {
         }
     }
 }
+
+
+
 
 
 
