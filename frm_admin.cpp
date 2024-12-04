@@ -1,6 +1,7 @@
 #include "frm_admin.h"
 #include "ui_frm_admin.h"
 #include <QMessageBox>
+#include <QCloseEvent>
 
 Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     : QMainWindow(parent)
@@ -22,7 +23,8 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_Admin::exit);      //退出系统
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &Frm_Admin::onListWidgetClicked);  // 处理侧边栏切换
-    connect(ui->btn_add, &QPushButton::clicked, this, &Frm_Admin::on_btn_add_clicked); // 添加航班信息按钮
+
+    // connect(ui->btn_add, &QPushButton::clicked, this, &Frm_Admin::on_btn_add_clicked); // 添加航班信息按钮 注：不需要连接信号 槽函数自带
 
     // 输出调试信息，确认信号是否只连接一次
     qDebug() << "btn_add connected successfully";
@@ -37,7 +39,6 @@ Frm_Admin::~Frm_Admin()
 
 void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
 {
-    qDebug() << "1111";
     QSqlQuery q;
 
     q.prepare("insert into flightinfo (Flt_Number, Flt_Company, "
@@ -65,7 +66,6 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
     }
     // Load the flight data once after insertion
     loadAllFlightInfoData();
-    qDebug() << "2222";
 }
 
 void Frm_Admin::loadAllFlightInfoData()
@@ -107,16 +107,16 @@ void Frm_Admin::setupTables()
 {
     // 表格 1 数据模型
     model1 = new QStandardItemModel(this);
-    model1->setHorizontalHeaderLabels({"航班ID", "航班编号", "航班公司", "航班日期",
-                                       "航班起点", "航班终点", "EcoSeats",
-                                       "BusSeats", "FstSeats", "price_eco", "price_bus", "price_fst"});
+    model1->setHorizontalHeaderLabels({"ID", "航班号", "航司", "航班日期",
+                                       "出发地", "目的地", "经济舱余票",
+                                       "商务舱余票", "头等舱余票", "经济舱定价", "商务舱定价", "头等舱定价"});
 
 
     // 表格 2 数据模型
     model2 = new QStandardItemModel(this);
-    model2->setHorizontalHeaderLabels({"航班ID", "航班编号", "航班公司", "航班日期",
-                                       "航班起点", "航班终点", "EcoSeats",
-                                       "BusSeats", "FstSeats", "price_eco", "price_bus", "price_fst"});
+    model2->setHorizontalHeaderLabels({"ID", "航班号", "航司", "航班日期",
+                                       "出发地", "目的地", "经济舱余票",
+                                       "商务舱余票", "头等舱余票", "经济舱定价", "商务舱定价", "头等舱定价"});
 
 
 
@@ -145,7 +145,6 @@ void Frm_Admin::onListWidgetClicked(int index)
 
 void Frm_Admin::on_btn_add_clicked()
 {
-    qDebug() << "aaa";
     // 获取用户输入的数据
     QString flightNumber = ui->lineEdit_flightNumber->text();
     QString departure = ui->lineEdit_departure->text();
@@ -155,6 +154,7 @@ void Frm_Admin::on_btn_add_clicked()
     if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill all fields!");
         return;
+        qDebug() << "ccc";
     }
 
     flight_info* new_flight_info = new flight_info();
@@ -177,7 +177,6 @@ void Frm_Admin::on_btn_add_clicked()
 
     delete new_flight_info;
 
-    qDebug() << "bbb";
 
 }
 
@@ -199,6 +198,26 @@ void Frm_Admin::logout() {
     pg_login->show(); // 展示出登录页面 然后销毁本页面
     delete this;
 }
+
+
+void Frm_Admin::closeEvent(QCloseEvent *event) {
+    if(sender() == ui->act_exit) {      //跳过exit(),如果已经通过退出系统键完成退出
+        event->accept();
+    }
+    else {
+        QMessageBox::StandardButton reply;
+
+        reply = QMessageBox::question(this, "提示", "是否确定要退出系统？", QMessageBox::Yes|QMessageBox::No);
+
+        if(reply == QMessageBox::Yes)
+            QApplication::quit();
+        else {
+            event->ignore();
+            return;
+        }
+    }
+}
+
 
 // 登出button
 // void Frm_Admin::on_btn_Logout_clicked()
