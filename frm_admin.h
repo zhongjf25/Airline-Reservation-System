@@ -17,6 +17,10 @@ class Frm_Admin : public QMainWindow
 {
     Q_OBJECT
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
+
 public:
     explicit Frm_Admin(QWidget *parent = nullptr, Frm_Login *l=nullptr);
 

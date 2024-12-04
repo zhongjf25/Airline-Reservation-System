@@ -113,6 +113,7 @@ void Frm_Admin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 1: _t->logout(); break;
         case 2: _t->onListWidgetClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 3: _t->on_btn_add_clicked(); break;
+        // case 4: _t->on_btn_delete_clicked(); break;
         default: ;
         }
     }

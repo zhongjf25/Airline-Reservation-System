@@ -1,6 +1,7 @@
 #include "frm_admin.h"
 #include "ui_frm_admin.h"
 #include <QMessageBox>
+#include <QCloseEvent>
 
 Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     : QMainWindow(parent)
@@ -98,16 +99,16 @@ void Frm_Admin::setupTables()
 {
     // 表格 1 数据模型
     model1 = new QStandardItemModel(this);
-    model1->setHorizontalHeaderLabels({"航班ID", "航班编号", "航班公司", "航班日期",
-                                       "航班起点", "航班终点", "EcoSeats",
-                                       "BusSeats", "FstSeats", "price_eco", "price_bus", "price_fst"});
+    model1->setHorizontalHeaderLabels({"ID", "航班号", "航司", "航班日期",
+                                       "出发地", "目的地", "经济舱余票",
+                                       "商务舱余票", "头等舱余票", "经济舱定价", "商务舱定价", "头等舱定价"});
 
 
     // 表格 2 数据模型
     model2 = new QStandardItemModel(this);
-    model2->setHorizontalHeaderLabels({"航班ID", "航班编号", "航班公司", "航班日期",
-                                       "航班起点", "航班终点", "EcoSeats",
-                                       "BusSeats", "FstSeats", "price_eco", "price_bus", "price_fst"});
+    model2->setHorizontalHeaderLabels({"ID", "航班号", "航司", "航班日期",
+                                       "出发地", "目的地", "经济舱余票",
+                                       "商务舱余票", "头等舱余票", "经济舱定价", "商务舱定价", "头等舱定价"});
 
 
 
@@ -143,6 +144,7 @@ void Frm_Admin::on_btn_add_clicked()
     if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill all fields!");
         return;
+        qDebug() << "ccc";
     }
 
     flight_info* new_flight_info = new flight_info();
@@ -182,6 +184,26 @@ void Frm_Admin::logout() {
     pg_login->show(); // 展示出登录页面 然后销毁本页面
     delete this;
 }
+
+
+void Frm_Admin::closeEvent(QCloseEvent *event) {
+    if(sender() == ui->act_exit) {      //跳过exit(),如果已经通过退出系统键完成退出
+        event->accept();
+    }
+    else {
+        QMessageBox::StandardButton reply;
+
+        reply = QMessageBox::question(this, "提示", "是否确定要退出系统？", QMessageBox::Yes|QMessageBox::No);
+
+        if(reply == QMessageBox::Yes)
+            QApplication::quit();
+        else {
+            event->ignore();
+            return;
+        }
+    }
+}
+
 
 // 登出button
 // void Frm_Admin::on_btn_Logout_clicked()
