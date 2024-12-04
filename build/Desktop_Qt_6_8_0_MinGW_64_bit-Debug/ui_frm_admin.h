@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -20,7 +19,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -36,9 +34,7 @@ public:
     QListWidget *listWidget;
     QStackedWidget *stackedWidget;
     QWidget *page;
-    QTableView *tb_1;
     QWidget *page_2;
-    QTableView *tb_2;
     QMenuBar *menubar;
     QMenu *menu_S;
     QMenu *menu;
@@ -69,20 +65,14 @@ public:
         stackedWidget->setGeometry(QRect(210, 80, 951, 671));
         page = new QWidget();
         page->setObjectName("page");
-        tb_1 = new QTableView(page);
-        tb_1->setObjectName("tb_1");
-        tb_1->setGeometry(QRect(0, 0, 951, 671));
         stackedWidget->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName("page_2");
-        tb_2 = new QTableView(page_2);
-        tb_2->setObjectName("tb_2");
-        tb_2->setGeometry(QRect(0, 0, 951, 671));
         stackedWidget->addWidget(page_2);
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 24));
+        menubar->setGeometry(QRect(0, 0, 1200, 17));
         menu_S = new QMenu(menubar);
         menu_S->setObjectName("menu_S");
         menu = new QMenu(menubar);

@@ -36,7 +36,7 @@ private:
     QStandardItemModel *model2;
 
     void setupTables(); // 初始化表格数据
-    void addNewFlightInfo(QSqlDatabase _db); // 新增flight_info
+    void addNewFlightInfo(flight_info* new_flight_info); // 新增flight_info
 };
 
 #endif // FRM_ADMIN_H

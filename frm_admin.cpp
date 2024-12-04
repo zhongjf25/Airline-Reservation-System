@@ -11,10 +11,15 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
 
     // 初始化表格数据
     setupTables();
-    addNewFlightInfo(l->getDatabase()); // 传入database 进行新增数据操作
+
+    // 添加新航班
+    flight_info* new_flight_info = new flight_info(
+        QString("AAAAA"), QString("Air USA"), QString("2024-12-04"),
+        QString("Los Angles"), QString("Tokyo"), 1, 100, 20, 5, 1000, 2000, 3000);
+    addNewFlightInfo(new_flight_info);
 
     // 初始化列表项
-    ui->listWidget->addItem("表格 1");
+    ui->listWidget->addItem("所有航班信息");
     ui->listWidget->addItem("表格 2");
 
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
@@ -30,17 +35,28 @@ Frm_Admin::~Frm_Admin()
     delete model2;
 }
 
-void Frm_Admin::addNewFlightInfo(QSqlDatabase _db)
+void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
 {
-    // 使用传入的数据库对象执行 SQL 语句
-    QSqlQuery q(_db);
+    QSqlQuery q;
 
     // 假设你要插入一条航班信息
     q.prepare("insert into flightinfo (Flt_Number, Flt_Company, "
               "Flt_Date, Departure, Destination, Type, EcoSeats, BusSeats, "
               "FstSeats, price_eco, price_bus, price_fst) "
-              "values ('CA1123', 'Air China', '2019-12-01', 'Beijing', 'Shanghai', "
-              "'1', 100, 20, 5, 1000, 2000, 3000)");
+              "values (:_Flt_Number, :_Flt_Company, :_Flt_Date, :_Departure, :_Destination, "
+              ":_Type, :_EcoSeats, :_BusSeats, :_FstSeats, :_price_eco, :_price_bus, :_price_fst)");
+    q.bindValue(":_Flt_Number", new_flight_info->getFltNumber());
+    q.bindValue(":_Flt_Company", new_flight_info->getFltCompany());
+    q.bindValue(":_Flt_Date", new_flight_info->getFltDate());
+    q.bindValue(":_Departure", new_flight_info->getDeparture());
+    q.bindValue(":_Destination", new_flight_info->getDestination());
+    q.bindValue(":_Type", new_flight_info->getType());
+    q.bindValue(":_EcoSeats", new_flight_info->getEcoSeats());
+    q.bindValue(":_BusSeats", new_flight_info->getBusSeats());
+    q.bindValue(":_FstSeats", new_flight_info->getFstSeats());
+    q.bindValue(":_price_eco", new_flight_info->getPriceEco());
+    q.bindValue(":_price_bus", new_flight_info->getPriceBus());
+    q.bindValue(":_price_fst", new_flight_info->getPriceFst());
 
     // 执行插入操作
     if (!q.exec()) {
@@ -53,10 +69,20 @@ void Frm_Admin::addNewFlightInfo(QSqlDatabase _db)
 void Frm_Admin::setupTables()
 {
     // 表格 1 数据模型
-    model1 = new QStandardItemModel(5, 3, this); // 5 行 3 列
-    for (int i = 0; i < 5; ++i)
-        for (int j = 0; j < 3; ++j)
-            model1->setItem(i, j, new QStandardItem(QString("表格1: %1-%2").arg(i).arg(j)));
+    model1 = new QStandardItemModel(this); // 5 行 13 列
+    model1->setItem(0, 0, new QStandardItem(QString("航班ID")));
+    model1->setItem(0, 1, new QStandardItem(QString("航班编号")));
+    model1->setItem(0, 2, new QStandardItem(QString("航班公司")));
+    model1->setItem(0, 3, new QStandardItem(QString("航班日期")));
+    model1->setItem(0, 4, new QStandardItem(QString("航班起点")));
+    model1->setItem(0, 5, new QStandardItem(QString("航班终点")));
+    model1->setItem(0, 6, new QStandardItem(QString("航班种类")));
+    model1->setItem(0, 7, new QStandardItem(QString("EcoSeats")));
+    model1->setItem(0, 8, new QStandardItem(QString("BusSeats")));
+    model1->setItem(0, 9, new QStandardItem(QString("FstSeats")));
+    model1->setItem(0, 10, new QStandardItem(QString("price_eco")));
+    model1->setItem(0, 11, new QStandardItem(QString("price_bus")));
+    model1->setItem(0, 12, new QStandardItem(QString("price_fst")));
 
     // 表格 2 数据模型
     model2 = new QStandardItemModel(4, 4, this); // 4 行 4 列
