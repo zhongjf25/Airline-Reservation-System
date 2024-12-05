@@ -29,7 +29,7 @@
   <widget class="QPushButton" name="btn_Exit">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>360</x>
      <y>290</y>
      <width>75</width>
      <height>24</height>
@@ -91,8 +91,8 @@
   <widget class="QPushButton" name="btn_register">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>230</y>
+     <x>220</x>
+     <y>290</y>
      <width>75</width>
      <height>24</height>
     </rect>

@@ -7,6 +7,12 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QWidget>
+#include <QTableWidget>
+#include <QLabel>
+#include <QPixmap>
+#include <QPushButton>
+#include <QIcon>
 
 namespace Ui {
 class Frm_User;
@@ -27,12 +33,22 @@ private:
     Ui::Frm_User *ui;
     Frm_Login *pg_login;
     QString username;
+    QTableWidget* search_table;
+    QTableWidget* self_table;
+
+    void setupTables(); // 初始化表格数据
+    void loadAllFlightInfoData(); // 搜索所有数据
+    void loadCertainFlightInfoData(QString _departure, QString _destination, QString _departure_date); // 搜索航班
 
 private slots:
     void logout();  //登出
     void exit();    //退出程序
     void change_pwd();  //修改密码
     void del_user();    //删除账户
+    void goToUserPage(); // 跳转到个人主页
+    void on_return_page1_clicked();
+    void on_btn_search_clicked();
+    void on_btn_reset_clicked();
 };
 
 #endif // FRM_USER_H

@@ -5,11 +5,6 @@
 #include "frm_user_delete.h"
 
 #include <QApplication>
-#include <QWidget>
-#include <QLabel>
-#include <QPixmap>
-#include <QPushButton>
-#include <QIcon>
 
 
 Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
@@ -22,39 +17,130 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
 
     ui->lbl_username->setText(n);
 
+    setupTables();
+
     connect(ui->act_logout, &QAction::triggered, this, &Frm_User::logout);  //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_User::exit);      //退出系统
     connect(ui->act_change_pwd, &QAction::triggered, this, &Frm_User::change_pwd);   //修改密码
     connect(ui->act_del, &QAction::triggered, this, &Frm_User::del_user);   //删除账户
+    connect(ui->lbl_username, &QAction::triggered, this, &Frm_User::goToUserPage); //跳转到用户界面
+}
 
-    QPushButton *back = ui->back; // 获取 UI 中的按钮
-    back->setStyleSheet("QPushButton {"
-                              "border: none;"          // 去除边框
-                              "background: transparent;" // 背景透明
-                              "color: black;"  // 设置文字颜色
-                              "text-decoration: underline;" // 添加下划线
-                              "font-style: italic;"       // 文字斜体
-                              "}"
-                              "QPushButton:hover {"
-                            "font-weight: bold;"        // 鼠标悬停时文字加粗
-                              "}");
+void Frm_User::setupTables()
+{
+    search_table = ui->search_airline;
+    // 设置列宽相同，平均占满一行
+    int columnCount = search_table->columnCount();
+    for (int i = 0; i < columnCount; ++i) {
+        search_table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+    }
 
-    QPushButton *to_home = ui->to_home; // 获取 UI 中的按钮
-    to_home->setStyleSheet("QPushButton {"
-                        "border: none;"          // 去除边框
-                        "background: transparent;" // 背景透明
-                        "color: black;"  // 设置文字颜色
-                        "text-decoration: underline;" // 添加下划线
-                        "font-style: italic;"       // 文字斜体
-                        "}"
-                        "QPushButton:hover {"
-                        "font-weight: bold;"        // 鼠标悬停时文字加粗
-                        "}");
+    self_table = ui->self_airline;
+    // 设置列宽相同，平均占满一行
+    int columnCount2 = self_table->columnCount();
+    for (int i = 0; i < columnCount2; ++i) {
+        self_table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+    }
+
+    search_table->verticalHeader()->setVisible(false);  // Hide the vertical header (row numbers)
+    self_table->verticalHeader()->setVisible(false);  // Hide the vertical header (row numbers)
+
+    loadAllFlightInfoData();
+}
+
+void Frm_User::loadAllFlightInfoData()
+{
+    QSqlQuery query;
+    query.prepare("select Flt_Number, Flt_Company, "
+                  "Flt_Date, Departure, Destination, EcoSeats, BusSeats, "
+                  "FstSeats, price_eco, price_bus, price_fst from flightinfo");
+
+    if (!query.exec()) {
+        qDebug() << "Error executing query: ";
+        return;
+    }
+
+    // Clear existing rows before adding new data
+    search_table->clearContents();
+    search_table->setRowCount(0);
+
+    int row = 0;
+    while (query.next()) {
+        // Insert a new row in the table for each record
+        search_table->insertRow(row);
+
+        // Set the data for each column in the current row
+        search_table->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_Number
+        search_table->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Company
+        search_table->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Date
+        search_table->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Departure
+        search_table->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Destination
+        search_table->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // EcoSeats
+        search_table->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // BusSeats
+        search_table->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // FstSeats
+        search_table->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // PriceEco
+        search_table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceBus
+        search_table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceFst
+
+        row++;
+    }
 
 }
 
+void Frm_User::loadCertainFlightInfoData(QString _departure, QString _destination, QString _departure_date)
+{
+    QSqlQuery query;
+    QString queryStr = "select Flt_Number, Flt_Company, Flt_Date, Departure,"
+                       "Destination, EcoSeats, BusSeats, FstSeats, price_eco, "
+                       "price_bus, price_fst from flightinfo where 1=1";
 
-void Frm_User::closeEvent(QCloseEvent *event) {
+    if (!_departure.isEmpty()) {
+        queryStr += " and Departure = '" + _departure + "'";
+    }
+    if (!_destination.isEmpty()) {
+        queryStr += " and Destination = '" + _destination + "'";
+    }
+    if (!_departure_date.isEmpty()) {
+        queryStr += " and Flt_Date = '" + _departure_date + "'";
+    }
+
+    qDebug() << queryStr;
+
+    query.prepare(queryStr);
+    if (!query.exec()) {
+        qDebug() << "Error executing query";
+        return;
+    }
+
+    // Clear existing rows before adding new data
+    search_table->clearContents();
+    search_table->setRowCount(0);
+
+    int row = 0;
+    while (query.next()) {
+        // Insert a new row in the table for each record
+        search_table->insertRow(row);
+
+        // Set the data for each column in the current row
+        search_table->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_Number
+        search_table->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Company
+        search_table->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Date
+        search_table->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Departure
+        search_table->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Destination
+        search_table->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // EcoSeats
+        search_table->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // BusSeats
+        search_table->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // FstSeats
+        search_table->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // PriceEco
+        search_table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceBus
+        search_table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceFst
+
+        row++;
+    }
+}
+
+
+void Frm_User::closeEvent(QCloseEvent *event)
+{
     if(sender() == ui->act_exit) {      //跳过exit(),如果已经通过退出系统键完成退出
         event->accept();
     }
@@ -96,6 +182,10 @@ void Frm_User::exit() {
     }
 }
 
+void Frm_User::goToUserPage() {
+    ui->stackedWidget->setCurrentIndex(1);  // 切换到user页面
+}
+
 
 
 void Frm_User::change_pwd() {
@@ -108,3 +198,29 @@ void Frm_User::del_user() {
     Frm_User_Delete *frm = new Frm_User_Delete(this, username, this);
     frm->exec();
 }
+
+void Frm_User::on_return_page1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);  // 切换到搜索页面
+}
+
+void Frm_User::on_btn_search_clicked()
+{
+    // 获取用户输入的数据
+    QString departure = ui->comboBox_departure->currentText();
+    QString destination = ui->comboBox_destination->currentText();
+    QDate departureDate = ui->dateEdit->date();
+
+    loadCertainFlightInfoData(departure, destination, departureDate.toString("yyyy-MM-dd"));
+}
+
+
+void Frm_User::on_btn_reset_clicked()
+{
+    // Clear existing rows before adding new data
+    search_table->clearContents();
+    search_table->setRowCount(0);
+
+    loadAllFlightInfoData();
+}
+

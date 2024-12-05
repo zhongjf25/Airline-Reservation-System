@@ -91,30 +91,31 @@ void Frm_Admin::loadAllFlightInfoData()
     }
 
     // Clear existing rows before adding new data
-    ui->tableWidget->clearContents();
-    ui->tableWidget->setRowCount(0);
+    table->clearContents();
+    table->setRowCount(0);
 
     int row = 0;
     while (query.next()) {
         // Insert a new row in the table for each record
-        ui->tableWidget->insertRow(row);
+        table->insertRow(row);
 
         // Set the data for each column in the current row
-        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_ID
-        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Number
-        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Company
-        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Flt_Date
-        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Departure
-        ui->tableWidget->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // Destination
-        ui->tableWidget->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // EcoSeats
-        ui->tableWidget->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // BusSeats
-        ui->tableWidget->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // FstSeats
-        ui->tableWidget->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
-        ui->tableWidget->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
-        ui->tableWidget->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+        table->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_ID
+        table->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Number
+        table->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Company
+        table->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Flt_Date
+        table->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Departure
+        table->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // Destination
+        table->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // EcoSeats
+        table->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // BusSeats
+        table->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // FstSeats
+        table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
+        table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
+        table->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
 
         row++;
     }
+
 }
 
 void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, QString _departure,
@@ -150,44 +151,47 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, 
     }
 
     // Clear existing rows before adding new data
-    ui->tableWidget->clearContents();
-    ui->tableWidget->setRowCount(0);
+    table->clearContents();
+    table->setRowCount(0);
 
     int row = 0;
     while (query.next()) {
         // Insert a new row in the table for each record
-        ui->tableWidget->insertRow(row);
+        table->insertRow(row);
 
         // Set the data for each column in the current row
-        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_ID
-        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Number
-        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Company
-        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Flt_Date
-        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Departure
-        ui->tableWidget->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // Destination
-        ui->tableWidget->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // EcoSeats
-        ui->tableWidget->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // BusSeats
-        ui->tableWidget->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // FstSeats
-        ui->tableWidget->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
-        ui->tableWidget->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
-        ui->tableWidget->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+        table->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_ID
+        table->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Number
+        table->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Company
+        table->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Flt_Date
+        table->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Departure
+        table->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // Destination
+        table->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // EcoSeats
+        table->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // BusSeats
+        table->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // FstSeats
+        table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
+        table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
+        table->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
 
         row++;
     }
-
 }
 
 
 void Frm_Admin::setupTables()
 {
+    table = ui->tableWidget;
+
+    table->verticalHeader()->setVisible(false);  // Hide the vertical header (row numbers)
+
     // Clear existing rows before adding new data
-    ui->tableWidget->clearContents();
-    ui->tableWidget->setRowCount(0);
+    table->clearContents();
+    table->setRowCount(0);
 
     // 设置列宽相同，平均占满一行
-    int columnCount = ui->tableWidget->columnCount();
+    int columnCount = table->columnCount();
     for (int i = 0; i < columnCount; ++i) {
-        ui->tableWidget->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+        table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
     }
 
     // 加载数据
@@ -196,8 +200,7 @@ void Frm_Admin::setupTables()
 
 void Frm_Admin::onListWidgetClicked(int index)
 {
-    int offset = ui->stackedWidget->count() - 3; // 动态计算偏移量 其中3为表格数量
-    ui->stackedWidget->setCurrentIndex(index + offset);
+    ui->stackedWidget->setCurrentIndex(index);
 }
 
 void Frm_Admin::on_btn_add_clicked()

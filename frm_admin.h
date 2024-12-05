@@ -6,9 +6,9 @@
 #include "flight_info.h"
 #include <QStandardItemModel>
 #include <QListWidget>
-#include <QTableView>
 #include <QStackedWidget>
 #include <QHeaderView>
+#include <QTableWidget>
 
 namespace Ui {
 class Frm_Admin;
@@ -34,12 +34,12 @@ private slots:
     void on_btn_add_clicked(); // 添加航班按钮
     void on_btn_delete_clicked(); // 删除航班按钮
     void on_btn_search_clicked(); // 搜索航班按钮
-
-    void on_btn_reset_clicked();
+    void on_btn_reset_clicked(); // 重置按钮
 
 private:
     Ui::Frm_Admin *ui;
     Frm_Login *pg_login;
+    QTableWidget* table;
 
     void setupTables(); // 初始化表格数据
     void addNewFlightInfo(flight_info* new_flight_info); // 新增flight_info

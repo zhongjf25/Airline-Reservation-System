@@ -41,7 +41,7 @@ public:
         btn_Login->setGeometry(QRect(140, 290, 75, 24));
         btn_Exit = new QPushButton(Frm_Login);
         btn_Exit->setObjectName("btn_Exit");
-        btn_Exit->setGeometry(QRect(320, 290, 75, 24));
+        btn_Exit->setGeometry(QRect(360, 290, 75, 24));
         lbl_user = new QLabel(Frm_Login);
         lbl_user->setObjectName("lbl_user");
         lbl_user->setGeometry(QRect(110, 110, 54, 16));
@@ -57,7 +57,7 @@ public:
         txt_pwd->setEchoMode(QLineEdit::EchoMode::Password);
         btn_register = new QPushButton(Frm_Login);
         btn_register->setObjectName("btn_register");
-        btn_register->setGeometry(QRect(320, 230, 75, 24));
+        btn_register->setGeometry(QRect(220, 290, 75, 24));
         chk_remb_pwd = new QCheckBox(Frm_Login);
         chk_remb_pwd->setObjectName("chk_remb_pwd");
         chk_remb_pwd->setGeometry(QRect(170, 230, 79, 20));

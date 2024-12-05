@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
@@ -54,6 +55,7 @@ public:
     QDateEdit *dateEdit_departureDate;
     QPushButton *btn_search;
     QPushButton *btn_reset;
+    QLabel *titile;
     QMenuBar *menubar;
     QMenu *menu_S;
     QMenu *menu;
@@ -96,7 +98,7 @@ public:
         dateEdit_addDate = new QDateEdit(page1);
         dateEdit_addDate->setObjectName("dateEdit_addDate");
         dateEdit_addDate->setGeometry(QRect(90, 160, 150, 28));
-        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(8, 0, 0)));
+        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(16, 0, 0)));
         dateEdit_addDate->setCalendarPopup(true);
         btn_add = new QPushButton(page1);
         btn_add->setObjectName("btn_add");
@@ -157,7 +159,7 @@ public:
         dateEdit_departureDate = new QDateEdit(page3);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(640, 0, 150, 28));
-        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(16, 0, 0)));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(0, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         btn_search = new QPushButton(page3);
         btn_search->setObjectName("btn_search");
@@ -166,6 +168,15 @@ public:
         btn_reset->setObjectName("btn_reset");
         btn_reset->setGeometry(QRect(870, 0, 51, 28));
         stackedWidget->addWidget(page3);
+        titile = new QLabel(centralwidget);
+        titile->setObjectName("titile");
+        titile->setGeometry(QRect(450, 10, 321, 41));
+        QFont font1;
+        font1.setPointSize(20);
+        font1.setBold(true);
+        font1.setStyleStrategy(QFont::PreferDefault);
+        font1.setHintingPreference(QFont::PreferDefaultHinting);
+        titile->setFont(font1);
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
@@ -186,7 +197,7 @@ public:
 
         retranslateUi(Frm_Admin);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Frm_Admin);
@@ -234,6 +245,7 @@ public:
         lineEdit_destination->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\347\233\256\347\232\204\345\234\260", nullptr));
         btn_search->setText(QCoreApplication::translate("Frm_Admin", "\346\220\234\347\264\242", nullptr));
         btn_reset->setText(QCoreApplication::translate("Frm_Admin", "\351\207\215\347\275\256", nullptr));
+        titile->setText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\351\242\204\350\256\242\347\263\273\347\273\237\357\274\210\345\220\216\345\217\260\357\274\211", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_Admin", "\347\263\273\347\273\237(&S)", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_Admin", "\347\256\241\347\220\206\345\221\230", nullptr));
     } // retranslateUi

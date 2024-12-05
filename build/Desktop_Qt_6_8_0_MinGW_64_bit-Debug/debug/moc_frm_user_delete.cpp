@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../frm_user_delete.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
