@@ -17,6 +17,7 @@
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -47,6 +48,8 @@ public:
     QComboBox *comboBox_destination;
     QLabel *labelArrow;
     QPushButton *btn_reset;
+    QLineEdit *bookEdit;
+    QPushButton *btn_book;
     QWidget *page2;
     QLabel *Image;
     QLabel *label_2;
@@ -56,10 +59,33 @@ public:
     QLabel *laccount_txt;
     QPushButton *return_page1;
     QWidget *page3;
+    QPushButton *btn_purchase;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_2;
+    QLabel *name;
+    QLabel *humanID;
+    QLabel *rank;
+    QComboBox *comboBox;
+    QLabel *date;
+    QLabel *flyNum;
+    QLabel *departure_label;
+    QLabel *mon;
+    QLabel *label_5;
+    QLabel *label_6;
+    QLabel *label_7;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_4;
+    QLineEdit *lineEdit_5;
+    QLineEdit *lineEdit_6;
+    QLineEdit *lineEdit_7;
+    QLineEdit *lineEdit_8;
+    QPushButton *btn_toSearch;
     QMenuBar *menubar;
+    QStatusBar *statusbar;
+    QMenuBar *menubar1;
     QMenu *menu;
     QMenu *menu_S;
-    QStatusBar *statusbar;
+    QStatusBar *statusbar1;
 
     void setupUi(QMainWindow *Frm_User)
     {
@@ -129,14 +155,14 @@ public:
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
         search_airline->setItem(1, 10, __qtablewidgetitem19);
         search_airline->setObjectName("search_airline");
-        search_airline->setGeometry(QRect(40, 190, 1021, 192));
+        search_airline->setGeometry(QRect(40, 190, 1021, 281));
         groupBox = new QGroupBox(page1);
         groupBox->setObjectName("groupBox");
         groupBox->setGeometry(QRect(270, 70, 581, 80));
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 110, 22));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 30), QTime(0, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 29), QTime(8, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -167,6 +193,12 @@ public:
         btn_reset = new QPushButton(groupBox);
         btn_reset->setObjectName("btn_reset");
         btn_reset->setGeometry(QRect(500, 30, 61, 25));
+        bookEdit = new QLineEdit(page1);
+        bookEdit->setObjectName("bookEdit");
+        bookEdit->setGeometry(QRect(440, 510, 111, 31));
+        btn_book = new QPushButton(page1);
+        btn_book->setObjectName("btn_book");
+        btn_book->setGeometry(QRect(560, 510, 61, 31));
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName("page2");
@@ -220,22 +252,94 @@ public:
         stackedWidget->addWidget(page2);
         page3 = new QWidget();
         page3->setObjectName("page3");
+        btn_purchase = new QPushButton(page3);
+        btn_purchase->setObjectName("btn_purchase");
+        btn_purchase->setGeometry(QRect(950, 70, 91, 41));
+        lineEdit = new QLineEdit(page3);
+        lineEdit->setObjectName("lineEdit");
+        lineEdit->setGeometry(QRect(930, 130, 121, 31));
+        lineEdit_2 = new QLineEdit(page3);
+        lineEdit_2->setObjectName("lineEdit_2");
+        lineEdit_2->setGeometry(QRect(930, 180, 121, 31));
+        name = new QLabel(page3);
+        name->setObjectName("name");
+        name->setGeometry(QRect(840, 120, 61, 31));
+        humanID = new QLabel(page3);
+        humanID->setObjectName("humanID");
+        humanID->setGeometry(QRect(830, 170, 61, 51));
+        rank = new QLabel(page3);
+        rank->setObjectName("rank");
+        rank->setGeometry(QRect(510, 250, 91, 41));
+        comboBox = new QComboBox(page3);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName("comboBox");
+        comboBox->setGeometry(QRect(640, 260, 91, 31));
+        date = new QLabel(page3);
+        date->setObjectName("date");
+        date->setGeometry(QRect(240, 90, 51, 31));
+        flyNum = new QLabel(page3);
+        flyNum->setObjectName("flyNum");
+        flyNum->setGeometry(QRect(240, 140, 71, 41));
+        departure_label = new QLabel(page3);
+        departure_label->setObjectName("departure_label");
+        departure_label->setGeometry(QRect(240, 190, 61, 31));
+        mon = new QLabel(page3);
+        mon->setObjectName("mon");
+        mon->setGeometry(QRect(240, 250, 61, 41));
+        label_5 = new QLabel(page3);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(530, 90, 51, 31));
+        label_6 = new QLabel(page3);
+        label_6->setObjectName("label_6");
+        label_6->setGeometry(QRect(520, 130, 71, 41));
+        label_7 = new QLabel(page3);
+        label_7->setObjectName("label_7");
+        label_7->setGeometry(QRect(530, 180, 61, 41));
+        lineEdit_3 = new QLineEdit(page3);
+        lineEdit_3->setObjectName("lineEdit_3");
+        lineEdit_3->setGeometry(QRect(350, 90, 111, 31));
+        lineEdit_4 = new QLineEdit(page3);
+        lineEdit_4->setObjectName("lineEdit_4");
+        lineEdit_4->setGeometry(QRect(640, 100, 121, 31));
+        lineEdit_5 = new QLineEdit(page3);
+        lineEdit_5->setObjectName("lineEdit_5");
+        lineEdit_5->setGeometry(QRect(350, 140, 111, 31));
+        lineEdit_6 = new QLineEdit(page3);
+        lineEdit_6->setObjectName("lineEdit_6");
+        lineEdit_6->setGeometry(QRect(640, 140, 121, 31));
+        lineEdit_7 = new QLineEdit(page3);
+        lineEdit_7->setObjectName("lineEdit_7");
+        lineEdit_7->setGeometry(QRect(350, 180, 111, 31));
+        lineEdit_8 = new QLineEdit(page3);
+        lineEdit_8->setObjectName("lineEdit_8");
+        lineEdit_8->setGeometry(QRect(640, 180, 121, 31));
+        btn_toSearch = new QPushButton(page3);
+        btn_toSearch->setObjectName("btn_toSearch");
+        btn_toSearch->setGeometry(QRect(30, 10, 61, 31));
         stackedWidget->addWidget(page3);
-        Frm_User->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(Frm_User);
+        menubar = new QMenuBar();
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 24));
-        menu = new QMenu(menubar);
-        menu->setObjectName("menu");
-        menu_S = new QMenu(menubar);
-        menu_S->setObjectName("menu_S");
-        Frm_User->setMenuBar(menubar);
-        statusbar = new QStatusBar(Frm_User);
+        stackedWidget->addWidget(menubar);
+        statusbar = new QStatusBar();
         statusbar->setObjectName("statusbar");
-        Frm_User->setStatusBar(statusbar);
+        stackedWidget->addWidget(statusbar);
+        Frm_User->setCentralWidget(centralwidget);
+        menubar1 = new QMenuBar(Frm_User);
+        menubar1->setObjectName("menubar1");
+        menubar1->setGeometry(QRect(0, 0, 1200, 25));
+        menu = new QMenu(menubar1);
+        menu->setObjectName("menu");
+        menu_S = new QMenu(menubar1);
+        menu_S->setObjectName("menu_S");
+        Frm_User->setMenuBar(menubar1);
+        statusbar1 = new QStatusBar(Frm_User);
+        statusbar1->setObjectName("statusbar1");
+        Frm_User->setStatusBar(statusbar1);
 
-        menubar->addAction(menu_S->menuAction());
-        menubar->addAction(menu->menuAction());
+        menubar1->addAction(menu_S->menuAction());
+        menubar1->addAction(menu->menuAction());
         menu->addAction(lbl_username);
         menu->addSeparator();
         menu->addAction(act_logout);
@@ -246,7 +350,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -303,6 +407,7 @@ public:
 
         labelArrow->setText(QString());
         btn_reset->setText(QCoreApplication::translate("Frm_User", "\351\207\215\347\275\256", nullptr));
+        btn_book->setText(QCoreApplication::translate("Frm_User", "\350\256\242\347\245\250", nullptr));
         Image->setText(QCoreApplication::translate("Frm_User", "\345\244\264\345\203\217", nullptr));
         label_2->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
         label_3->setText(QCoreApplication::translate("Frm_User", "\350\264\246\345\217\267\357\274\232", nullptr));
@@ -326,6 +431,22 @@ public:
         username_txt->setText(QCoreApplication::translate("Frm_User", "xtttttt", nullptr));
         laccount_txt->setText(QCoreApplication::translate("Frm_User", "TextLabel", nullptr));
         return_page1->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
+        btn_purchase->setText(QCoreApplication::translate("Frm_User", "\347\241\256\350\256\244\350\264\255\347\245\250", nullptr));
+        name->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
+        humanID->setText(QCoreApplication::translate("Frm_User", "\350\257\201\344\273\266\345\217\267\357\274\232", nullptr));
+        rank->setText(QCoreApplication::translate("Frm_User", "\345\272\247\344\275\215\347\255\211\347\272\247\357\274\232", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\244\264\347\255\211\350\210\261", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("Frm_User", "\345\225\206\345\212\241\350\210\261", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("Frm_User", "\347\273\217\346\265\216\350\210\261", nullptr));
+
+        date->setText(QCoreApplication::translate("Frm_User", "\346\227\245\346\234\237", nullptr));
+        flyNum->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\346\227\266\351\227\264", nullptr));
+        departure_label->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\345\234\260", nullptr));
+        mon->setText(QCoreApplication::translate("Frm_User", "\344\273\267\346\240\274\357\274\232", nullptr));
+        label_5->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255\345\217\267", nullptr));
+        label_6->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\346\227\266\351\227\264", nullptr));
+        label_7->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\345\234\260", nullptr));
+        btn_toSearch->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));
     } // retranslateUi

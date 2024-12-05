@@ -224,3 +224,21 @@ void Frm_User::on_btn_reset_clicked()
     loadAllFlightInfoData();
 }
 
+
+void Frm_User::on_btn_purchase_clicked()
+{
+
+}
+
+
+void Frm_User::on_btn_book_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+
+void Frm_User::on_btn_toSearch_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+

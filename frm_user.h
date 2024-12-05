@@ -49,6 +49,9 @@ private slots:
     void on_return_page1_clicked();
     void on_btn_search_clicked();
     void on_btn_reset_clicked();
+    void on_btn_purchase_clicked();
+    void on_btn_book_clicked();
+    void on_btn_toSearch_clicked();
 };
 
 #endif // FRM_USER_H
