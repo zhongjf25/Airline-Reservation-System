@@ -3,6 +3,7 @@
 
 #include "frm_user_changepwd.h"
 #include "frm_user_delete.h"
+#include "frm_user_personpage.h"
 
 #include <QApplication>
 #include <QWidget>
@@ -16,7 +17,10 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     : QMainWindow(parent)
     , ui(new Ui::Frm_User)
 {
+
     ui->setupUi(this);
+    p=new frm_user_personpage(this);
+    r=new frm_ueser_reservetion(this);
     pg_login = l;
     username = n;   //传入用户名
 
@@ -50,6 +54,7 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
                         "QPushButton:hover {"
                         "font-weight: bold;"        // 鼠标悬停时文字加粗
                         "}");
+
 
 }
 
@@ -108,3 +113,25 @@ void Frm_User::del_user() {
     Frm_User_Delete *frm = new Frm_User_Delete(this, username, this);
     frm->exec();
 }
+
+
+
+
+
+
+void Frm_User::on_to_home_clicked()
+{
+
+    p->show();
+    this->hide();
+}
+
+
+
+void Frm_User::on_dingpiao_clicked()
+{
+    r->show();
+    this->hide();
+
+}
+

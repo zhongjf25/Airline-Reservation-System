@@ -164,12 +164,12 @@
     </property>
     <property name="dateTime">
      <datetime>
-      <hour>0</hour>
+      <hour>16</hour>
       <minute>0</minute>
       <second>0</second>
       <year>2024</year>
       <month>12</month>
-      <day>3</day>
+      <day>2</day>
      </datetime>
     </property>
     <property name="calendarPopup">
@@ -183,7 +183,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_S">

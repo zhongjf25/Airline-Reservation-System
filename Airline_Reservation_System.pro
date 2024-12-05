@@ -12,9 +12,11 @@ SOURCES += \
     flight_info.cpp \
     frm_admin.cpp \
     frm_register.cpp \
+    frm_ueser_reservetion.cpp \
     frm_user.cpp \
     frm_user_changepwd.cpp \
     frm_user_delete.cpp \
+    frm_user_personpage.cpp \
     main.cpp \
     frm_login.cpp
 
@@ -23,17 +25,21 @@ HEADERS += \
     frm_admin.h \
     frm_login.h \
     frm_register.h \
+    frm_ueser_reservetion.h \
     frm_user.h \
     frm_user_changepwd.h \
-    frm_user_delete.h
+    frm_user_delete.h \
+    frm_user_personpage.h
 
 FORMS += \
     frm_admin.ui \
     frm_login.ui \
     frm_register.ui \
+    frm_ueser_reservetion.ui \
     frm_user.ui \
     frm_user_changepwd.ui \
-    frm_user_delete.ui
+    frm_user_delete.ui \
+    frm_user_personpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -42,3 +48,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     res.qrc
+
+DISTFILES += \
+    img/fly.png

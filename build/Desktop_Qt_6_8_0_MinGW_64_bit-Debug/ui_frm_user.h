@@ -21,6 +21,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -42,10 +43,12 @@ public:
     QComboBox *comboBox;
     QComboBox *comboBox1;
     QLabel *labelArrow;
+    QPushButton *dingpiao;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_S;
     QStatusBar *statusbar;
+    QToolBar *toolBar;
 
     void setupUi(QMainWindow *Frm_User)
     {
@@ -66,17 +69,17 @@ public:
         centralwidget->setObjectName("centralwidget");
         back = new QPushButton(centralwidget);
         back->setObjectName("back");
-        back->setGeometry(QRect(20, 20, 56, 18));
+        back->setGeometry(QRect(10, 30, 56, 18));
         to_home = new QPushButton(centralwidget);
         to_home->setObjectName("to_home");
-        to_home->setGeometry(QRect(90, 20, 56, 18));
+        to_home->setGeometry(QRect(80, 30, 56, 18));
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(310, 100, 501, 80));
+        groupBox->setGeometry(QRect(300, 110, 501, 80));
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 110, 22));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(8, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(0, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -102,10 +105,13 @@ public:
         labelArrow->setGeometry(QRect(155, 30, 31, 21));
         labelArrow->setPixmap(QPixmap(QString::fromUtf8(":/img/arrow.png")));
         labelArrow->setScaledContents(true);
+        dingpiao = new QPushButton(centralwidget);
+        dingpiao->setObjectName("dingpiao");
+        dingpiao->setGeometry(QRect(200, 50, 56, 18));
         Frm_User->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_User);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 17));
+        menubar->setGeometry(QRect(0, 0, 1200, 18));
         menu = new QMenu(menubar);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar);
@@ -114,6 +120,9 @@ public:
         statusbar = new QStatusBar(Frm_User);
         statusbar->setObjectName("statusbar");
         Frm_User->setStatusBar(statusbar);
+        toolBar = new QToolBar(Frm_User);
+        toolBar->setObjectName("toolBar");
+        Frm_User->addToolBar(Qt::ToolBarArea::TopToolBarArea, toolBar);
 
         menubar->addAction(menu_S->menuAction());
         menubar->addAction(menu->menuAction());
@@ -155,8 +164,10 @@ public:
         comboBox1->setItemText(4, QCoreApplication::translate("Frm_User", "\346\210\220\351\203\275", nullptr));
 
         labelArrow->setText(QString());
+        dingpiao->setText(QCoreApplication::translate("Frm_User", "\350\256\242\347\245\250", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));
+        toolBar->setWindowTitle(QCoreApplication::translate("Frm_User", "toolBar", nullptr));
     } // retranslateUi
 
 };

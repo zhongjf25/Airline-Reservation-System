@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>img/arrow.png</file>
+        <file>img/fly.png</file>
     </qresource>
 </RCC>

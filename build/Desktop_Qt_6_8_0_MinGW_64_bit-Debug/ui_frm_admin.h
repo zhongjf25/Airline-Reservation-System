@@ -103,12 +103,12 @@ public:
         dateEdit_departureDate = new QDateEdit(centralwidget);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(675, 10, 150, 28));
-        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 3), QTime(0, 0, 0)));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(16, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 24));
+        menubar->setGeometry(QRect(0, 0, 1200, 18));
         menu_S = new QMenu(menubar);
         menu_S->setObjectName("menu_S");
         menu = new QMenu(menubar);
