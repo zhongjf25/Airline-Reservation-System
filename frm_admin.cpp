@@ -187,6 +187,9 @@ void Frm_Admin::setupTables()
     tableView2 = new QTableView(this);
     tableView2->setModel(model2);
 
+    tableView1->verticalHeader()->setVisible(false);
+    tableView2->verticalHeader()->setVisible(false);
+
 
     // 将表格添加到 QStackedWidget
     ui->stackedWidget->addWidget(tableView1);

@@ -8,6 +8,7 @@
 #include <QListWidget>
 #include <QTableView>
 #include <QStackedWidget>
+#include <QHeaderView>
 
 namespace Ui {
 class Frm_Admin;
