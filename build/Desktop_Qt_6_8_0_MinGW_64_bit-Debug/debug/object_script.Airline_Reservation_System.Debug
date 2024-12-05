@@ -6,6 +6,7 @@ debug/frm_user_changepwd.o
 debug/frm_user_delete.o
 debug/main.o
 debug/frm_login.o
+debug/qrc_res.o
 debug/moc_flight_info.o
 debug/moc_frm_admin.o
 debug/moc_frm_login.o

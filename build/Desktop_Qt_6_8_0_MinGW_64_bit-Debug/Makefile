@@ -275,7 +275,8 @@ Makefile: ../../Airline_Reservation_System.pro E:/Program/Qt/6.8.0/mingw_64/mksp
 		E:/Program/Qt/6.8.0/mingw_64/lib/Qt6Sql.prl \
 		E:/Program/Qt/6.8.0/mingw_64/lib/Qt6Core.prl \
 		E:/Program/Qt/6.8.0/mingw_64/lib/Qt6EntryPoint.prl \
-		E:/Program/Qt/6.8.0/mingw_64/mkspecs/features/build_pass.prf
+		E:/Program/Qt/6.8.0/mingw_64/mkspecs/features/build_pass.prf \
+		../../res.qrc
 	$(QMAKE) -o Makefile ..\..\Airline_Reservation_System.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 E:/Program/Qt/6.8.0/mingw_64/mkspecs/features/spec_pre.prf:
 E:/Program/Qt/6.8.0/mingw_64/mkspecs/features/device_config.prf:
@@ -483,6 +484,7 @@ E:/Program/Qt/6.8.0/mingw_64/lib/Qt6Sql.prl:
 E:/Program/Qt/6.8.0/mingw_64/lib/Qt6Core.prl:
 E:/Program/Qt/6.8.0/mingw_64/lib/Qt6EntryPoint.prl:
 E:/Program/Qt/6.8.0/mingw_64/mkspecs/features/build_pass.prf:
+../../res.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\Airline_Reservation_System.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

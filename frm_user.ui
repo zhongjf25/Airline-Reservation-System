@@ -61,18 +61,18 @@
        <height>22</height>
       </rect>
      </property>
-    </widget>
-    <widget class="Line" name="line">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>23</y>
-       <width>20</width>
-       <height>35</height>
-      </rect>
+     <property name="dateTime">
+      <datetime>
+       <hour>8</hour>
+       <minute>0</minute>
+       <second>0</second>
+       <year>2024</year>
+       <month>12</month>
+       <day>2</day>
+      </datetime>
      </property>
-     <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
+     <property name="calendarPopup">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_search">
@@ -88,97 +88,93 @@
       <string>搜索</string>
      </property>
     </widget>
-    <widget class="QLabel" name="graph">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
        <x>40</x>
        <y>30</y>
-       <width>60</width>
+       <width>100</width>
        <height>22</height>
       </rect>
      </property>
+     <item>
+      <property name="text">
+       <string>北京</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>上海</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>广州</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>深圳</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>成都</string>
+      </property>
+     </item>
     </widget>
-    <widget class="QLabel" name="graph_2">
+    <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>200</x>
        <y>30</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox_2">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>30</y>
-       <width>60</width>
+       <width>100</width>
        <height>22</height>
       </rect>
      </property>
+     <item>
+      <property name="text">
+       <string>北京</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>上海</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>广州</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>深圳</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>成都</string>
+      </property>
+     </item>
     </widget>
-    <widget class="QLabel" name="graph_3">
+    <widget class="QLabel" name="labelArrow">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>155</x>
        <y>30</y>
-       <width>20</width>
-       <height>20</height>
+       <width>31</width>
+       <height>21</height>
       </rect>
      </property>
-     <property name="autoFillBackground">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="res.qrc">:/img/arrow.png</pixmap>
+     </property>
+     <property name="scaledContents">
       <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="change">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>30</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::FocusPolicy::StrongFocus</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    border: none; 
-    background-image: url(:/change.jpg); 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; 
-}</string>
-     </property>
-     <property name="text">
-      <string/>
      </property>
     </widget>
    </widget>
@@ -189,7 +185,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -239,6 +235,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

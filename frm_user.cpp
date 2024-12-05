@@ -51,32 +51,6 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
                         "font-weight: bold;"        // 鼠标悬停时文字加粗
                         "}");
 
-    QLabel *graph = ui->graph;
-    QPixmap pixmap("location.jpg");  // 替换为你的图片路径
-    graph->setPixmap(pixmap);
-    graph->setScaledContents(true);
-
-    QLabel *graph_2 = ui->graph_2;
-    graph_2->setScaledContents(true);
-    graph_2->setPixmap(pixmap);
-
-    QLabel *graph_3 = ui->graph_3;
-    QPixmap pixmap_2("date.jpg");  // 替换为你的图片路径
-    graph_3->setPixmap(pixmap_2);
-    graph_3->setScaledContents(true);
-
-    QPushButton *change = ui->change;
-
-    QPixmap pixmap_3("change.jpg");
-    QPixmap scaledPixmap = pixmap_3.scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-
-    // 设置缩放图片为按钮图标
-    change->setIcon(QIcon(scaledPixmap));
-    change->setIconSize(QSize(20, 20));
-
-    change->setFixedSize(20, 20);
-    change->show();
-
 }
 
 

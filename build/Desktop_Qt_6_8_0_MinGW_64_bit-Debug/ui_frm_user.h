@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -39,14 +38,10 @@ public:
     QPushButton *to_home;
     QGroupBox *groupBox;
     QDateEdit *dateEdit;
-    QFrame *line;
     QPushButton *btn_search;
-    QLabel *graph;
     QComboBox *comboBox;
-    QLabel *graph_2;
-    QComboBox *comboBox_2;
-    QLabel *graph_3;
-    QPushButton *change;
+    QComboBox *comboBox1;
+    QLabel *labelArrow;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_S;
@@ -81,47 +76,36 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 110, 22));
-        line = new QFrame(groupBox);
-        line->setObjectName("line");
-        line->setGeometry(QRect(250, 23, 20, 35));
-        line->setFrameShape(QFrame::Shape::VLine);
-        line->setFrameShadow(QFrame::Shadow::Sunken);
+        dateEdit->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(8, 0, 0)));
+        dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
         btn_search->setGeometry(QRect(430, 30, 61, 25));
-        graph = new QLabel(groupBox);
-        graph->setObjectName("graph");
-        graph->setGeometry(QRect(10, 30, 20, 20));
-        graph->setAutoFillBackground(true);
         comboBox = new QComboBox(groupBox);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
         comboBox->setObjectName("comboBox");
-        comboBox->setGeometry(QRect(40, 30, 60, 22));
-        graph_2 = new QLabel(groupBox);
-        graph_2->setObjectName("graph_2");
-        graph_2->setGeometry(QRect(160, 30, 20, 20));
-        graph_2->setAutoFillBackground(true);
-        comboBox_2 = new QComboBox(groupBox);
-        comboBox_2->setObjectName("comboBox_2");
-        comboBox_2->setGeometry(QRect(190, 30, 60, 22));
-        graph_3 = new QLabel(groupBox);
-        graph_3->setObjectName("graph_3");
-        graph_3->setGeometry(QRect(280, 30, 20, 20));
-        graph_3->setAutoFillBackground(true);
-        change = new QPushButton(groupBox);
-        change->setObjectName("change");
-        change->setGeometry(QRect(120, 30, 20, 20));
-        change->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
-        change->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    border: none; \n"
-"    background-image: url(:/change.jpg); \n"
-"    background-repeat: no-repeat;\n"
-"    background-position: center;\n"
-"    background-size: cover; \n"
-"}"));
+        comboBox->setGeometry(QRect(40, 30, 100, 22));
+        comboBox1 = new QComboBox(groupBox);
+        comboBox1->addItem(QString());
+        comboBox1->addItem(QString());
+        comboBox1->addItem(QString());
+        comboBox1->addItem(QString());
+        comboBox1->addItem(QString());
+        comboBox1->setObjectName("comboBox1");
+        comboBox1->setGeometry(QRect(200, 30, 100, 22));
+        labelArrow = new QLabel(groupBox);
+        labelArrow->setObjectName("labelArrow");
+        labelArrow->setGeometry(QRect(155, 30, 31, 21));
+        labelArrow->setPixmap(QPixmap(QString::fromUtf8(":/img/arrow.png")));
+        labelArrow->setScaledContents(true);
         Frm_User->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_User);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 24));
+        menubar->setGeometry(QRect(0, 0, 1200, 17));
         menu = new QMenu(menubar);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar);
@@ -158,10 +142,19 @@ public:
         to_home->setText(QCoreApplication::translate("Frm_User", "\344\270\252\344\272\272\344\270\255\345\277\203", nullptr));
         groupBox->setTitle(QCoreApplication::translate("Frm_User", " \350\210\252\347\217\255\346\220\234\347\264\242", nullptr));
         btn_search->setText(QCoreApplication::translate("Frm_User", "\346\220\234\347\264\242", nullptr));
-        graph->setText(QString());
-        graph_2->setText(QString());
-        graph_3->setText(QString());
-        change->setText(QString());
+        comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\214\227\344\272\254", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("Frm_User", "\344\270\212\346\265\267", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("Frm_User", "\345\271\277\345\267\236", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("Frm_User", "\346\267\261\345\234\263", nullptr));
+        comboBox->setItemText(4, QCoreApplication::translate("Frm_User", "\346\210\220\351\203\275", nullptr));
+
+        comboBox1->setItemText(0, QCoreApplication::translate("Frm_User", "\345\214\227\344\272\254", nullptr));
+        comboBox1->setItemText(1, QCoreApplication::translate("Frm_User", "\344\270\212\346\265\267", nullptr));
+        comboBox1->setItemText(2, QCoreApplication::translate("Frm_User", "\345\271\277\345\267\236", nullptr));
+        comboBox1->setItemText(3, QCoreApplication::translate("Frm_User", "\346\267\261\345\234\263", nullptr));
+        comboBox1->setItemText(4, QCoreApplication::translate("Frm_User", "\346\210\220\351\203\275", nullptr));
+
+        labelArrow->setText(QString());
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));
     } // retranslateUi

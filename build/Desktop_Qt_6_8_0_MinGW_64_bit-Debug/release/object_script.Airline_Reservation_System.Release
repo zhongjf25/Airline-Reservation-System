@@ -6,6 +6,7 @@ release/frm_user_changepwd.o
 release/frm_user_delete.o
 release/main.o
 release/frm_login.o
+release/qrc_res.o
 release/moc_flight_info.o
 release/moc_frm_admin.o
 release/moc_frm_login.o
