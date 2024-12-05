@@ -14,8 +14,13 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     setupTables();
 
     // 初始化列表项
-    ui->listWidget->addItem("所有航班信息");
-    ui->listWidget->addItem("表格 2");
+    ui->listWidget->addItem("增加航班");
+    ui->listWidget->addItem("删除航班");
+    ui->listWidget->addItem("航班信息");
+
+
+    // 默认显示数据table页面（可选）
+    ui->stackedWidget->setCurrentIndex(2);
 
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_Admin::exit);      //退出系统
@@ -25,8 +30,6 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
 Frm_Admin::~Frm_Admin()
 {
     delete ui;
-    delete model1;
-    delete model2;
 }
 
 void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
@@ -87,24 +90,29 @@ void Frm_Admin::loadAllFlightInfoData()
         return;
     }
 
-    // 清空现有数据
-    model1->removeRows(0, model1->rowCount());
+    // Clear existing rows before adding new data
+    ui->tableWidget->clearContents();
+    ui->tableWidget->setRowCount(0);
 
     int row = 0;
     while (query.next()) {
-        model1->insertRow(row); // 插入新行
-        model1->setData(model1->index(row, 0), query.value(0).toInt()); // id
-        model1->setData(model1->index(row, 1), query.value(1).toString()); // number
-        model1->setData(model1->index(row, 2), query.value(2).toString()); // company
-        model1->setData(model1->index(row, 3), query.value(3).toString()); // date
-        model1->setData(model1->index(row, 4), query.value(4).toString()); // departure
-        model1->setData(model1->index(row, 5), query.value(5).toString()); // destination
-        model1->setData(model1->index(row, 6), query.value(6).toInt()); // ecoseats
-        model1->setData(model1->index(row, 7), query.value(7).toInt()); // busseats
-        model1->setData(model1->index(row, 8), query.value(8).toInt()); // fstseats
-        model1->setData(model1->index(row, 9), query.value(9).toInt()); // priceeco
-        model1->setData(model1->index(row, 10), query.value(10).toInt()); // pricebus
-        model1->setData(model1->index(row, 11), query.value(11).toInt()); // pricefst
+        // Insert a new row in the table for each record
+        ui->tableWidget->insertRow(row);
+
+        // Set the data for each column in the current row
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_ID
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Number
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Company
+        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Flt_Date
+        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Departure
+        ui->tableWidget->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // Destination
+        ui->tableWidget->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // EcoSeats
+        ui->tableWidget->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // BusSeats
+        ui->tableWidget->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // FstSeats
+        ui->tableWidget->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
+        ui->tableWidget->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
+        ui->tableWidget->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+
         row++;
     }
 }
@@ -118,16 +126,16 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, 
                        "price_bus, price_fst from flightinfo where 1=1";
 
     if (!_Flt_Number.isEmpty()) {
-        queryStr += " and Flt_Number = " + _Flt_Number;
+        queryStr += " and Flt_Number = '" + _Flt_Number + "'";
     }
     if (!_company.isEmpty()) {
         queryStr += " and Flt_Company = '" + _company + "'";
     }
     if (!_departure.isEmpty()) {
-        queryStr += " and Departure = " + _departure;
+        queryStr += " and Departure = '" + _departure + "'";
     }
     if (!_destination.isEmpty()) {
-        queryStr += " and Destination = " + _destination;
+        queryStr += " and Destination = '" + _destination + "'";
     }
     if (!_departure_date.isEmpty()) {
         queryStr += " and Flt_Date = '" + _departure_date + "'";
@@ -141,70 +149,46 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, 
         return;
     }
 
-    // Clear existing data
-    model1->removeRows(0, model1->rowCount());
+    // Clear existing rows before adding new data
+    ui->tableWidget->clearContents();
+    ui->tableWidget->setRowCount(0);
 
     int row = 0;
     while (query.next()) {
-        model1->insertRow(row);
-        model1->setData(model1->index(row, 0), query.value(0).toInt());
-        model1->setData(model1->index(row, 1), query.value(1).toString());
-        model1->setData(model1->index(row, 2), query.value(2).toString());
-        model1->setData(model1->index(row, 3), query.value(3).toString());
-        model1->setData(model1->index(row, 4), query.value(4).toString());
-        model1->setData(model1->index(row, 5), query.value(5).toString());
-        model1->setData(model1->index(row, 6), query.value(6).toInt());
-        model1->setData(model1->index(row, 7), query.value(7).toInt());
-        model1->setData(model1->index(row, 8), query.value(8).toInt());
-        model1->setData(model1->index(row, 9), query.value(9).toInt());
-        model1->setData(model1->index(row, 10), query.value(10).toInt());
-        model1->setData(model1->index(row, 11), query.value(11).toInt());
+        // Insert a new row in the table for each record
+        ui->tableWidget->insertRow(row);
+
+        // Set the data for each column in the current row
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // Flt_ID
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // Flt_Number
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // Flt_Company
+        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // Flt_Date
+        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // Departure
+        ui->tableWidget->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // Destination
+        ui->tableWidget->setItem(row, 6, new QTableWidgetItem(query.value(6).toString())); // EcoSeats
+        ui->tableWidget->setItem(row, 7, new QTableWidgetItem(query.value(7).toString())); // BusSeats
+        ui->tableWidget->setItem(row, 8, new QTableWidgetItem(query.value(8).toString())); // FstSeats
+        ui->tableWidget->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
+        ui->tableWidget->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
+        ui->tableWidget->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+
         row++;
     }
 
 }
 
 
-
-
 void Frm_Admin::setupTables()
 {
-    // 表格 1 数据模型
-    model1 = new QStandardItemModel(this);
-    model1->setHorizontalHeaderLabels({"ID", "航班号", "航司", "航班日期",
-                                       "出发地", "目的地", "经济舱余票",
-                                       "商务舱余票", "头等舱余票", "经济舱定价", "商务舱定价", "头等舱定价"});
-
-
-    // 表格 2 数据模型
-    model2 = new QStandardItemModel(this);
-    model2->setHorizontalHeaderLabels({"ID", "航班号", "航司", "航班日期",
-                                       "出发地", "目的地", "经济舱余票",
-                                       "商务舱余票", "头等舱余票", "经济舱定价", "商务舱定价", "头等舱定价"});
-
-
-
-    // 将模型绑定到 QTableView
-    tableView1 = new QTableView(this);
-    tableView1->setModel(model1);
-    tableView2 = new QTableView(this);
-    tableView2->setModel(model2);
-
-    // 去除表格前序号
-    tableView1->verticalHeader()->setVisible(false);
-    tableView2->verticalHeader()->setVisible(false);
+    // Clear existing rows before adding new data
+    ui->tableWidget->clearContents();
+    ui->tableWidget->setRowCount(0);
 
     // 设置列宽相同，平均占满一行
-    int columnCount = model1->columnCount(); // 获取列数
+    int columnCount = ui->tableWidget->columnCount();
     for (int i = 0; i < columnCount; ++i) {
-        tableView1->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
-        tableView2->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
     }
-
-
-    // 将表格添加到 QStackedWidget
-    ui->stackedWidget->addWidget(tableView1);
-    ui->stackedWidget->addWidget(tableView2);
 
     // 加载数据
     loadAllFlightInfoData();
@@ -212,18 +196,18 @@ void Frm_Admin::setupTables()
 
 void Frm_Admin::onListWidgetClicked(int index)
 {
-    int offset = ui->stackedWidget->count() - 2; // 动态计算偏移量 其中2为表格数量
+    int offset = ui->stackedWidget->count() - 3; // 动态计算偏移量 其中3为表格数量
     ui->stackedWidget->setCurrentIndex(index + offset);
 }
 
 void Frm_Admin::on_btn_add_clicked()
 {
     // 获取用户输入的数据
-    QString flightNumber = ui->lineEdit_flightNumber->text();
-    QString company = ui->lineEdit_flightCompany->text();
-    QString departure = ui->lineEdit_departure->text();
-    QString destination = ui->lineEdit_destination->text();
-    QDate departureDate = ui->dateEdit_departureDate->date();
+    QString flightNumber = ui->lineEdit_addNumber->text();
+    QString company = ui->lineEdit_addCompany->text();
+    QString departure = ui->lineEdit_addDeparture->text();
+    QString destination = ui->lineEdit_addDestination->text();
+    QDate departureDate = ui->dateEdit_addDate->date();
 
     if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill all fields!");

@@ -41,11 +41,6 @@ private:
     Ui::Frm_Admin *ui;
     Frm_Login *pg_login;
 
-    QStandardItemModel *model1;
-    QStandardItemModel *model2;
-    QTableView *tableView1;
-    QTableView *tableView2;
-
     void setupTables(); // 初始化表格数据
     void addNewFlightInfo(flight_info* new_flight_info); // 新增flight_info
     void loadAllFlightInfoData(); // 加载全部flight_info数据
