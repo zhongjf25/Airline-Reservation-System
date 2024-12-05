@@ -33,6 +33,28 @@ Frm_Login::Frm_Login(QWidget *parent)
     else {
         QMessageBox::warning(this, "连接提示", "数据库连接失败，部分功能可能无法使用");
     }
+
+    QSqlQuery q;
+    if(!q.exec("select Username from PrevInfo where ID='1'")) {
+        qDebug() << "历史用户名获取失败";
+    }
+    q.next();
+    ui->txt_user->setText(q.value(0).toString());   //设置为上次启动的用户名
+
+    if(!q.exec("select UserPwd from PrevInfo where ID='1'")) {
+        qDebug() << "历史密码获取失败";
+    }
+    q.next();
+    ui->txt_pwd->setText(q.value(0).toString());    //设置为上次密码 若未记住密码会设置为空
+
+    if(!q.exec("select is_rem from PrevInfo where ID='1'")) {
+        qDebug() << "记住密码状态获取失败";
+    }
+    q.next();
+    if(q.value(0).toBool()) {
+        ui->chk_remb_pwd->setCheckState(Qt::CheckState::Checked);   //设置记住密码状态
+    }
+
     QPushButton *to_manager = ui->btn_register; // 获取 UI 中的按钮
     to_manager->setStyleSheet("QPushButton {"
                               "border: none;"          // 去除边框
