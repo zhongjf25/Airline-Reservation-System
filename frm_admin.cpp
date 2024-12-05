@@ -220,6 +220,7 @@ void Frm_Admin::on_btn_add_clicked()
 {
     // 获取用户输入的数据
     QString flightNumber = ui->lineEdit_flightNumber->text();
+    QString company = ui->lineEdit_flightCompany->text();
     QString departure = ui->lineEdit_departure->text();
     QString destination = ui->lineEdit_destination->text();
     QDate departureDate = ui->dateEdit_departureDate->date();
@@ -231,7 +232,7 @@ void Frm_Admin::on_btn_add_clicked()
 
     flight_info* new_flight_info = new flight_info();
     new_flight_info->setFltNumber(flightNumber);
-    new_flight_info->setFltCompany(QString("Air China"));
+    new_flight_info->setFltCompany(company);
     new_flight_info->setFltDate(departureDate.toString("yyyy-MM-dd"));
     new_flight_info->setDeparture(departure);
     new_flight_info->setDestination(destination);
@@ -275,6 +276,11 @@ void Frm_Admin::on_btn_search_clicked()
 
 }
 
+void Frm_Admin::on_btn_reset_clicked()
+{
+    loadAllFlightInfoData();
+}
+
 
 void Frm_Admin::exit() {
     QMessageBox::StandardButton reply;
@@ -311,6 +317,9 @@ void Frm_Admin::closeEvent(QCloseEvent *event) {
         }
     }
 }
+
+
+
 
 
 

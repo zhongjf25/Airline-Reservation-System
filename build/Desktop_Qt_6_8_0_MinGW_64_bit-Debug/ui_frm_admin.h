@@ -33,6 +33,7 @@ public:
     QWidget *centralwidget;
     QPushButton *btn_add;
     QPushButton *btn_search;
+    QPushButton *btn_reset;
     QPushButton *btn_delete;
     QListWidget *listWidget;
     QStackedWidget *stackedWidget;
@@ -66,6 +67,9 @@ public:
         btn_search = new QPushButton(centralwidget);
         btn_search->setObjectName("btn_search");
         btn_search->setGeometry(QRect(945, 10, 92, 28));
+        btn_reset = new QPushButton(centralwidget);
+        btn_reset->setObjectName("btn_reset");
+        btn_reset->setGeometry(QRect(1050, 10, 92, 28));
         btn_delete = new QPushButton(centralwidget);
         btn_delete->setObjectName("btn_delete");
         btn_delete->setGeometry(QRect(840, 40, 92, 28));
@@ -99,6 +103,7 @@ public:
         dateEdit_departureDate = new QDateEdit(centralwidget);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(675, 10, 150, 28));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 3), QTime(0, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
@@ -130,6 +135,7 @@ public:
         act_logout->setText(QCoreApplication::translate("Frm_Admin", "\347\231\273\345\207\272", nullptr));
         btn_add->setText(QCoreApplication::translate("Frm_Admin", "\346\267\273\345\212\240", nullptr));
         btn_search->setText(QCoreApplication::translate("Frm_Admin", "\346\220\234\347\264\242", nullptr));
+        btn_reset->setText(QCoreApplication::translate("Frm_Admin", "\351\207\215\347\275\256", nullptr));
         btn_delete->setText(QCoreApplication::translate("Frm_Admin", "\345\210\240\351\231\244", nullptr));
         lineEdit_flightNumber->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\345\217\267", nullptr));
         lineEdit_flightCompany->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\345\217\270", nullptr));

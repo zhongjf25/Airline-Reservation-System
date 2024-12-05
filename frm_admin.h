@@ -35,6 +35,8 @@ private slots:
     void on_btn_delete_clicked(); // 删除航班按钮
     void on_btn_search_clicked(); // 搜索航班按钮
 
+    void on_btn_reset_clicked();
+
 private:
     Ui::Frm_Admin *ui;
     Frm_Login *pg_login;
