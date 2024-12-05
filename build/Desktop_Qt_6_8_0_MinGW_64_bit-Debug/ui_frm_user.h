@@ -40,7 +40,7 @@ public:
     QGroupBox *groupBox;
     QDateEdit *dateEdit;
     QFrame *line;
-    QPushButton *pushButton;
+    QPushButton *btn_search;
     QLabel *graph;
     QComboBox *comboBox;
     QLabel *graph_2;
@@ -56,7 +56,7 @@ public:
     {
         if (Frm_User->objectName().isEmpty())
             Frm_User->setObjectName("Frm_User");
-        Frm_User->resize(800, 600);
+        Frm_User->resize(1200, 800);
         act_logout = new QAction(Frm_User);
         act_logout->setObjectName("act_logout");
         act_del = new QAction(Frm_User);
@@ -77,7 +77,7 @@ public:
         to_home->setGeometry(QRect(90, 20, 56, 18));
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(80, 100, 501, 80));
+        groupBox->setGeometry(QRect(310, 100, 501, 80));
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 110, 22));
@@ -86,9 +86,9 @@ public:
         line->setGeometry(QRect(250, 23, 20, 35));
         line->setFrameShape(QFrame::Shape::VLine);
         line->setFrameShadow(QFrame::Shadow::Sunken);
-        pushButton = new QPushButton(groupBox);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(430, 30, 61, 25));
+        btn_search = new QPushButton(groupBox);
+        btn_search->setObjectName("btn_search");
+        btn_search->setGeometry(QRect(430, 30, 61, 25));
         graph = new QLabel(groupBox);
         graph->setObjectName("graph");
         graph->setGeometry(QRect(10, 30, 20, 20));
@@ -121,7 +121,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_User);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 18));
+        menubar->setGeometry(QRect(0, 0, 1200, 24));
         menu = new QMenu(menubar);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar);
@@ -157,7 +157,7 @@ public:
         back->setText(QCoreApplication::translate("Frm_User", "<- \350\277\224\345\233\236", nullptr));
         to_home->setText(QCoreApplication::translate("Frm_User", "\344\270\252\344\272\272\344\270\255\345\277\203", nullptr));
         groupBox->setTitle(QCoreApplication::translate("Frm_User", " \350\210\252\347\217\255\346\220\234\347\264\242", nullptr));
-        pushButton->setText(QCoreApplication::translate("Frm_User", "\346\220\234\347\264\242", nullptr));
+        btn_search->setText(QCoreApplication::translate("Frm_User", "\346\220\234\347\264\242", nullptr));
         graph->setText(QString());
         graph_2->setText(QString());
         graph_3->setText(QString());

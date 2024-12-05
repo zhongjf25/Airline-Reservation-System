@@ -48,7 +48,7 @@ private:
     void addNewFlightInfo(flight_info* new_flight_info); // 新增flight_info
     void loadAllFlightInfoData(); // 加载全部flight_info数据
     void deleteFlightInfoById(qint64 deleteFlightInfoId); // 根据id删除对应航班
-    void loadCertainFlightInfoData(QString _Flt_Number, QString _departure,
+    void loadCertainFlightInfoData(QString _Flt_Number,QString _company, QString _departure,
                                    QString _destination, QString _departure_date); // 根据信息查询相关flight_info数据
 };
 

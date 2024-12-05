@@ -109,7 +109,7 @@ void Frm_Admin::loadAllFlightInfoData()
     }
 }
 
-void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number, QString _departure,
+void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, QString _departure,
                                           QString _destination, QString _departure_date)
 {
     QSqlQuery query;
@@ -119,6 +119,9 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number, QString _departur
 
     if (!_Flt_Number.isEmpty()) {
         queryStr += " and Flt_Number = " + _Flt_Number;
+    }
+    if (!_company.isEmpty()) {
+        queryStr += " and Flt_Company = '" + _company + "'";
     }
     if (!_departure.isEmpty()) {
         queryStr += " and Departure = " + _departure;
@@ -187,8 +190,16 @@ void Frm_Admin::setupTables()
     tableView2 = new QTableView(this);
     tableView2->setModel(model2);
 
+    // 去除表格前序号
     tableView1->verticalHeader()->setVisible(false);
     tableView2->verticalHeader()->setVisible(false);
+
+    // 设置列宽相同，平均占满一行
+    int columnCount = model1->columnCount(); // 获取列数
+    for (int i = 0; i < columnCount; ++i) {
+        tableView1->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+        tableView2->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+    }
 
 
     // 将表格添加到 QStackedWidget
@@ -254,12 +265,13 @@ void Frm_Admin::on_btn_search_clicked()
 {
     // 获取用户输入的数据
     QString flightNumber = ui->lineEdit_flightNumber->text();
+    QString company = ui->lineEdit_flightCompany->text();
     QString departure = ui->lineEdit_departure->text();
     QString destination = ui->lineEdit_destination->text();
     QDate departureDate = ui->dateEdit_departureDate->date();
 
-    qDebug() << flightNumber << " " << departure << " " << destination << " " << departureDate;
-    loadCertainFlightInfoData(flightNumber, departure, destination, departureDate.toString("yyyy-MM-dd"));
+    qDebug() << flightNumber << " " << company << " " << departure << " " << destination << " " << departureDate;
+    loadCertainFlightInfoData(flightNumber, company, departure, destination, departureDate.toString("yyyy-MM-dd"));
 
 }
 
