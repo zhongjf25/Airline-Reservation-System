@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QTableWidget" name="search_airline">
@@ -374,8 +374,8 @@
      <widget class="QPushButton" name="btn_purchase">
       <property name="geometry">
        <rect>
-        <x>950</x>
-        <y>70</y>
+        <x>360</x>
+        <y>480</y>
         <width>91</width>
         <height>41</height>
        </rect>
@@ -443,7 +443,7 @@
        <string>座位等级：</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="type_comboBox">
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -472,7 +472,7 @@
       <property name="geometry">
        <rect>
         <x>270</x>
-        <y>60</y>
+        <y>70</y>
         <width>41</width>
         <height>31</height>
        </rect>
@@ -524,7 +524,7 @@
       <property name="geometry">
        <rect>
         <x>270</x>
-        <y>20</y>
+        <y>40</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -563,7 +563,7 @@
       <property name="geometry">
        <rect>
         <x>350</x>
-        <y>70</y>
+        <y>80</y>
         <width>111</width>
         <height>21</height>
        </rect>
@@ -573,7 +573,7 @@
       <property name="geometry">
        <rect>
         <x>350</x>
-        <y>30</y>
+        <y>50</y>
         <width>111</width>
         <height>21</height>
        </rect>
@@ -637,6 +637,29 @@
        <rect>
         <x>350</x>
         <y>340</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="flightId_label">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>10</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>航班ID</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="book_idEdit">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>20</y>
         <width>111</width>
         <height>21</height>
        </rect>

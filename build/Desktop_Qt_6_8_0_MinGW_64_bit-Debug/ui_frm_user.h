@@ -62,7 +62,7 @@ public:
     QLabel *name;
     QLabel *humanID;
     QLabel *rank;
-    QComboBox *comboBox;
+    QComboBox *type_comboBox;
     QLabel *date;
     QLabel *flyNum;
     QLabel *departure_label;
@@ -78,6 +78,8 @@ public:
     QLineEdit *book_destinationEdit;
     QPushButton *btn_toSearch;
     QLineEdit *book_priceEdit;
+    QLabel *flightId_label;
+    QLineEdit *book_idEdit;
     QMenuBar *menubar;
     QStatusBar *statusbar;
     QMenuBar *menubar1;
@@ -219,7 +221,7 @@ public:
         page3->setObjectName("page3");
         btn_purchase = new QPushButton(page3);
         btn_purchase->setObjectName("btn_purchase");
-        btn_purchase->setGeometry(QRect(950, 70, 91, 41));
+        btn_purchase->setGeometry(QRect(360, 480, 91, 41));
         book_userNameEdit = new QLineEdit(page3);
         book_userNameEdit->setObjectName("book_userNameEdit");
         book_userNameEdit->setGeometry(QRect(350, 380, 111, 21));
@@ -235,15 +237,15 @@ public:
         rank = new QLabel(page3);
         rank->setObjectName("rank");
         rank->setGeometry(QRect(270, 280, 61, 41));
-        comboBox = new QComboBox(page3);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName("comboBox");
-        comboBox->setGeometry(QRect(350, 290, 101, 21));
+        type_comboBox = new QComboBox(page3);
+        type_comboBox->addItem(QString());
+        type_comboBox->addItem(QString());
+        type_comboBox->addItem(QString());
+        type_comboBox->setObjectName("type_comboBox");
+        type_comboBox->setGeometry(QRect(350, 290, 101, 21));
         date = new QLabel(page3);
         date->setObjectName("date");
-        date->setGeometry(QRect(270, 60, 41, 31));
+        date->setGeometry(QRect(270, 70, 41, 31));
         flyNum = new QLabel(page3);
         flyNum->setObjectName("flyNum");
         flyNum->setGeometry(QRect(270, 100, 71, 41));
@@ -255,7 +257,7 @@ public:
         mon->setGeometry(QRect(280, 330, 61, 41));
         label_5 = new QLabel(page3);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(270, 20, 51, 31));
+        label_5->setGeometry(QRect(270, 40, 51, 31));
         label_6 = new QLabel(page3);
         label_6->setObjectName("label_6");
         label_6->setGeometry(QRect(270, 140, 71, 41));
@@ -264,10 +266,10 @@ public:
         label_7->setGeometry(QRect(270, 240, 41, 31));
         book_dateEdit = new QLineEdit(page3);
         book_dateEdit->setObjectName("book_dateEdit");
-        book_dateEdit->setGeometry(QRect(350, 70, 111, 21));
+        book_dateEdit->setGeometry(QRect(350, 80, 111, 21));
         book_numberEdit = new QLineEdit(page3);
         book_numberEdit->setObjectName("book_numberEdit");
-        book_numberEdit->setGeometry(QRect(350, 30, 111, 21));
+        book_numberEdit->setGeometry(QRect(350, 50, 111, 21));
         book_departureDateEdit = new QLineEdit(page3);
         book_departureDateEdit->setObjectName("book_departureDateEdit");
         book_departureDateEdit->setGeometry(QRect(350, 110, 111, 21));
@@ -286,6 +288,12 @@ public:
         book_priceEdit = new QLineEdit(page3);
         book_priceEdit->setObjectName("book_priceEdit");
         book_priceEdit->setGeometry(QRect(350, 340, 111, 21));
+        flightId_label = new QLabel(page3);
+        flightId_label->setObjectName("flightId_label");
+        flightId_label->setGeometry(QRect(270, 10, 51, 31));
+        book_idEdit = new QLineEdit(page3);
+        book_idEdit->setObjectName("book_idEdit");
+        book_idEdit->setGeometry(QRect(350, 20, 111, 21));
         stackedWidget->addWidget(page3);
         menubar = new QMenuBar();
         menubar->setObjectName("menubar");
@@ -318,7 +326,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -395,9 +403,9 @@ public:
         name->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
         humanID->setText(QCoreApplication::translate("Frm_User", "\350\257\201\344\273\266\345\217\267\357\274\232", nullptr));
         rank->setText(QCoreApplication::translate("Frm_User", "\345\272\247\344\275\215\347\255\211\347\272\247\357\274\232", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\244\264\347\255\211\350\210\261", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("Frm_User", "\345\225\206\345\212\241\350\210\261", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("Frm_User", "\347\273\217\346\265\216\350\210\261", nullptr));
+        type_comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\244\264\347\255\211\350\210\261", nullptr));
+        type_comboBox->setItemText(1, QCoreApplication::translate("Frm_User", "\345\225\206\345\212\241\350\210\261", nullptr));
+        type_comboBox->setItemText(2, QCoreApplication::translate("Frm_User", "\347\273\217\346\265\216\350\210\261", nullptr));
 
         date->setText(QCoreApplication::translate("Frm_User", "\346\227\245\346\234\237", nullptr));
         flyNum->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\346\227\266\351\227\264", nullptr));
@@ -407,6 +415,7 @@ public:
         label_6->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\346\227\266\351\227\264", nullptr));
         label_7->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\345\234\260", nullptr));
         btn_toSearch->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
+        flightId_label->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255ID", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));
     } // retranslateUi

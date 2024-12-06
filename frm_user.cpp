@@ -29,10 +29,11 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
 void Frm_User::setupTables()
 {
     search_table = ui->search_airline;
-    // 设置列宽相同，平均占满一行
+    // 设置列宽相同，平均占满一行 同时隐藏id列
+    search_table->setColumnHidden(0, true);
     int columnCount = search_table->columnCount();
     for (int i = 0; i < columnCount; ++i) {
-        search_table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+        if (i != 0) search_table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
     }
 
     self_table = ui->self_airline;
@@ -51,6 +52,12 @@ void Frm_User::setupTables()
     ui->self_airline->setEditTriggers(QAbstractItemView::NoEditTriggers);     //设置为只读
     ui->self_airline->setSelectionBehavior(QAbstractItemView::SelectRows); // 选择整行
     ui->self_airline->setSelectionMode(QAbstractItemView::SingleSelection); // 只允许单行选择
+
+    // 设置购票页面航班id隐藏
+    ui->book_idEdit->setVisible(false);
+    ui->flightId_label->setVisible(false);
+
+    ui->stackedWidget->setCurrentIndex(0);
 
     loadAllFlightInfoData();
 }
@@ -154,6 +161,8 @@ void Frm_User::displayBookedFlightInfoOnBookPage(QString flightId)
                   "Destination, EcoSeats, BusSeats, FstSeats, price_eco, "
                   "price_bus, price_fst from flightinfo where Flt_ID =:flightId");
     query.bindValue(":flightId", flightId);
+    ui->book_idEdit->setText(flightId);
+
     if (query.exec()) {
         if (query.next()) {  // Ensure that data exists
             ui->book_numberEdit->setText(query.value(1).toString());
@@ -263,7 +272,36 @@ void Frm_User::on_btn_reset_clicked()
 
 void Frm_User::on_btn_purchase_clicked()
 {
+    //获取信息
+    QString userId;
+    QString userName = ui->book_userNameEdit->text();
+    QSqlQuery q;
+    q.prepare("select UserID from userinfo where UserName =:userName");
+    q.bindValue(":userName", userName);
+    if (q.exec()) {
+        if (q.next()) userId = q.value(0).toString();
+    }
+    QString flightId = ui->book_idEdit->text();
+    qint64 purchaseQuantity = 1;
+    QString orderPrice = ui->book_priceEdit->text();
+    QString flightType = ui->type_comboBox->currentText();
+    // 判断
+    if (flightType == "经济舱") flightType = "0";
+    else if (flightType == "商务舱") flightType = "1";
+    else if (flightType == "头等舱") flightType = "2";
 
+    q.prepare("insert into purchaseinfo (UserID, FlightID, PurchaseQuantity, OrderPrice, FlightType) "
+              "values (:userId, :flightId, :purchaseQuantity, :orderPrice, :flightType)");
+    q.bindValue(":userId", userId.toInt());
+    q.bindValue(":flightId", flightId.toInt());
+    q.bindValue(":purchaseQuantity", purchaseQuantity);
+    q.bindValue(":orderPrice", orderPrice.toInt());
+    q.bindValue(":flightType", flightType.toInt());
+    if (!q.exec()) {
+        QMessageBox::information(this, "Failed!", "purchase failed!");
+    } else {
+        QMessageBox::information(this, "Success!", "Successful Purchase");
+    }
 }
 
 
