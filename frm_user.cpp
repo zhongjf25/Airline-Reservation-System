@@ -24,6 +24,9 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     connect(ui->act_change_pwd, &QAction::triggered, this, &Frm_User::change_pwd);   //修改密码
     connect(ui->act_del, &QAction::triggered, this, &Frm_User::del_user);   //删除账户
     connect(ui->lbl_username, &QAction::triggered, this, &Frm_User::goToUserPage); //跳转到用户界面
+    connect(ui->type_comboBox, &QComboBox::currentTextChanged,
+            this, &Frm_User::on_type_comboBox_currentTextChanged); //连接舱位选择
+
 }
 
 void Frm_User::setupTables()
@@ -57,7 +60,11 @@ void Frm_User::setupTables()
     ui->book_idEdit->setVisible(false);
     ui->flightId_label->setVisible(false);
 
+    // 默认显示第一个page
     ui->stackedWidget->setCurrentIndex(0);
+
+    // 设置comboBox为空
+    ui->type_comboBox->setCurrentIndex(-1);
 
     loadAllFlightInfoData();
 }
@@ -324,4 +331,54 @@ void Frm_User::on_btn_toSearch_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
+
+
+void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
+{
+    qDebug() << "Selected Seat Class: " << arg1;
+
+    QString price;
+    QString flightId = ui->book_idEdit->text();
+    qDebug() << "Flight ID: " << flightId;
+
+    if (flightId.isEmpty()) {
+        qDebug() << "Flight ID is empty!";
+        return;
+    }
+
+    QString eco_price;
+    QString bus_price;
+    QString fst_price;
+
+    // Query to get the prices for all seat types
+    QSqlQuery q;
+    q.prepare("select price_eco, price_bus, price_fst from flightinfo where Flt_ID =:flightId");
+    q.bindValue(":flightId", flightId);
+
+    if (q.exec()) {
+        if (q.next()) {
+            eco_price = q.value(0).toString();
+            bus_price = q.value(1).toString();
+            fst_price = q.value(2).toString();
+            qDebug() << "Eco Price: " << eco_price << " Bus Price: " << bus_price << " Fst Price: " << fst_price;
+        }
+    }
+
+    // Set the price based on the selected seat class
+    if (arg1 == "经济舱") {
+        price = eco_price;  // Economy class price
+    }
+    else if (arg1 == "商务舱") {
+        price = bus_price;  // Business class price
+    }
+    else if (arg1 == "头等舱") {
+        price = fst_price;  // First class price
+    }
+
+    // Update the price displayed in the UI
+    ui->book_priceEdit->setText(price);
+
+    qDebug() << "Updated Price: " << price;
+}
+
 
