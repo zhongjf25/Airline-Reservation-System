@@ -43,7 +43,7 @@ constexpr auto qt_meta_stringdata_CLASSFrm_UserENDCLASS = QtMocHelpers::stringDa
     "change_pwd",
     "del_user",
     "goToUserPage",
-    "on_return_page1_clicked",
+    "on_btn_return_page1_clicked",
     "on_btn_search_clicked",
     "on_btn_reset_clicked",
     "on_btn_purchase_clicked",
@@ -116,7 +116,7 @@ Q_CONSTINIT const QMetaObject Frm_User::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'goToUserPage'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_return_page1_clicked'
+        // method 'on_btn_return_page1_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_btn_search_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -143,7 +143,7 @@ void Frm_User::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 2: _t->change_pwd(); break;
         case 3: _t->del_user(); break;
         case 4: _t->goToUserPage(); break;
-        case 5: _t->on_return_page1_clicked(); break;
+        case 5: _t->on_btn_return_page1_clicked(); break;
         case 6: _t->on_btn_search_clicked(); break;
         case 7: _t->on_btn_reset_clicked(); break;
         case 8: _t->on_btn_purchase_clicked(); break;
