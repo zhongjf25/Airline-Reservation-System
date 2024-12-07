@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QTableWidget" name="search_airline">
@@ -122,7 +122,7 @@
        </property>
        <property name="dateTime">
         <datetime>
-         <hour>8</hour>
+         <hour>0</hour>
          <minute>0</minute>
          <second>0</second>
          <year>2024</year>
@@ -568,6 +568,9 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="book_numberEdit">
       <property name="geometry">
@@ -577,6 +580,15 @@
         <width>111</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <widget class="QLineEdit" name="book_departureDateEdit">
@@ -588,6 +600,9 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="book_destinationDateEdit">
       <property name="geometry">
@@ -597,6 +612,12 @@
         <width>111</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="book_departureEdit">
@@ -608,6 +629,9 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="book_destinationEdit">
       <property name="geometry">
@@ -617,6 +641,9 @@
         <width>111</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_toSearch">
@@ -641,8 +668,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"> background-color: gainsboro;</string>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+      <property name="placeholderText">
+       <string>请选择舱位</string>
       </property>
      </widget>
      <widget class="QLabel" name="flightId_label">

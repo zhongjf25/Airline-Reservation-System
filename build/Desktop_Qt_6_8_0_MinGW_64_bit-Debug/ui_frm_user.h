@@ -146,7 +146,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 28), QTime(8, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 28), QTime(0, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -267,27 +267,36 @@ public:
         book_dateEdit = new QLineEdit(page3);
         book_dateEdit->setObjectName("book_dateEdit");
         book_dateEdit->setGeometry(QRect(350, 80, 111, 21));
+        book_dateEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         book_numberEdit = new QLineEdit(page3);
         book_numberEdit->setObjectName("book_numberEdit");
         book_numberEdit->setGeometry(QRect(350, 50, 111, 21));
+        book_numberEdit->setAutoFillBackground(false);
+        book_numberEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         book_departureDateEdit = new QLineEdit(page3);
         book_departureDateEdit->setObjectName("book_departureDateEdit");
         book_departureDateEdit->setGeometry(QRect(350, 110, 111, 21));
+        book_departureDateEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         book_destinationDateEdit = new QLineEdit(page3);
         book_destinationDateEdit->setObjectName("book_destinationDateEdit");
         book_destinationDateEdit->setGeometry(QRect(350, 150, 111, 20));
+        book_destinationDateEdit->setAutoFillBackground(false);
+        book_destinationDateEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         book_departureEdit = new QLineEdit(page3);
         book_departureEdit->setObjectName("book_departureEdit");
         book_departureEdit->setGeometry(QRect(350, 200, 111, 21));
+        book_departureEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         book_destinationEdit = new QLineEdit(page3);
         book_destinationEdit->setObjectName("book_destinationEdit");
         book_destinationEdit->setGeometry(QRect(350, 240, 111, 20));
+        book_destinationEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         btn_toSearch = new QPushButton(page3);
         btn_toSearch->setObjectName("btn_toSearch");
         btn_toSearch->setGeometry(QRect(40, 20, 51, 21));
         book_priceEdit = new QLineEdit(page3);
         book_priceEdit->setObjectName("book_priceEdit");
         book_priceEdit->setGeometry(QRect(350, 340, 111, 21));
+        book_priceEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
         book_priceEdit->setReadOnly(true);
         flightId_label = new QLabel(page3);
         flightId_label->setObjectName("flightId_label");
@@ -327,7 +336,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -415,7 +424,9 @@ public:
         label_5->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255\345\217\267", nullptr));
         label_6->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\346\227\266\351\227\264", nullptr));
         label_7->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\345\234\260", nullptr));
+        book_numberEdit->setText(QString());
         btn_toSearch->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
+        book_priceEdit->setPlaceholderText(QCoreApplication::translate("Frm_User", "\350\257\267\351\200\211\346\213\251\350\210\261\344\275\215", nullptr));
         flightId_label->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255ID", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));

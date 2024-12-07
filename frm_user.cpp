@@ -63,6 +63,15 @@ void Frm_User::setupTables()
     ui->flightId_label->setVisible(false);
     ui->book_idEdit->setVisible(false);
 
+    //设置购票页面不可选中信息
+    ui->book_numberEdit->setEnabled(false);
+    ui->book_dateEdit->setEnabled(false);
+    ui->book_departureDateEdit->setEnabled(false);
+    ui->book_departureEdit->setEnabled(false);
+    ui->book_destinationEdit->setEnabled(false);
+    ui->book_destinationDateEdit->setEnabled(false);
+    ui->book_priceEdit->setEnabled(false);
+
     // 默认显示第一个page
     ui->stackedWidget->setCurrentIndex(0);
 
