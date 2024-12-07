@@ -20,7 +20,9 @@ CREATE TABLE FlightInfo (
     FstSeats INT,   -- 头等舱余票
     price_eco INT,  -- 经济舱价格
     price_bus INT, -- 商务舱价格
-    price_fst INT  -- 头等舱价格
+    price_fst INT,  -- 头等舱价格
+    time_dep TIME,	-- 出发时间
+    time_arr TIME	-- 到达时间
 );
 
 

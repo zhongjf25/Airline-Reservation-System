@@ -38,9 +38,9 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
 
     q.prepare("insert into flightinfo (Flt_Number, Flt_Company, "
               "Flt_Date, Departure, Destination, EcoSeats, BusSeats, "
-              "FstSeats, price_eco, price_bus, price_fst) "
+              "FstSeats, price_eco, price_bus, price_fst, time_dep, time_arr) "
               "values (:_Flt_Number, :_Flt_Company, :_Flt_Date, :_Departure, :_Destination, "
-              ":_EcoSeats, :_BusSeats, :_FstSeats, :_price_eco, :_price_bus, :_price_fst)");
+              ":_EcoSeats, :_BusSeats, :_FstSeats, :_price_eco, :_price_bus, :_price_fst, :_time_dep, :_time_arr)");
     q.bindValue(":_Flt_Number", new_flight_info->getFltNumber());
     q.bindValue(":_Flt_Company", new_flight_info->getFltCompany());
     q.bindValue(":_Flt_Date",  new_flight_info->getFltDate());
@@ -52,6 +52,8 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
     q.bindValue(":_price_eco", new_flight_info->getPriceEco());
     q.bindValue(":_price_bus", new_flight_info->getPriceBus());
     q.bindValue(":_price_fst", new_flight_info->getPriceFst());
+    q.bindValue(":_time_dep", new_flight_info->getDepTime());
+    q.bindValue(":_time_arr", new_flight_info->getArrTime());
 
     // 执行插入操作
     if (!q.exec()) {
@@ -211,10 +213,16 @@ void Frm_Admin::on_btn_add_clicked()
     QString departure = ui->lineEdit_addDeparture->text();
     QString destination = ui->lineEdit_addDestination->text();
     QDate departureDate = ui->dateEdit_addDate->date();
+    QString dep_time = ui->timeEdit_Departure_time->time().toString("HH:mm");
+    QString arr_time = ui->timeEdit_Destination_time->time().toString("HH:mm");
 
     if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill all fields!");
         return;
+    }
+
+    if(dep_time == arr_time) {
+        QMessageBox::warning(this, "警告", "起飞和降落时间不能相同");
     }
 
     flight_info* new_flight_info = new flight_info();
@@ -229,6 +237,8 @@ void Frm_Admin::on_btn_add_clicked()
     new_flight_info->setPriceEco(1000); // 设置经济舱票价
     new_flight_info->setPriceBus(2000); // 设置商务舱票价
     new_flight_info->setPriceFst(3000); // 设置头等舱票价
+    new_flight_info->setDepTime(dep_time);  //设置起飞时间
+    new_flight_info->setArrTime(arr_time);  //设置降落时间
 
     // 将数据插入到数据库
     addNewFlightInfo(new_flight_info);

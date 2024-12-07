@@ -24,6 +24,7 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -43,6 +44,10 @@ public:
     QLineEdit *lineEdit_addDestination;
     QDateEdit *dateEdit_addDate;
     QPushButton *btn_add;
+    QTimeEdit *timeEdit_Departure_time;
+    QTimeEdit *timeEdit_Destination_time;
+    QLabel *lbl_Departure_time;
+    QLabel *lbl_Destination_time;
     QWidget *page2;
     QPushButton *btn_delete;
     QLineEdit *lineEdit_deleteId;
@@ -91,18 +96,30 @@ public:
         lineEdit_addCompany->setGeometry(QRect(260, 110, 150, 28));
         lineEdit_addDeparture = new QLineEdit(page1);
         lineEdit_addDeparture->setObjectName("lineEdit_addDeparture");
-        lineEdit_addDeparture->setGeometry(QRect(430, 110, 150, 28));
+        lineEdit_addDeparture->setGeometry(QRect(260, 160, 150, 28));
         lineEdit_addDestination = new QLineEdit(page1);
         lineEdit_addDestination->setObjectName("lineEdit_addDestination");
-        lineEdit_addDestination->setGeometry(QRect(600, 110, 150, 28));
+        lineEdit_addDestination->setGeometry(QRect(430, 160, 150, 28));
         dateEdit_addDate = new QDateEdit(page1);
         dateEdit_addDate->setObjectName("dateEdit_addDate");
         dateEdit_addDate->setGeometry(QRect(90, 160, 150, 28));
-        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(16, 0, 0)));
+        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(8, 0, 0)));
         dateEdit_addDate->setCalendarPopup(true);
         btn_add = new QPushButton(page1);
         btn_add->setObjectName("btn_add");
-        btn_add->setGeometry(QRect(620, 270, 92, 28));
+        btn_add->setGeometry(QRect(630, 260, 92, 28));
+        timeEdit_Departure_time = new QTimeEdit(page1);
+        timeEdit_Departure_time->setObjectName("timeEdit_Departure_time");
+        timeEdit_Departure_time->setGeometry(QRect(100, 250, 118, 22));
+        timeEdit_Destination_time = new QTimeEdit(page1);
+        timeEdit_Destination_time->setObjectName("timeEdit_Destination_time");
+        timeEdit_Destination_time->setGeometry(QRect(270, 250, 118, 22));
+        lbl_Departure_time = new QLabel(page1);
+        lbl_Departure_time->setObjectName("lbl_Departure_time");
+        lbl_Departure_time->setGeometry(QRect(120, 220, 54, 16));
+        lbl_Destination_time = new QLabel(page1);
+        lbl_Destination_time->setObjectName("lbl_Destination_time");
+        lbl_Destination_time->setGeometry(QRect(300, 220, 54, 16));
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName("page2");
@@ -159,7 +176,7 @@ public:
         dateEdit_departureDate = new QDateEdit(page3);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(640, 0, 150, 28));
-        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 2), QTime(0, 0, 0)));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(16, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         btn_search = new QPushButton(page3);
         btn_search->setObjectName("btn_search");
@@ -180,7 +197,7 @@ public:
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 24));
+        menubar->setGeometry(QRect(0, 0, 1200, 22));
         menu_S = new QMenu(menubar);
         menu_S->setObjectName("menu_S");
         menu = new QMenu(menubar);
@@ -210,9 +227,11 @@ public:
         act_logout->setText(QCoreApplication::translate("Frm_Admin", "\347\231\273\345\207\272", nullptr));
         lineEdit_addNumber->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\345\217\267", nullptr));
         lineEdit_addCompany->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\345\217\270", nullptr));
-        lineEdit_addDeparture->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\265\267\351\243\236\345\234\260\347\202\271", nullptr));
+        lineEdit_addDeparture->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\345\207\272\345\217\221\345\234\260", nullptr));
         lineEdit_addDestination->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\347\233\256\347\232\204\345\234\260", nullptr));
         btn_add->setText(QCoreApplication::translate("Frm_Admin", "\346\267\273\345\212\240", nullptr));
+        lbl_Departure_time->setText(QCoreApplication::translate("Frm_Admin", "\350\265\267\351\243\236\346\227\266\351\227\264", nullptr));
+        lbl_Destination_time->setText(QCoreApplication::translate("Frm_Admin", "\351\231\215\350\220\275\346\227\266\351\227\264", nullptr));
         btn_delete->setText(QCoreApplication::translate("Frm_Admin", "\345\210\240\351\231\244", nullptr));
         lineEdit_deleteId->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\246\201\345\210\240\351\231\244\347\232\204\350\210\252\347\217\255\347\232\204ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
@@ -241,7 +260,7 @@ public:
         ___qtablewidgetitem11->setText(QCoreApplication::translate("Frm_Admin", "\345\244\264\347\255\211\350\210\261\345\256\232\344\273\267", nullptr));
         lineEdit_flightNumber->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\345\217\267", nullptr));
         lineEdit_flightCompany->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\210\252\345\217\270", nullptr));
-        lineEdit_departure->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\265\267\351\243\236\345\234\260\347\202\271", nullptr));
+        lineEdit_departure->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\345\207\272\345\217\221\345\234\260", nullptr));
         lineEdit_destination->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\347\233\256\347\232\204\345\234\260", nullptr));
         btn_search->setText(QCoreApplication::translate("Frm_Admin", "\346\220\234\347\264\242", nullptr));
         btn_reset->setText(QCoreApplication::translate("Frm_Admin", "\351\207\215\347\275\256", nullptr));

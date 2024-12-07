@@ -71,21 +71,21 @@
      <widget class="QLineEdit" name="lineEdit_addDeparture">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>110</y>
+        <x>260</x>
+        <y>160</y>
         <width>150</width>
         <height>28</height>
        </rect>
       </property>
       <property name="placeholderText">
-       <string>起飞地点</string>
+       <string>出发地</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_addDestination">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>110</y>
+        <x>430</x>
+        <y>160</y>
         <width>150</width>
         <height>28</height>
        </rect>
@@ -105,7 +105,7 @@
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>16</hour>
+        <hour>8</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
@@ -120,14 +120,60 @@
      <widget class="QPushButton" name="btn_add">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>270</y>
+        <x>630</x>
+        <y>260</y>
         <width>92</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
        <string>添加</string>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="timeEdit_Departure_time">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>250</y>
+        <width>118</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="timeEdit_Destination_time">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>250</y>
+        <width>118</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_Departure_time">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>220</y>
+        <width>54</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>起飞时间</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_Destination_time">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>220</y>
+        <width>54</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>降落时间</string>
       </property>
      </widget>
     </widget>
@@ -266,7 +312,7 @@
        </rect>
       </property>
       <property name="placeholderText">
-       <string>起飞地点</string>
+       <string>出发地</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_destination">
@@ -293,12 +339,12 @@
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>0</hour>
+        <hour>16</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
         <month>12</month>
-        <day>2</day>
+        <day>1</day>
        </datetime>
       </property>
       <property name="calendarPopup">
@@ -361,7 +407,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_S">

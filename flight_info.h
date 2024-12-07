@@ -19,7 +19,9 @@ public:
                 qint64 _Fst_Seats,
                 qint64 _price_eco,
                 qint64 _price_bus,
-                qint64 _price_fst);
+                qint64 _price_fst,
+                QString _time_dep,
+                QString _time_arr);
     // getter
     QString getFltNumber() { return this->Flt_Number; }
     QString getFltCompany() { return this->Flt_Company; }
@@ -32,6 +34,8 @@ public:
     qint64 getPriceEco() { return this->price_eco; }
     qint64 getPriceBus() { return this->price_bus; }
     qint64 getPriceFst() { return this->price_fst; }
+    QString getDepTime() { return this->time_dep;  }
+    QString getArrTime() { return this->time_arr;  }
     // setter
     void setFltNumber(QString _Flt_Number) { this->Flt_Number = _Flt_Number; }
     void setFltCompany(QString _Flt_Company) { this->Flt_Company = _Flt_Company; }
@@ -44,6 +48,8 @@ public:
     void setPriceEco(qint64 _price_eco) { this->price_eco = _price_eco; }
     void setPriceBus(qint64 _price_bus) { this->price_bus = _price_bus; }
     void setPriceFst(qint64 _price_fst) { this->price_fst = _price_fst; }
+    void setDepTime(QString _time_dep) {this->time_dep = _time_dep; }
+    void setArrTime(QString _time_arr) {this->time_arr = _time_arr; }
 
 private:
     qint64 Flt_ID;
@@ -58,6 +64,8 @@ private:
     qint64 price_eco;
     qint64 price_bus;
     qint64 price_fst;
+    QString time_dep;
+    QString time_arr;
 
 signals:
 };
