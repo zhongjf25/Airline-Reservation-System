@@ -17,6 +17,8 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
 
     ui->lbl_username->setText(n);
 
+    ui->bookEdit->hide();
+
     setupTables();
 
     connect(ui->act_logout, &QAction::triggered, this, &Frm_User::logout);  //登出
@@ -26,6 +28,7 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     connect(ui->lbl_username, &QAction::triggered, this, &Frm_User::goToUserPage); //跳转到用户界面
     connect(ui->type_comboBox, &QComboBox::currentTextChanged,
             this, &Frm_User::on_type_comboBox_currentTextChanged); //连接舱位选择
+    connect(ui->search_airline, &QTableWidget::itemClicked, this, &Frm_User::getSelectedFlightId);  //自动获取选中行ID
 
 }
 
@@ -57,8 +60,8 @@ void Frm_User::setupTables()
     ui->self_airline->setSelectionMode(QAbstractItemView::SingleSelection); // 只允许单行选择
 
     // 设置购票页面航班id隐藏
-    ui->book_idEdit->setVisible(false);
     ui->flightId_label->setVisible(false);
+    ui->book_idEdit->setVisible(false);
 
     // 默认显示第一个page
     ui->stackedWidget->setCurrentIndex(0);
@@ -382,3 +385,20 @@ void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
 }
 
 
+
+
+void Frm_User::getSelectedFlightId()    //获取选中航班ID
+{
+    // 获取当前选中的行的索引
+    int currentRow = ui->search_airline->currentRow();
+
+    // 检查是否选中了有效的行
+    if (currentRow >= 0) {
+        // 获取选中行的 Flt_ID 数据（假设 Flt_ID 在第一列）
+        QString flightId = ui->search_airline->item(currentRow, 0)->text(); // 列索引 0
+        // qDebug() << "Selected Flt_ID:" << flightId;
+        ui->bookEdit->setText(flightId);
+    } else {
+        qDebug() << "No row selected.";
+    }
+}

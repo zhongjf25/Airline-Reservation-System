@@ -146,7 +146,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 28), QTime(16, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 28), QTime(8, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -179,10 +179,10 @@ public:
         btn_reset->setGeometry(QRect(500, 30, 51, 21));
         bookEdit = new QLineEdit(page1);
         bookEdit->setObjectName("bookEdit");
-        bookEdit->setGeometry(QRect(440, 520, 101, 21));
+        bookEdit->setGeometry(QRect(30, 530, 101, 21));
         btn_book = new QPushButton(page1);
         btn_book->setObjectName("btn_book");
-        btn_book->setGeometry(QRect(560, 520, 51, 21));
+        btn_book->setGeometry(QRect(490, 510, 121, 51));
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName("page2");
@@ -288,6 +288,7 @@ public:
         book_priceEdit = new QLineEdit(page3);
         book_priceEdit->setObjectName("book_priceEdit");
         book_priceEdit->setGeometry(QRect(350, 340, 111, 21));
+        book_priceEdit->setReadOnly(true);
         flightId_label = new QLabel(page3);
         flightId_label->setObjectName("flightId_label");
         flightId_label->setGeometry(QRect(270, 10, 51, 31));
@@ -304,7 +305,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 17));
+        menubar1->setGeometry(QRect(0, 0, 1200, 22));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);
@@ -326,7 +327,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
