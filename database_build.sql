@@ -34,7 +34,8 @@ CREATE TABLE PurchaseInfo (
     OrderPrice INT,  -- 订单价格
     FOREIGN KEY (UserID) REFERENCES UserInfo(UserID),
     FOREIGN KEY (FlightID) REFERENCES FlightInfo(Flt_ID),
-    FlightType INT  -- 0-经济 1-商务 2-头等
+    FlightType INT,  -- 0-经济 1-商务 2-头等
+    passenger_name varchar(30)
 );
 
 create table PrevInfo(

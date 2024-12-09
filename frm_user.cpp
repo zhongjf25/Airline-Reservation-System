@@ -293,7 +293,8 @@ void Frm_User::on_btn_purchase_clicked()
 {
     //获取信息
     QString userId;
-    QString userName = ui->book_userNameEdit->text();
+
+    QString userName = ui->lbl_username->text();
     QSqlQuery q;
     q.prepare("select UserID from userinfo where UserName =:userName");
     q.bindValue(":userName", userName);
@@ -304,18 +305,21 @@ void Frm_User::on_btn_purchase_clicked()
     qint64 purchaseQuantity = 1;
     QString orderPrice = ui->book_priceEdit->text();
     QString flightType = ui->type_comboBox->currentText();
+    QString passenger_name = ui->book_userNameEdit->text();
     // 判断
     if (flightType == "经济舱") flightType = "0";
     else if (flightType == "商务舱") flightType = "1";
     else if (flightType == "头等舱") flightType = "2";
 
-    q.prepare("insert into purchaseinfo (UserID, FlightID, PurchaseQuantity, OrderPrice, FlightType) "
-              "values (:userId, :flightId, :purchaseQuantity, :orderPrice, :flightType)");
+    q.prepare("insert into purchaseinfo (UserID, FlightID, PurchaseQuantity, OrderPrice, FlightType, passenger_name) "
+              "values (:userId, :flightId, :purchaseQuantity, :orderPrice, :flightType, :passenger_name)");
     q.bindValue(":userId", userId.toInt());
     q.bindValue(":flightId", flightId.toInt());
     q.bindValue(":purchaseQuantity", purchaseQuantity);
     q.bindValue(":orderPrice", orderPrice.toInt());
     q.bindValue(":flightType", flightType.toInt());
+    q.bindValue(":passenger_name", passenger_name);
+
     if (!q.exec()) {
         QMessageBox::information(this, "Failed!", "purchase failed!");
     } else {
