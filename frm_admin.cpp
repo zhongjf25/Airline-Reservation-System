@@ -85,7 +85,8 @@ void Frm_Admin::loadAllFlightInfoData()
     QSqlQuery query;
     query.prepare("select Flt_ID, Flt_Number, Flt_Company, "
                   "Flt_Date, Departure, Destination, EcoSeats, BusSeats, "
-                  "FstSeats, price_eco, price_bus, price_fst from flightinfo");
+                  "FstSeats, price_eco, price_bus, price_fst, date_format(time_dep, '%H:%i') as time_dep, "
+                  "date_format(time_arr, '%H:%i') as time_arr from flightinfo");
 
     if (!query.exec()) {
         qDebug() << "Error executing query: ";
@@ -114,6 +115,8 @@ void Frm_Admin::loadAllFlightInfoData()
         table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
         table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
         table->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+        table->setItem(row, 12, new QTableWidgetItem(query.value(12).toString()));
+        table->setItem(row, 13, new QTableWidgetItem(query.value(13).toString()));
 
         row++;
     }
@@ -126,7 +129,8 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, 
     QSqlQuery query;
     QString queryStr = "select Flt_ID, Flt_Number, Flt_Company, Flt_Date, Departure, "
                        "Destination, EcoSeats, BusSeats, FstSeats, price_eco, "
-                       "price_bus, price_fst from flightinfo where 1=1";
+                       "price_bus, price_fst, date_format(time_dep, '%H:%i') as time_dep, "
+                       "date_format(time_arr, '%H:%i') as time_arr from flightinfo where 1=1";
 
     if (!_Flt_Number.isEmpty()) {
         queryStr += " and Flt_Number = '" + _Flt_Number + "'";
@@ -174,6 +178,8 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, 
         table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceEco
         table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceBus
         table->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+        table->setItem(row, 12, new QTableWidgetItem(query.value(12).toString()));
+        table->setItem(row, 13, new QTableWidgetItem(query.value(13).toString()));
 
         row++;
     }

@@ -86,7 +86,8 @@ void Frm_User::loadAllFlightInfoData()
     QSqlQuery query;
     query.prepare("select Flt_ID, Flt_Number, Flt_Company, "
                   "Flt_Date, Departure, Destination, EcoSeats, BusSeats, "
-                  "FstSeats, price_eco, price_bus, price_fst from flightinfo");
+                  "FstSeats, price_eco, price_bus, price_fst, date_format(time_dep, '%H:%i') as time_dep, "
+                  "date_format(time_arr, '%H:%i') as time_arr from flightinfo");
 
     if (!query.exec()) {
         qDebug() << "Error executing query: ";
@@ -115,6 +116,8 @@ void Frm_User::loadAllFlightInfoData()
         search_table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceBus
         search_table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceFst
         search_table->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+        search_table->setItem(row, 12, new QTableWidgetItem(query.value(12).toString()));
+        search_table->setItem(row, 13, new QTableWidgetItem(query.value(13).toString()));
 
         row++;
     }
@@ -126,7 +129,8 @@ void Frm_User::loadCertainFlightInfoData(QString _departure, QString _destinatio
     QSqlQuery query;
     QString queryStr = "select Flt_ID, Flt_Number, Flt_Company, Flt_Date, Departure,"
                        "Destination, EcoSeats, BusSeats, FstSeats, price_eco, "
-                       "price_bus, price_fst from flightinfo where 1=1";
+                       "price_bus, price_fst, date_format(time_dep, '%H:%i') as time_dep, "
+                       "date_format(time_arr, '%H:%i') as time_arr from flightinfo where 1=1";
 
     if (!_departure.isEmpty()) {
         queryStr += " and Departure = '" + _departure + "'";
@@ -168,6 +172,8 @@ void Frm_User::loadCertainFlightInfoData(QString _departure, QString _destinatio
         search_table->setItem(row, 9, new QTableWidgetItem(query.value(9).toString())); // PriceBus
         search_table->setItem(row, 10, new QTableWidgetItem(query.value(10).toString())); // PriceFst
         search_table->setItem(row, 11, new QTableWidgetItem(query.value(11).toString())); // PriceFst
+        search_table->setItem(row, 12, new QTableWidgetItem(query.value(12).toString()));
+        search_table->setItem(row, 13, new QTableWidgetItem(query.value(13).toString()));
 
         row++;
     }
@@ -178,7 +184,8 @@ void Frm_User::displayBookedFlightInfoOnBookPage(QString flightId)
     QSqlQuery query;
     query.prepare("select Flt_ID, Flt_Number, Flt_Company, Flt_Date, Departure,"
                   "Destination, EcoSeats, BusSeats, FstSeats, price_eco, "
-                  "price_bus, price_fst from flightinfo where Flt_ID =:flightId");
+                  "price_bus, price_fst, date_format(time_dep, '%H:%i') as time_dep, "
+                  "date_format(time_arr, '%H:%i') as time_arr from flightinfo where Flt_ID =:flightId");
     query.bindValue(":flightId", flightId);
     ui->book_idEdit->setText(flightId);
 
@@ -188,12 +195,16 @@ void Frm_User::displayBookedFlightInfoOnBookPage(QString flightId)
             ui->book_dateEdit->setText(query.value(3).toString());
             ui->book_departureEdit->setText(query.value(4).toString());
             ui->book_destinationEdit->setText(query.value(5).toString());
+            ui->book_departureDateEdit->setText(query.value(12).toString());
+            ui->book_destinationDateEdit->setText(query.value(13).toString());
 
             // Set fields to be read-only after setting the data
             ui->book_numberEdit->setReadOnly(true);
             ui->book_dateEdit->setReadOnly(true);
             ui->book_departureEdit->setReadOnly(true);
             ui->book_destinationEdit->setReadOnly(true);
+            ui->book_departureDateEdit->setReadOnly(true);
+            ui->book_destinationDateEdit->setReadOnly(true);
         } else {
             QMessageBox::information(this, "No Results", "No flight found with the entered flight id.");
         }
@@ -319,6 +330,12 @@ void Frm_User::on_btn_purchase_clicked()
     q.bindValue(":orderPrice", orderPrice.toInt());
     q.bindValue(":flightType", flightType.toInt());
     q.bindValue(":passenger_name", passenger_name);
+
+    if (userId.isEmpty() || flightId.isEmpty() || !purchaseQuantity ||
+        orderPrice.isEmpty() || flightType.isEmpty() || passenger_name.isEmpty()) {
+        QMessageBox::information(this, "Warn!", "please fill all info!");
+        return;
+    }
 
     if (!q.exec()) {
         QMessageBox::information(this, "Failed!", "purchase failed!");
