@@ -48,6 +48,15 @@ public:
     QTimeEdit *timeEdit_Destination_time;
     QLabel *lbl_Departure_time;
     QLabel *lbl_Destination_time;
+    QLineEdit *lineEdit_eco_tickets;
+    QLineEdit *lineEdit_eco_price;
+    QLineEdit *lineEdit_bus_tickets;
+    QLineEdit *lineEdit_fst_tickets;
+    QLineEdit *lineEdit_bus_price;
+    QLineEdit *lineEdit_fst_price;
+    QLabel *lbl_eco;
+    QLabel *lbl_bus;
+    QLabel *lbl_fst;
     QWidget *page2;
     QPushButton *btn_delete;
     QLineEdit *lineEdit_deleteId;
@@ -60,6 +69,7 @@ public:
     QDateEdit *dateEdit_departureDate;
     QPushButton *btn_search;
     QPushButton *btn_reset;
+    QPushButton *btn_del;
     QLabel *titile;
     QMenuBar *menubar;
     QMenu *menu_S;
@@ -103,7 +113,7 @@ public:
         dateEdit_addDate = new QDateEdit(page1);
         dateEdit_addDate->setObjectName("dateEdit_addDate");
         dateEdit_addDate->setGeometry(QRect(90, 160, 150, 28));
-        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(0, 0, 0)));
+        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 11, 30), QTime(16, 0, 0)));
         dateEdit_addDate->setCalendarPopup(true);
         btn_add = new QPushButton(page1);
         btn_add->setObjectName("btn_add");
@@ -120,6 +130,33 @@ public:
         lbl_Destination_time = new QLabel(page1);
         lbl_Destination_time->setObjectName("lbl_Destination_time");
         lbl_Destination_time->setGeometry(QRect(300, 220, 54, 16));
+        lineEdit_eco_tickets = new QLineEdit(page1);
+        lineEdit_eco_tickets->setObjectName("lineEdit_eco_tickets");
+        lineEdit_eco_tickets->setGeometry(QRect(210, 350, 61, 28));
+        lineEdit_eco_price = new QLineEdit(page1);
+        lineEdit_eco_price->setObjectName("lineEdit_eco_price");
+        lineEdit_eco_price->setGeometry(QRect(330, 350, 61, 28));
+        lineEdit_bus_tickets = new QLineEdit(page1);
+        lineEdit_bus_tickets->setObjectName("lineEdit_bus_tickets");
+        lineEdit_bus_tickets->setGeometry(QRect(210, 410, 61, 28));
+        lineEdit_fst_tickets = new QLineEdit(page1);
+        lineEdit_fst_tickets->setObjectName("lineEdit_fst_tickets");
+        lineEdit_fst_tickets->setGeometry(QRect(210, 460, 61, 28));
+        lineEdit_bus_price = new QLineEdit(page1);
+        lineEdit_bus_price->setObjectName("lineEdit_bus_price");
+        lineEdit_bus_price->setGeometry(QRect(330, 410, 61, 28));
+        lineEdit_fst_price = new QLineEdit(page1);
+        lineEdit_fst_price->setObjectName("lineEdit_fst_price");
+        lineEdit_fst_price->setGeometry(QRect(330, 460, 61, 28));
+        lbl_eco = new QLabel(page1);
+        lbl_eco->setObjectName("lbl_eco");
+        lbl_eco->setGeometry(QRect(130, 360, 54, 16));
+        lbl_bus = new QLabel(page1);
+        lbl_bus->setObjectName("lbl_bus");
+        lbl_bus->setGeometry(QRect(130, 420, 54, 16));
+        lbl_fst = new QLabel(page1);
+        lbl_fst->setObjectName("lbl_fst");
+        lbl_fst->setGeometry(QRect(130, 470, 54, 16));
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName("page2");
@@ -180,14 +217,17 @@ public:
         dateEdit_departureDate = new QDateEdit(page3);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(640, 0, 150, 28));
-        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(8, 0, 0)));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(0, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         btn_search = new QPushButton(page3);
         btn_search->setObjectName("btn_search");
-        btn_search->setGeometry(QRect(800, 0, 61, 28));
+        btn_search->setGeometry(QRect(800, 0, 41, 28));
         btn_reset = new QPushButton(page3);
         btn_reset->setObjectName("btn_reset");
-        btn_reset->setGeometry(QRect(870, 0, 51, 28));
+        btn_reset->setGeometry(QRect(850, 0, 41, 28));
+        btn_del = new QPushButton(page3);
+        btn_del->setObjectName("btn_del");
+        btn_del->setGeometry(QRect(900, 0, 41, 28));
         stackedWidget->addWidget(page3);
         titile = new QLabel(centralwidget);
         titile->setObjectName("titile");
@@ -201,7 +241,7 @@ public:
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 17));
+        menubar->setGeometry(QRect(0, 0, 1200, 22));
         menu_S = new QMenu(menubar);
         menu_S->setObjectName("menu_S");
         menu = new QMenu(menubar);
@@ -218,7 +258,7 @@ public:
 
         retranslateUi(Frm_Admin);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Frm_Admin);
@@ -236,6 +276,15 @@ public:
         btn_add->setText(QCoreApplication::translate("Frm_Admin", "\346\267\273\345\212\240", nullptr));
         lbl_Departure_time->setText(QCoreApplication::translate("Frm_Admin", "\350\265\267\351\243\236\346\227\266\351\227\264", nullptr));
         lbl_Destination_time->setText(QCoreApplication::translate("Frm_Admin", "\351\231\215\350\220\275\346\227\266\351\227\264", nullptr));
+        lineEdit_eco_tickets->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\346\200\273\347\245\250\346\225\260", nullptr));
+        lineEdit_eco_price->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\345\256\232\344\273\267", nullptr));
+        lineEdit_bus_tickets->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\346\200\273\347\245\250\346\225\260", nullptr));
+        lineEdit_fst_tickets->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\346\200\273\347\245\250\346\225\260", nullptr));
+        lineEdit_bus_price->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\345\256\232\344\273\267", nullptr));
+        lineEdit_fst_price->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\345\256\232\344\273\267", nullptr));
+        lbl_eco->setText(QCoreApplication::translate("Frm_Admin", "\347\273\217\346\265\216\350\210\261", nullptr));
+        lbl_bus->setText(QCoreApplication::translate("Frm_Admin", "\345\225\206\345\212\241\350\210\261", nullptr));
+        lbl_fst->setText(QCoreApplication::translate("Frm_Admin", "\345\244\264\347\255\211\350\210\261", nullptr));
         btn_delete->setText(QCoreApplication::translate("Frm_Admin", "\345\210\240\351\231\244", nullptr));
         lineEdit_deleteId->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\350\246\201\345\210\240\351\231\244\347\232\204\350\210\252\347\217\255\347\232\204ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
@@ -272,6 +321,7 @@ public:
         lineEdit_destination->setPlaceholderText(QCoreApplication::translate("Frm_Admin", "\347\233\256\347\232\204\345\234\260", nullptr));
         btn_search->setText(QCoreApplication::translate("Frm_Admin", "\346\220\234\347\264\242", nullptr));
         btn_reset->setText(QCoreApplication::translate("Frm_Admin", "\351\207\215\347\275\256", nullptr));
+        btn_del->setText(QCoreApplication::translate("Frm_Admin", "\345\210\240\351\231\244", nullptr));
         titile->setText(QCoreApplication::translate("Frm_Admin", "\350\210\252\347\217\255\351\242\204\350\256\242\347\263\273\347\273\237\357\274\210\345\220\216\345\217\260\357\274\211", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_Admin", "\347\263\273\347\273\237(&S)", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_Admin", "\347\256\241\347\220\206\345\221\230", nullptr));

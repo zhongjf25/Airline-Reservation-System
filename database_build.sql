@@ -32,8 +32,8 @@ CREATE TABLE PurchaseInfo (
     FlightID INT,  -- 购买班次 (外键，关联到 FlightInfo)
     PurchaseQuantity INT,  -- 购买数量
     OrderPrice INT,  -- 订单价格
-    FOREIGN KEY (UserID) REFERENCES UserInfo(UserID),
-    FOREIGN KEY (FlightID) REFERENCES FlightInfo(Flt_ID),
+    FOREIGN KEY (UserID) REFERENCES UserInfo(UserID) ON DELETE CASCADE,
+    FOREIGN KEY (FlightID) REFERENCES FlightInfo(Flt_ID) ON DELETE CASCADE,
     FlightType INT,  -- 0-经济 1-商务 2-头等
     passenger_name varchar(30)
 );
@@ -44,4 +44,4 @@ create table PrevInfo(
     UserPwd varchar(30),
     is_rem bool
 );
-insert into PrevInfo (Username, UserPwd, is_rem) values ('', '', 0);
+-- insert into PrevInfo (Username, UserPwd, is_rem) values ('', '', 0);

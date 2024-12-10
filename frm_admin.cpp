@@ -196,6 +196,11 @@ void Frm_Admin::setupTables()
     table->clearContents();
     table->setRowCount(0);
 
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);     //设置为只读
+    table->setSelectionBehavior(QAbstractItemView::SelectRows); // 选择整行
+    table->setSelectionMode(QAbstractItemView::SingleSelection); // 只允许单行选择
+
+
     // 设置列宽相同，平均占满一行
     int columnCount = table->columnCount();
     for (int i = 0; i < columnCount; ++i) {
@@ -222,13 +227,34 @@ void Frm_Admin::on_btn_add_clicked()
     QString dep_time = ui->timeEdit_Departure_time->time().toString("HH:mm");
     QString arr_time = ui->timeEdit_Destination_time->time().toString("HH:mm");
 
-    if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Please fill all fields!");
+    QString eco_tic = ui->lineEdit_eco_tickets->text();
+    QString eco_price = ui->lineEdit_eco_price->text();
+    QString bus_tic = ui->lineEdit_bus_tickets->text();
+    QString bus_price = ui->lineEdit_bus_price->text();
+    QString fst_tic = ui->lineEdit_fst_tickets->text();
+    QString fst_price = ui->lineEdit_fst_price->text();
+
+    if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty() || company.isEmpty()) {
+        QMessageBox::warning(this, "错误", "未填入航班基础信息");
+        return;
+    }
+
+    if (eco_tic.isEmpty() || eco_price.isEmpty()) {
+        QMessageBox::warning(this, "错误", "未填入经济舱票务信息");
+        return;
+    }
+    if (bus_tic.isEmpty() || bus_price.isEmpty()) {
+        QMessageBox::warning(this, "错误", "未填入商务舱票务信息");
+        return;
+    }
+    if (fst_tic.isEmpty() || fst_price.isEmpty()) {
+        QMessageBox::warning(this, "错误", "未填入经济舱票务信息");
         return;
     }
 
     if(dep_time == arr_time) {
         QMessageBox::warning(this, "警告", "起飞和降落时间不能相同");
+        return;
     }
 
     flight_info* new_flight_info = new flight_info();
@@ -237,12 +263,12 @@ void Frm_Admin::on_btn_add_clicked()
     new_flight_info->setFltDate(departureDate.toString("yyyy-MM-dd"));
     new_flight_info->setDeparture(departure);
     new_flight_info->setDestination(destination);
-    new_flight_info->setEcoSeats(100); // 设置经济舱座位数
-    new_flight_info->setBusSeats(50); // 设置商务舱座位数
-    new_flight_info->setFstSeats(20); // 设置头等舱座位数
-    new_flight_info->setPriceEco(1000); // 设置经济舱票价
-    new_flight_info->setPriceBus(2000); // 设置商务舱票价
-    new_flight_info->setPriceFst(3000); // 设置头等舱票价
+    new_flight_info->setEcoSeats(eco_tic.toInt()); // 设置经济舱座位数
+    new_flight_info->setBusSeats(bus_tic.toInt()); // 设置商务舱座位数
+    new_flight_info->setFstSeats(fst_tic.toInt()); // 设置头等舱座位数
+    new_flight_info->setPriceEco(eco_price.toInt()); // 设置经济舱票价
+    new_flight_info->setPriceBus(bus_price.toInt()); // 设置商务舱票价
+    new_flight_info->setPriceFst(fst_price.toInt()); // 设置头等舱票价
     new_flight_info->setDepTime(dep_time);  //设置起飞时间
     new_flight_info->setArrTime(arr_time);  //设置降落时间
 
@@ -321,16 +347,34 @@ void Frm_Admin::closeEvent(QCloseEvent *event) {
     }
 }
 
+void Frm_Admin::deleteFlight() {
+    int cur = ui->tableWidget->currentRow();    //选中行索引
+
+    if(cur >= 0) {
+        QString id = ui->tableWidget->item(cur, 0)->text();
+
+        QSqlQuery q;
+        q.prepare("delete from FlightInfo where Flt_ID=:id");
+        q.bindValue(":id", id);
+
+        qDebug() << id;
+
+        if(q.exec()) {
+            QMessageBox::information(this, "提示", "成功删除");
+            setupTables();
+        }
+        else {
+            QMessageBox::warning(this, "警告", "删除失败");
+        }
+    }
+    else {
+        QMessageBox::warning(this, "警告", "未选中航班");
+    }
+}
 
 
-
-
-
-
-
-
-
-
-
-
+void Frm_Admin::on_btn_del_clicked()
+{
+    deleteFlight();
+}
 

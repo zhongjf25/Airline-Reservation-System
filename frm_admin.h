@@ -36,6 +36,8 @@ private slots:
     void on_btn_search_clicked(); // 搜索航班按钮
     void on_btn_reset_clicked(); // 重置按钮
 
+    void on_btn_del_clicked();
+
 private:
     Ui::Frm_Admin *ui;
     Frm_Login *pg_login;
@@ -47,6 +49,7 @@ private:
     void deleteFlightInfoById(qint64 deleteFlightInfoId); // 根据id删除对应航班
     void loadCertainFlightInfoData(QString _Flt_Number,QString _company, QString _departure,
                                    QString _destination, QString _departure_date); // 根据信息查询相关flight_info数据
+    void deleteFlight();
 };
 
 #endif // FRM_ADMIN_H
