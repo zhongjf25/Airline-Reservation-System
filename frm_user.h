@@ -41,6 +41,7 @@ private:
     void loadCertainFlightInfoData(QString _departure, QString _destination, QString _departure_date); // 搜索航班
     void displayBookedFlightInfoOnBookPage(QString flightId); // 根据id显示flightInfo到book页面
     void getSelectedFlightId();     //用户选中航班时获取ID
+    void displayUserPurchasedFlightInfoOnUserPage(); // 显示购买航班信息到个人中心页面
 
 private slots:
     void logout();  //登出

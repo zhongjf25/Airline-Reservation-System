@@ -213,6 +213,79 @@ void Frm_User::displayBookedFlightInfoOnBookPage(QString flightId)
     }
 }
 
+void Frm_User::displayUserPurchasedFlightInfoOnUserPage() {
+    QString username = ui->lbl_username->text();
+    ui->username_txt->setText(username);
+    QSqlQuery query;
+    query.prepare("select UserID from userinfo where UserName=:username");
+    query.bindValue(":username", username);
+    QString userid;
+    if (query.exec()) {
+        if (query.next()) {
+            userid = query.value(0).toString();
+        }
+    } else {
+        QMessageBox::information(this, "Query Error", "Error executing query.");
+        return;
+    }
+
+
+    query.prepare("select OrderID, UserID, FlightID, PurchaseQuantity, OrderPrice, "
+                  "FlightType, passenger_name from purchaseinfo where UserID =:userid");
+    query.bindValue(":userid", userid);
+
+    if (!query.exec()) {
+        QMessageBox::information(this, "Query Error", "Error executing query.");
+        return;
+    }
+
+    // Clear existing rows before adding new ones
+    self_table->clearContents();
+    self_table->setRowCount(0);
+
+    // Iterate over all records in purchaseinfo
+    while (query.next()) {
+        QString flightId = query.value(2).toString();
+        QString orderPrice = query.value(4).toString();
+
+        // Fetch flight details for each FlightID
+        QSqlQuery flightQuery;
+        flightQuery.prepare("select Flt_Number, Flt_Company, Flt_Date, Departure, "
+                            "Destination, date_format(time_dep, '%H:%i') as time_dep,"
+                            " date_format(time_arr, '%H:%i') as time_arr"
+                            " from flightinfo where Flt_ID = :flightId");
+        flightQuery.bindValue(":flightId", flightId);
+
+        if (flightQuery.exec() && flightQuery.next()) {
+            QString flightNumber = flightQuery.value(0).toString();
+            QString flightCompany = flightQuery.value(1).toString();
+            QString date = flightQuery.value(2).toString();
+            QString departure = flightQuery.value(3).toString();
+            QString destination = flightQuery.value(4).toString();
+            QString time_dep = flightQuery.value(5).toString();
+            QString time_arr = flightQuery.value(6).toString();
+
+            // Insert the data into the table
+            int row = self_table->rowCount();
+            self_table->insertRow(row);
+
+            self_table->setItem(row, 0, new QTableWidgetItem(query.value(2).toString()));
+            self_table->setItem(row, 1, new QTableWidgetItem(flightNumber));             // Flight Number
+            self_table->setItem(row, 2, new QTableWidgetItem(flightCompany));            // Flight Company
+            self_table->setItem(row, 3, new QTableWidgetItem(departure));               // Departure
+            self_table->setItem(row, 4, new QTableWidgetItem(destination));             // Destination
+            self_table->setItem(row, 5, new QTableWidgetItem(date));                    // Date
+            self_table->setItem(row, 6, new QTableWidgetItem(time_dep));                // Departure Time
+            self_table->setItem(row, 7, new QTableWidgetItem(time_arr));                // Arrival Time
+            self_table->setItem(row, 8, new QTableWidgetItem(orderPrice));              // Order Price
+
+        } else {
+            // If no flight details are found, you can choose to log or display a message
+            qDebug() << "No flight found for FlightID: " << flightId;
+        }
+    }
+}
+
 
 void Frm_User::closeEvent(QCloseEvent *event)
 {
@@ -258,6 +331,7 @@ void Frm_User::exit() {
 }
 
 void Frm_User::goToUserPage() {
+    displayUserPurchasedFlightInfoOnUserPage();
     ui->stackedWidget->setCurrentIndex(1);  // 切换到user页面
 }
 

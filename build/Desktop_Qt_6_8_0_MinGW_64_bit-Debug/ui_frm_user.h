@@ -150,7 +150,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 27), QTime(16, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 27), QTime(8, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -194,8 +194,8 @@ public:
         username_label->setObjectName("username_label");
         username_label->setGeometry(QRect(220, 120, 40, 12));
         self_airline = new QTableWidget(page2);
-        if (self_airline->columnCount() < 7)
-            self_airline->setColumnCount(7);
+        if (self_airline->columnCount() < 9)
+            self_airline->setColumnCount(9);
         QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
         self_airline->setHorizontalHeaderItem(0, __qtablewidgetitem14);
         QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
@@ -210,6 +210,10 @@ public:
         self_airline->setHorizontalHeaderItem(5, __qtablewidgetitem19);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
         self_airline->setHorizontalHeaderItem(6, __qtablewidgetitem20);
+        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
+        self_airline->setHorizontalHeaderItem(7, __qtablewidgetitem21);
+        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
+        self_airline->setHorizontalHeaderItem(8, __qtablewidgetitem22);
         if (self_airline->rowCount() < 1)
             self_airline->setRowCount(1);
         self_airline->setObjectName("self_airline");
@@ -340,7 +344,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -408,14 +412,18 @@ public:
         QTableWidgetItem *___qtablewidgetitem16 = self_airline->horizontalHeaderItem(2);
         ___qtablewidgetitem16->setText(QCoreApplication::translate("Frm_User", "\350\210\252\345\217\270", nullptr));
         QTableWidgetItem *___qtablewidgetitem17 = self_airline->horizontalHeaderItem(3);
-        ___qtablewidgetitem17->setText(QCoreApplication::translate("Frm_User", "\350\265\267\345\247\213\347\202\271", nullptr));
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\345\234\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem18 = self_airline->horizontalHeaderItem(4);
-        ___qtablewidgetitem18->setText(QCoreApplication::translate("Frm_User", "\347\233\256\347\232\204\345\234\260", nullptr));
+        ___qtablewidgetitem18->setText(QCoreApplication::translate("Frm_User", "\346\212\265\350\276\276\345\234\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem19 = self_airline->horizontalHeaderItem(5);
         ___qtablewidgetitem19->setText(QCoreApplication::translate("Frm_User", "\346\227\245\346\234\237", nullptr));
         QTableWidgetItem *___qtablewidgetitem20 = self_airline->horizontalHeaderItem(6);
-        ___qtablewidgetitem20->setText(QCoreApplication::translate("Frm_User", "\344\273\267\346\240\274", nullptr));
-        username_txt->setText(QCoreApplication::translate("Frm_User", "xtttttt", nullptr));
+        ___qtablewidgetitem20->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\346\227\266\351\227\264", nullptr));
+        QTableWidgetItem *___qtablewidgetitem21 = self_airline->horizontalHeaderItem(7);
+        ___qtablewidgetitem21->setText(QCoreApplication::translate("Frm_User", "\346\212\265\350\276\276\346\227\266\351\227\264", nullptr));
+        QTableWidgetItem *___qtablewidgetitem22 = self_airline->horizontalHeaderItem(8);
+        ___qtablewidgetitem22->setText(QCoreApplication::translate("Frm_User", "\344\273\267\346\240\274", nullptr));
+        username_txt->setText(QString());
         btn_return_page1->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
         btn_purchase->setText(QCoreApplication::translate("Frm_User", "\347\241\256\350\256\244\350\264\255\347\245\250", nullptr));
         name->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
