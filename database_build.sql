@@ -44,4 +44,5 @@ create table PrevInfo(
     UserPwd varchar(30),
     is_rem bool
 );
--- insert into PrevInfo (Username, UserPwd, is_rem) values ('', '', 0);
+
+insert into PrevInfo (Username, UserPwd, is_rem) values ('', '', 0);
