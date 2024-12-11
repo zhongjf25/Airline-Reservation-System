@@ -236,6 +236,7 @@ void Frm_User::displayUserPurchasedFlightInfoOnUserPage() {
                   "FlightType, passenger_name from purchaseinfo where UserID =:userid");
     query.bindValue(":userid", userid);
 
+
     if (!query.exec()) {
         QMessageBox::information(this, "Query Error", "Error executing query.");
         return;
@@ -247,6 +248,15 @@ void Frm_User::displayUserPurchasedFlightInfoOnUserPage() {
 
     // Iterate over all records in purchaseinfo
     while (query.next()) {
+        QString orderId = query.value(0).toString();
+        QString flightType = query.value(5).toString();
+        if (flightType == "0") {
+            flightType = "经济舱";
+        } else if (flightType == "1") {
+            flightType = "商务舱";
+        } else if (flightType == "2") {
+            flightType = "头等舱";
+        }
         QString flightId = query.value(2).toString();
         QString orderPrice = query.value(4).toString();
 
@@ -271,15 +281,16 @@ void Frm_User::displayUserPurchasedFlightInfoOnUserPage() {
             int row = self_table->rowCount();
             self_table->insertRow(row);
 
-            self_table->setItem(row, 0, new QTableWidgetItem(query.value(2).toString()));
+            self_table->setItem(row, 0, new QTableWidgetItem(orderId));
             self_table->setItem(row, 1, new QTableWidgetItem(flightNumber));             // Flight Number
             self_table->setItem(row, 2, new QTableWidgetItem(flightCompany));            // Flight Company
-            self_table->setItem(row, 3, new QTableWidgetItem(departure));               // Departure
-            self_table->setItem(row, 4, new QTableWidgetItem(destination));             // Destination
-            self_table->setItem(row, 5, new QTableWidgetItem(date));                    // Date
-            self_table->setItem(row, 6, new QTableWidgetItem(time_dep));                // Departure Time
-            self_table->setItem(row, 7, new QTableWidgetItem(time_arr));                // Arrival Time
-            self_table->setItem(row, 8, new QTableWidgetItem(orderPrice));              // Order Price
+            self_table->setItem(row, 3, new QTableWidgetItem(flightType));
+            self_table->setItem(row, 4, new QTableWidgetItem(departure));               // Departure
+            self_table->setItem(row, 5, new QTableWidgetItem(destination));             // Destination
+            self_table->setItem(row, 6, new QTableWidgetItem(date));                    // Date
+            self_table->setItem(row, 7, new QTableWidgetItem(time_dep));                // Departure Time
+            self_table->setItem(row, 8, new QTableWidgetItem(time_arr));                // Arrival Time
+            self_table->setItem(row, 9, new QTableWidgetItem(orderPrice));              // Order Price
 
         } else {
             // If no flight details are found, you can choose to log or display a message

@@ -147,7 +147,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 26), QTime(8, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 26), QTime(0, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -191,8 +191,8 @@ public:
         username_label->setObjectName("username_label");
         username_label->setGeometry(QRect(220, 120, 40, 12));
         self_airline = new QTableWidget(page2);
-        if (self_airline->columnCount() < 9)
-            self_airline->setColumnCount(9);
+        if (self_airline->columnCount() < 10)
+            self_airline->setColumnCount(10);
         QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
         self_airline->setHorizontalHeaderItem(0, __qtablewidgetitem14);
         QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
@@ -211,6 +211,8 @@ public:
         self_airline->setHorizontalHeaderItem(7, __qtablewidgetitem21);
         QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
         self_airline->setHorizontalHeaderItem(8, __qtablewidgetitem22);
+        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
+        self_airline->setHorizontalHeaderItem(9, __qtablewidgetitem23);
         if (self_airline->rowCount() < 1)
             self_airline->setRowCount(1);
         self_airline->setObjectName("self_airline");
@@ -311,7 +313,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 22));
+        menubar1->setGeometry(QRect(0, 0, 1200, 24));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);
@@ -333,7 +335,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -395,23 +397,25 @@ public:
         btn_book->setText(QCoreApplication::translate("Frm_User", "\350\256\242\347\245\250", nullptr));
         username_label->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
         QTableWidgetItem *___qtablewidgetitem14 = self_airline->horizontalHeaderItem(0);
-        ___qtablewidgetitem14->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255ID", nullptr));
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("Frm_User", "\350\256\242\345\215\225ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem15 = self_airline->horizontalHeaderItem(1);
         ___qtablewidgetitem15->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255\345\217\267", nullptr));
         QTableWidgetItem *___qtablewidgetitem16 = self_airline->horizontalHeaderItem(2);
         ___qtablewidgetitem16->setText(QCoreApplication::translate("Frm_User", "\350\210\252\345\217\270", nullptr));
         QTableWidgetItem *___qtablewidgetitem17 = self_airline->horizontalHeaderItem(3);
-        ___qtablewidgetitem17->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\345\234\260", nullptr));
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("Frm_User", "\350\210\261\344\275\215", nullptr));
         QTableWidgetItem *___qtablewidgetitem18 = self_airline->horizontalHeaderItem(4);
-        ___qtablewidgetitem18->setText(QCoreApplication::translate("Frm_User", "\346\212\265\350\276\276\345\234\260", nullptr));
+        ___qtablewidgetitem18->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\345\234\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem19 = self_airline->horizontalHeaderItem(5);
-        ___qtablewidgetitem19->setText(QCoreApplication::translate("Frm_User", "\346\227\245\346\234\237", nullptr));
+        ___qtablewidgetitem19->setText(QCoreApplication::translate("Frm_User", "\346\212\265\350\276\276\345\234\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem20 = self_airline->horizontalHeaderItem(6);
-        ___qtablewidgetitem20->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\346\227\266\351\227\264", nullptr));
+        ___qtablewidgetitem20->setText(QCoreApplication::translate("Frm_User", "\346\227\245\346\234\237", nullptr));
         QTableWidgetItem *___qtablewidgetitem21 = self_airline->horizontalHeaderItem(7);
-        ___qtablewidgetitem21->setText(QCoreApplication::translate("Frm_User", "\346\212\265\350\276\276\346\227\266\351\227\264", nullptr));
+        ___qtablewidgetitem21->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\346\227\266\351\227\264", nullptr));
         QTableWidgetItem *___qtablewidgetitem22 = self_airline->horizontalHeaderItem(8);
-        ___qtablewidgetitem22->setText(QCoreApplication::translate("Frm_User", "\344\273\267\346\240\274", nullptr));
+        ___qtablewidgetitem22->setText(QCoreApplication::translate("Frm_User", "\346\212\265\350\276\276\346\227\266\351\227\264", nullptr));
+        QTableWidgetItem *___qtablewidgetitem23 = self_airline->horizontalHeaderItem(9);
+        ___qtablewidgetitem23->setText(QCoreApplication::translate("Frm_User", "\344\273\267\346\240\274", nullptr));
         username_txt->setText(QString());
         btn_return_page1->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
         btn_purchase->setText(QCoreApplication::translate("Frm_User", "\347\241\256\350\256\244\350\264\255\347\245\250", nullptr));

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QTableWidget" name="search_airline">
@@ -132,7 +132,7 @@
        </property>
        <property name="dateTime">
         <datetime>
-         <hour>8</hour>
+         <hour>0</hour>
          <minute>0</minute>
          <second>0</second>
          <year>2024</year>
@@ -319,7 +319,7 @@
       <row/>
       <column>
        <property name="text">
-        <string>航班ID</string>
+        <string>订单ID</string>
        </property>
       </column>
       <column>
@@ -330,6 +330,11 @@
       <column>
        <property name="text">
         <string>航司</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>舱位</string>
        </property>
       </column>
       <column>
@@ -702,7 +707,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
