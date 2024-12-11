@@ -501,6 +501,8 @@ void Frm_User::on_btn_book_clicked()
 
     ui->stackedWidget->setCurrentIndex(2);
     ui->btn_purchase->setEnabled(false);
+    ui->type_comboBox->setCurrentIndex(-1);
+    ui->lbl_warning->setText("");
 }
 
 
