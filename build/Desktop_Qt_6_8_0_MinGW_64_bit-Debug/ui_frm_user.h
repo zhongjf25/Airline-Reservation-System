@@ -76,6 +76,7 @@ public:
     QLineEdit *book_priceEdit;
     QLabel *flightId_label;
     QLineEdit *book_idEdit;
+    QLabel *lbl_warning;
     QMenuBar *menubar;
     QStatusBar *statusbar;
     QMenuBar *menubar1;
@@ -146,7 +147,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 26), QTime(16, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 26), QTime(8, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -296,6 +297,10 @@ public:
         book_idEdit = new QLineEdit(page3);
         book_idEdit->setObjectName("book_idEdit");
         book_idEdit->setGeometry(QRect(350, 20, 111, 21));
+        lbl_warning = new QLabel(page3);
+        lbl_warning->setObjectName("lbl_warning");
+        lbl_warning->setGeometry(QRect(490, 340, 81, 16));
+        lbl_warning->setStyleSheet(QString::fromUtf8("color:RED"));
         stackedWidget->addWidget(page3);
         menubar = new QMenuBar();
         menubar->setObjectName("menubar");
@@ -306,7 +311,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 17));
+        menubar1->setGeometry(QRect(0, 0, 1200, 22));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);
@@ -328,7 +333,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -426,6 +431,7 @@ public:
         btn_toSearch->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
         book_priceEdit->setPlaceholderText(QCoreApplication::translate("Frm_User", "\350\257\267\351\200\211\346\213\251\350\210\261\344\275\215", nullptr));
         flightId_label->setText(QCoreApplication::translate("Frm_User", "\350\210\252\347\217\255ID", nullptr));
+        lbl_warning->setText(QCoreApplication::translate("Frm_User", "\350\257\267\351\200\211\346\213\251\350\210\261\344\275\215", nullptr));
         menu->setTitle(QCoreApplication::translate("Frm_User", "\347\224\250\346\210\267(&U)", nullptr));
         menu_S->setTitle(QCoreApplication::translate("Frm_User", "\347\263\273\347\273\237(&S)", nullptr));
     } // retranslateUi

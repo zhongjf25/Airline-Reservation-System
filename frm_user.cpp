@@ -12,6 +12,8 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
     , ui(new Ui::Frm_User)
 {
     ui->setupUi(this);
+    setWindowTitle("航班订购系统");
+
     pg_login = l;
     username = n;   //传入用户名
 
@@ -470,7 +472,16 @@ void Frm_User::on_btn_book_clicked()
 {
     QString flightId = ui->bookEdit->text();
     if (flightId.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Please enter a flight id.");
+        QMessageBox::warning(this, "错误", "未选择航班");
+        return;
+    }
+
+    int cur = ui->search_airline->currentRow();
+    QTableWidgetItem *item1 = ui->search_airline->item(cur, 6);
+    QTableWidgetItem *item2 = ui->search_airline->item(cur, 7);
+    QTableWidgetItem *item3 = ui->search_airline->item(cur, 8);
+    if(item1->text()=="0" && item2->text()=="0" && item3->text()=="0") {
+        QMessageBox::warning(this, "无法购买", "该航班已售罄");
         return;
     }
 
@@ -478,6 +489,7 @@ void Frm_User::on_btn_book_clicked()
     displayBookedFlightInfoOnBookPage(flightId);
 
     ui->stackedWidget->setCurrentIndex(2);
+    ui->btn_purchase->setEnabled(false);
 }
 
 
@@ -503,10 +515,13 @@ void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
     QString eco_price;
     QString bus_price;
     QString fst_price;
+    int eco_num=0;
+    int bus_num=0;
+    int fst_num=0;
 
     // Query to get the prices for all seat types
     QSqlQuery q;
-    q.prepare("select price_eco, price_bus, price_fst from flightinfo where Flt_ID =:flightId");
+    q.prepare("select price_eco, price_bus, price_fst, EcoSeats, BusSeats, FstSeats from flightinfo where Flt_ID =:flightId");
     q.bindValue(":flightId", flightId);
 
     if (q.exec()) {
@@ -514,6 +529,9 @@ void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
             eco_price = q.value(0).toString();
             bus_price = q.value(1).toString();
             fst_price = q.value(2).toString();
+            eco_num = q.value(3).toInt();
+            bus_num = q.value(4).toInt();
+            fst_num = q.value(5).toInt();
             qDebug() << "Eco Price: " << eco_price << " Bus Price: " << bus_price << " Fst Price: " << fst_price;
         }
     }
@@ -521,12 +539,33 @@ void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
     // Set the price based on the selected seat class
     if (arg1 == "经济舱") {
         price = eco_price;  // Economy class price
+        if(eco_num <= 0) {
+            ui->btn_purchase->setEnabled(false);
+            ui->lbl_warning->setText("该舱位已售罄");
+        } else {
+            ui->btn_purchase->setEnabled(true);
+            ui->lbl_warning->setText("");
+        }
     }
     else if (arg1 == "商务舱") {
         price = bus_price;  // Business class price
+        if(bus_num <= 0) {
+            ui->btn_purchase->setEnabled(false);
+            ui->lbl_warning->setText("该舱位已售罄");
+        } else {
+            ui->btn_purchase->setEnabled(true);
+            ui->lbl_warning->setText("");
+        }
     }
     else if (arg1 == "头等舱") {
         price = fst_price;  // First class price
+        if(fst_num <= 0) {
+            ui->btn_purchase->setEnabled(false);
+            ui->lbl_warning->setText("该舱位已售罄");
+        } else {
+            ui->btn_purchase->setEnabled(true);
+            ui->lbl_warning->setText("");
+        }
     }
 
     // Update the price displayed in the UI

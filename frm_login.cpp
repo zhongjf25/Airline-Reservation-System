@@ -11,6 +11,7 @@ Frm_Login::Frm_Login(QWidget *parent)
     , ui(new Ui::Frm_Login)
 {
     ui->setupUi(this);
+    setWindowTitle("登录");
 
     //连接数据库
     db = QSqlDatabase::addDatabase("QODBC");   //加载ODBC数据库驱动

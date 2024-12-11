@@ -8,6 +8,7 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     , ui(new Ui::Frm_Admin)
 {
     ui->setupUi(this);
+    setWindowTitle("航班管理系统");
     pg_login = l;
 
     // 初始化表格数据

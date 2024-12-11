@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QTableWidget" name="search_airline">
@@ -132,7 +132,7 @@
        </property>
        <property name="dateTime">
         <datetime>
-         <hour>16</hour>
+         <hour>8</hour>
          <minute>0</minute>
          <second>0</second>
          <year>2024</year>
@@ -675,6 +675,22 @@
        </rect>
       </property>
      </widget>
+     <widget class="QLabel" name="lbl_warning">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>340</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:RED</string>
+      </property>
+      <property name="text">
+       <string>请选择舱位</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QMenuBar" name="menubar"/>
     <widget class="QStatusBar" name="statusbar"/>
@@ -686,7 +702,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>17</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
