@@ -18,10 +18,6 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     ui->listWidget->addItem("删除航班");
     ui->listWidget->addItem("航班信息");
 
-
-    // 默认显示数据table页面（可选）
-    ui->stackedWidget->setCurrentIndex(2);
-
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_Admin::exit);      //退出系统
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &Frm_Admin::onListWidgetClicked);  // 处理侧边栏切换
@@ -251,6 +247,10 @@ void Frm_Admin::on_btn_add_clicked()
     }
     if (fst_tic.isEmpty() || fst_price.isEmpty()) {
         QMessageBox::warning(this, "错误", "未填入头等舱票务信息");
+        return;
+    }
+    if (QTime::fromString(arr_time, "HH:mm") < QTime::fromString(dep_time, "HH:mm")) {
+        QMessageBox::warning(this, "时间错误", "到达时间不能早于起飞时间");
         return;
     }
 

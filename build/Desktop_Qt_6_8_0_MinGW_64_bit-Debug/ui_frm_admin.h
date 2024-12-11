@@ -95,7 +95,7 @@ public:
         listWidget->setFont(font);
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
-        stackedWidget->setGeometry(QRect(230, 80, 951, 671));
+        stackedWidget->setGeometry(QRect(210, 80, 981, 671));
         page1 = new QWidget();
         page1->setObjectName("page1");
         lineEdit_addNumber = new QLineEdit(page1);
@@ -113,7 +113,7 @@ public:
         dateEdit_addDate = new QDateEdit(page1);
         dateEdit_addDate->setObjectName("dateEdit_addDate");
         dateEdit_addDate->setGeometry(QRect(90, 160, 150, 28));
-        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 11, 30), QTime(16, 0, 0)));
+        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 11, 30), QTime(0, 0, 0)));
         dateEdit_addDate->setCalendarPopup(true);
         btn_add = new QPushButton(page1);
         btn_add->setObjectName("btn_add");
@@ -201,7 +201,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(13, __qtablewidgetitem13);
         tableWidget->setObjectName("tableWidget");
-        tableWidget->setGeometry(QRect(0, 60, 951, 611));
+        tableWidget->setGeometry(QRect(0, 60, 971, 611));
         lineEdit_flightNumber = new QLineEdit(page3);
         lineEdit_flightNumber->setObjectName("lineEdit_flightNumber");
         lineEdit_flightNumber->setGeometry(QRect(0, 0, 150, 28));
@@ -217,7 +217,7 @@ public:
         dateEdit_departureDate = new QDateEdit(page3);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(640, 0, 150, 28));
-        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 12, 1), QTime(0, 0, 0)));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 11, 30), QTime(8, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         btn_search = new QPushButton(page3);
         btn_search->setObjectName("btn_search");
@@ -241,7 +241,7 @@ public:
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 22));
+        menubar->setGeometry(QRect(0, 0, 1200, 17));
         menu_S = new QMenu(menubar);
         menu_S->setObjectName("menu_S");
         menu = new QMenu(menubar);
@@ -258,7 +258,7 @@ public:
 
         retranslateUi(Frm_Admin);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Frm_Admin);

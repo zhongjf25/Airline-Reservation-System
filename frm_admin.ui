@@ -32,14 +32,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>210</x>
       <y>80</y>
-      <width>951</width>
+      <width>981</width>
       <height>671</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QLineEdit" name="lineEdit_addNumber">
@@ -105,7 +105,7 @@
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>16</hour>
+        <hour>0</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
@@ -328,7 +328,7 @@
        <rect>
         <x>0</x>
         <y>60</y>
-        <width>951</width>
+        <width>971</width>
         <height>611</height>
        </rect>
       </property>
@@ -466,12 +466,12 @@
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>0</hour>
+        <hour>8</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
-        <month>12</month>
-        <day>1</day>
+        <month>11</month>
+        <day>30</day>
        </datetime>
       </property>
       <property name="calendarPopup">
@@ -547,7 +547,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_S">
