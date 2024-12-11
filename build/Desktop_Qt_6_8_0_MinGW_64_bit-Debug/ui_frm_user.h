@@ -147,26 +147,16 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 25), QTime(16, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 25), QTime(8, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
         btn_search->setGeometry(QRect(430, 30, 51, 21));
         comboBox_departure = new QComboBox(groupBox);
-        comboBox_departure->addItem(QString());
-        comboBox_departure->addItem(QString());
-        comboBox_departure->addItem(QString());
-        comboBox_departure->addItem(QString());
-        comboBox_departure->addItem(QString());
         comboBox_departure->setObjectName("comboBox_departure");
         comboBox_departure->setGeometry(QRect(40, 30, 100, 22));
         comboBox_departure->setEditable(true);
         comboBox_destination = new QComboBox(groupBox);
-        comboBox_destination->addItem(QString());
-        comboBox_destination->addItem(QString());
-        comboBox_destination->addItem(QString());
-        comboBox_destination->addItem(QString());
-        comboBox_destination->addItem(QString());
         comboBox_destination->setObjectName("comboBox_destination");
         comboBox_destination->setGeometry(QRect(200, 30, 100, 22));
         comboBox_destination->setEditable(true);
@@ -379,18 +369,6 @@ public:
         ___qtablewidgetitem13->setText(QCoreApplication::translate("Frm_User", "\345\210\260\350\276\276\346\227\266\351\227\264", nullptr));
         groupBox->setTitle(QCoreApplication::translate("Frm_User", " \350\210\252\347\217\255\346\220\234\347\264\242", nullptr));
         btn_search->setText(QCoreApplication::translate("Frm_User", "\346\220\234\347\264\242", nullptr));
-        comboBox_departure->setItemText(0, QCoreApplication::translate("Frm_User", "\345\214\227\344\272\254", nullptr));
-        comboBox_departure->setItemText(1, QCoreApplication::translate("Frm_User", "\344\270\212\346\265\267", nullptr));
-        comboBox_departure->setItemText(2, QCoreApplication::translate("Frm_User", "\345\271\277\345\267\236", nullptr));
-        comboBox_departure->setItemText(3, QCoreApplication::translate("Frm_User", "\346\267\261\345\234\263", nullptr));
-        comboBox_departure->setItemText(4, QCoreApplication::translate("Frm_User", "\346\210\220\351\203\275", nullptr));
-
-        comboBox_destination->setItemText(0, QCoreApplication::translate("Frm_User", "\345\214\227\344\272\254", nullptr));
-        comboBox_destination->setItemText(1, QCoreApplication::translate("Frm_User", "\344\270\212\346\265\267", nullptr));
-        comboBox_destination->setItemText(2, QCoreApplication::translate("Frm_User", "\345\271\277\345\267\236", nullptr));
-        comboBox_destination->setItemText(3, QCoreApplication::translate("Frm_User", "\346\267\261\345\234\263", nullptr));
-        comboBox_destination->setItemText(4, QCoreApplication::translate("Frm_User", "\346\210\220\351\203\275", nullptr));
-
         labelArrow->setText(QString());
         btn_reset->setText(QCoreApplication::translate("Frm_User", "\351\207\215\347\275\256", nullptr));
         bookEdit->setPlaceholderText(QCoreApplication::translate("Frm_User", "\350\257\267\350\276\223\345\205\245\350\210\252\347\217\255\345\217\267", nullptr));

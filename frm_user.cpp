@@ -122,6 +122,14 @@ void Frm_User::loadAllFlightInfoData()
         search_table->setItem(row, 13, new QTableWidgetItem(query.value(13).toString()));
 
         row++;
+
+        //加载出发目的地下拉框
+        if(ui->comboBox_departure->findText(query.value(4).toString()) == -1) {
+            ui->comboBox_departure->addItem(query.value(4).toString());
+        }
+        if(ui->comboBox_destination->findText(query.value(5).toString()) == -1) {
+            ui->comboBox_destination->addItem(query.value(5).toString());
+        }
     }
 
 }
@@ -599,9 +607,16 @@ void Frm_User::getSelectedFlightId()    //获取选中航班ID
     if (currentRow >= 0) {
         // 获取选中行的 Flt_ID 数据（假设 Flt_ID 在第一列）
         QString flightId = ui->search_airline->item(currentRow, 0)->text(); // 列索引 0
-        // qDebug() << "Selected Flt_ID:" << flightId;
         ui->bookEdit->setText(flightId);
-    } else {
+
+        //设置搜索框的城市和日期
+        ui->comboBox_departure->setCurrentText(ui->search_airline->item(currentRow, 4)->text());
+        ui->comboBox_destination->setCurrentText(ui->search_airline->item(currentRow, 5)->text());
+        QDate date = QDate::fromString(ui->search_airline->item(currentRow, 3)->text(), "yyyy-MM-dd");
+        ui->dateEdit->setDate(date);
+
+    }
+    else {
         qDebug() << "No row selected.";
     }
 }
