@@ -286,6 +286,47 @@ void Frm_User::displayUserPurchasedFlightInfoOnUserPage() {
     }
 }
 
+void Frm_User::updateAirlineByFlightId(QString flightId, QString flightType)
+{
+    QSqlQuery query;
+    query.prepare("select EcoSeats, BusSeats, FstSeats from flightinfo where Flt_ID =:flightId");
+    query.bindValue(":flightId", flightId);
+    qint64 ecoseats = 0, busseats = 0, fstseats = 0;
+    if (query.exec()) {
+        if (query.next()) {
+            ecoseats = query.value(0).toInt();
+            busseats = query.value(1).toInt();
+            fstseats = query.value(2).toInt();
+        }
+    } else {
+        QMessageBox::information(this, "Query Error", "Error executing query.");
+        return;
+    }
+    if (flightType == "0") {
+        ecoseats -= 1;
+    } else if (flightType == "1") {
+        busseats -= 1;
+    } else if (flightType == "2") {
+        fstseats -= 1;
+    } else {
+        QMessageBox::information(this, "FlightType error", "out of range.");
+        return;
+    }
+    query.prepare("update flightinfo set EcoSeats =:ecoseats, BusSeats =:busseats,"
+                  " FstSeats =:fstseats where Flt_ID =:flightId");
+    query.bindValue(":ecoseats", ecoseats);
+    query.bindValue(":busseats", busseats);
+    query.bindValue(":fstseats", fstseats);
+    query.bindValue(":flightId", flightId);
+    if (query.exec()) {
+        if (query.next()) {
+            QMessageBox::information(this, "Success!", "Successful Update FlightInfo");
+        }
+    } else {
+        QMessageBox::information(this, "Query Error", "Error executing query.");
+    }
+}
+
 
 void Frm_User::closeEvent(QCloseEvent *event)
 {
@@ -390,7 +431,7 @@ void Frm_User::on_btn_purchase_clicked()
     qint64 purchaseQuantity = 1;
     QString orderPrice = ui->book_priceEdit->text();
     QString flightType = ui->type_comboBox->currentText();
-    QString passenger_name = ui->book_userNameEdit->text();
+    QString passenger_name = username;
     // 判断
     if (flightType == "经济舱") flightType = "0";
     else if (flightType == "商务舱") flightType = "1";
@@ -414,7 +455,13 @@ void Frm_User::on_btn_purchase_clicked()
     if (!q.exec()) {
         QMessageBox::information(this, "Failed!", "purchase failed!");
     } else {
+        // 更新票数
+        updateAirlineByFlightId(flightId, flightType);
+        loadAllFlightInfoData();
+
         QMessageBox::information(this, "Success!", "Successful Purchase");
+
+        on_btn_return_page1_clicked();
     }
 }
 

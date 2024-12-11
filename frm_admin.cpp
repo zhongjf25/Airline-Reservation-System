@@ -234,11 +234,13 @@ void Frm_Admin::on_btn_add_clicked()
     QString fst_tic = ui->lineEdit_fst_tickets->text();
     QString fst_price = ui->lineEdit_fst_price->text();
 
+    // 检查基础信息是否填写完整
     if (flightNumber.isEmpty() || departure.isEmpty() || destination.isEmpty() || company.isEmpty()) {
         QMessageBox::warning(this, "错误", "未填入航班基础信息");
         return;
     }
 
+    // 检查票务信息是否填写完整
     if (eco_tic.isEmpty() || eco_price.isEmpty()) {
         QMessageBox::warning(this, "错误", "未填入经济舱票务信息");
         return;
@@ -248,35 +250,71 @@ void Frm_Admin::on_btn_add_clicked()
         return;
     }
     if (fst_tic.isEmpty() || fst_price.isEmpty()) {
-        QMessageBox::warning(this, "错误", "未填入经济舱票务信息");
+        QMessageBox::warning(this, "错误", "未填入头等舱票务信息");
         return;
     }
 
-    if(dep_time == arr_time) {
+    // 验证输入的座位数和价格是否为数字
+    bool ok;
+    int ecoSeats = eco_tic.toInt(&ok);
+    if (!ok || ecoSeats < 0) {
+        QMessageBox::warning(this, "错误", "经济舱座位数必须为非负整数");
+        return;
+    }
+    int ecoPrice = eco_price.toInt(&ok);
+    if (!ok || ecoPrice < 0) {
+        QMessageBox::warning(this, "错误", "经济舱价格必须为非负整数");
+        return;
+    }
+    int busSeats = bus_tic.toInt(&ok);
+    if (!ok || busSeats < 0) {
+        QMessageBox::warning(this, "错误", "商务舱座位数必须为非负整数");
+        return;
+    }
+    int busPrice = bus_price.toInt(&ok);
+    if (!ok || busPrice < 0) {
+        QMessageBox::warning(this, "错误", "商务舱价格必须为非负整数");
+        return;
+    }
+    int fstSeats = fst_tic.toInt(&ok);
+    if (!ok || fstSeats < 0) {
+        QMessageBox::warning(this, "错误", "头等舱座位数必须为非负整数");
+        return;
+    }
+    int fstPrice = fst_price.toInt(&ok);
+    if (!ok || fstPrice < 0) {
+        QMessageBox::warning(this, "错误", "头等舱价格必须为非负整数");
+        return;
+    }
+
+    // 检查起飞和降落时间是否相同
+    if (dep_time == arr_time) {
         QMessageBox::warning(this, "警告", "起飞和降落时间不能相同");
         return;
     }
 
+    // 创建航班信息对象并赋值
     flight_info* new_flight_info = new flight_info();
     new_flight_info->setFltNumber(flightNumber);
     new_flight_info->setFltCompany(company);
     new_flight_info->setFltDate(departureDate.toString("yyyy-MM-dd"));
     new_flight_info->setDeparture(departure);
     new_flight_info->setDestination(destination);
-    new_flight_info->setEcoSeats(eco_tic.toInt()); // 设置经济舱座位数
-    new_flight_info->setBusSeats(bus_tic.toInt()); // 设置商务舱座位数
-    new_flight_info->setFstSeats(fst_tic.toInt()); // 设置头等舱座位数
-    new_flight_info->setPriceEco(eco_price.toInt()); // 设置经济舱票价
-    new_flight_info->setPriceBus(bus_price.toInt()); // 设置商务舱票价
-    new_flight_info->setPriceFst(fst_price.toInt()); // 设置头等舱票价
-    new_flight_info->setDepTime(dep_time);  //设置起飞时间
-    new_flight_info->setArrTime(arr_time);  //设置降落时间
+    new_flight_info->setEcoSeats(ecoSeats);
+    new_flight_info->setBusSeats(busSeats);
+    new_flight_info->setFstSeats(fstSeats);
+    new_flight_info->setPriceEco(ecoPrice);
+    new_flight_info->setPriceBus(busPrice);
+    new_flight_info->setPriceFst(fstPrice);
+    new_flight_info->setDepTime(dep_time);
+    new_flight_info->setArrTime(arr_time);
 
     // 将数据插入到数据库
     addNewFlightInfo(new_flight_info);
 
     delete new_flight_info;
 }
+
 
 void Frm_Admin::on_btn_delete_clicked()
 {

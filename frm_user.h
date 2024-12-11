@@ -42,6 +42,7 @@ private:
     void displayBookedFlightInfoOnBookPage(QString flightId); // 根据id显示flightInfo到book页面
     void getSelectedFlightId();     //用户选中航班时获取ID
     void displayUserPurchasedFlightInfoOnUserPage(); // 显示购买航班信息到个人中心页面
+    void updateAirlineByFlightId(QString flightId, QString flightType); // 更新购买后对应航班票数的变化
 
 private slots:
     void logout();  //登出

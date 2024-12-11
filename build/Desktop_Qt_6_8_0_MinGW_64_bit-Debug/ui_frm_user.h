@@ -57,10 +57,6 @@ public:
     QPushButton *btn_return_page1;
     QWidget *page3;
     QPushButton *btn_purchase;
-    QLineEdit *book_userNameEdit;
-    QLineEdit *book_userIdEdit;
-    QLabel *name;
-    QLabel *humanID;
     QLabel *rank;
     QComboBox *type_comboBox;
     QLabel *date;
@@ -150,7 +146,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 27), QTime(0, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 26), QTime(16, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -229,19 +225,7 @@ public:
         page3->setObjectName("page3");
         btn_purchase = new QPushButton(page3);
         btn_purchase->setObjectName("btn_purchase");
-        btn_purchase->setGeometry(QRect(360, 480, 91, 41));
-        book_userNameEdit = new QLineEdit(page3);
-        book_userNameEdit->setObjectName("book_userNameEdit");
-        book_userNameEdit->setGeometry(QRect(350, 380, 111, 21));
-        book_userIdEdit = new QLineEdit(page3);
-        book_userIdEdit->setObjectName("book_userIdEdit");
-        book_userIdEdit->setGeometry(QRect(350, 430, 111, 21));
-        name = new QLabel(page3);
-        name->setObjectName("name");
-        name->setGeometry(QRect(280, 380, 61, 31));
-        humanID = new QLabel(page3);
-        humanID->setObjectName("humanID");
-        humanID->setGeometry(QRect(270, 420, 41, 41));
+        btn_purchase->setGeometry(QRect(360, 390, 71, 31));
         rank = new QLabel(page3);
         rank->setObjectName("rank");
         rank->setGeometry(QRect(270, 280, 61, 41));
@@ -322,7 +306,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 22));
+        menubar1->setGeometry(QRect(0, 0, 1200, 17));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);
@@ -344,7 +328,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -426,8 +410,6 @@ public:
         username_txt->setText(QString());
         btn_return_page1->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
         btn_purchase->setText(QCoreApplication::translate("Frm_User", "\347\241\256\350\256\244\350\264\255\347\245\250", nullptr));
-        name->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
-        humanID->setText(QCoreApplication::translate("Frm_User", "\350\257\201\344\273\266\345\217\267\357\274\232", nullptr));
         rank->setText(QCoreApplication::translate("Frm_User", "\345\272\247\344\275\215\347\255\211\347\272\247\357\274\232", nullptr));
         type_comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\244\264\347\255\211\350\210\261", nullptr));
         type_comboBox->setItemText(1, QCoreApplication::translate("Frm_User", "\345\225\206\345\212\241\350\210\261", nullptr));
