@@ -264,6 +264,41 @@
       </column>
       <column>
        <property name="text">
+        <string>航班号</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>航司</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>日期</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>出发地</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>抵达地</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>出发时间</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>抵达时间</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>订单价格</string>
        </property>
       </column>

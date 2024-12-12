@@ -183,16 +183,54 @@ void Frm_Admin::loadAllPurchaseInfoData()
 
     int row = 0;
     while (query.next()) {
+        QString flightId = query.value(2).toString(); // flightId
+        QString flightType = query.value(4).toString();
+        if (flightType == "0") {
+            flightType = "经济舱";
+        } else if (flightType == "1") {
+            flightType = "商务舱";
+        } else if (flightType == "2") {
+            flightType = "头等舱";
+        }
+
+        // Query for additional flight information using flightId
+        QSqlQuery flightQuery;
+        flightQuery.prepare("select Flt_Number, Flt_Company, Flt_Date, Departure, Destination, "
+                            "date_format(time_dep, '%H:%i') as time_dep, date_format(time_arr, '%H:%i') as time_arr"
+                            " from flightinfo where Flt_ID = :flightId");
+        flightQuery.bindValue(":flightId", flightId);
+
+        QString FlightNumber, FlightCompany, FlightDate, depature, destination, departureTime, arrivalTime;
+        if (flightQuery.exec() && flightQuery.next()) {
+            FlightNumber = flightQuery.value(0).toString();
+            FlightCompany = flightQuery.value(1).toString();
+            FlightDate = flightQuery.value(2).toString();
+            depature = flightQuery.value(3).toString();
+            destination = flightQuery.value(4).toString();
+            departureTime = flightQuery.value(5).toString();
+            arrivalTime = flightQuery.value(6).toString();
+        } else {
+            qDebug() << "Error executing flight query";
+        }
+
         // Insert a new row in the table for each record
         purchaseInfoTable->insertRow(row);
 
         // Set the data for each column in the current row
         purchaseInfoTable->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // OrderID
         purchaseInfoTable->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // UserID
-        purchaseInfoTable->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // FlightID
-        purchaseInfoTable->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // OrderPrice
-        purchaseInfoTable->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // FlightType
-        purchaseInfoTable->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // passenger_name
+        purchaseInfoTable->setItem(row, 2, new QTableWidgetItem(flightId)); // flightId
+        // Add the additional flight information to the table
+        purchaseInfoTable->setItem(row, 3, new QTableWidgetItem(FlightNumber));
+        purchaseInfoTable->setItem(row, 4, new QTableWidgetItem(FlightCompany));
+        purchaseInfoTable->setItem(row, 5, new QTableWidgetItem(FlightDate));
+        purchaseInfoTable->setItem(row, 6, new QTableWidgetItem(depature));
+        purchaseInfoTable->setItem(row, 7, new QTableWidgetItem(destination));
+        purchaseInfoTable->setItem(row, 8, new QTableWidgetItem(departureTime));
+        purchaseInfoTable->setItem(row, 9, new QTableWidgetItem(arrivalTime));
+        purchaseInfoTable->setItem(row, 10, new QTableWidgetItem(query.value(3).toString())); // OrderPrice
+        purchaseInfoTable->setItem(row, 11, new QTableWidgetItem(flightType)); // FlightType
+        purchaseInfoTable->setItem(row, 12, new QTableWidgetItem(query.value(5).toString())); // passenger_name
 
         row++;
     }
