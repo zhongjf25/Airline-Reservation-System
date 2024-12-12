@@ -522,11 +522,11 @@ void Frm_User::on_btn_toSearch_clicked()
 
 void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
 {
-    qDebug() << "Selected Seat Class: " << arg1;
+    // qDebug() << "Selected Seat Class: " << arg1;
 
     QString price;
     QString flightId = ui->book_idEdit->text();
-    qDebug() << "Flight ID: " << flightId;
+    // qDebug() << "Flight ID: " << flightId;
 
     if (flightId.isEmpty()) {
         qDebug() << "Flight ID is empty!";
@@ -553,7 +553,7 @@ void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
             eco_num = q.value(3).toInt();
             bus_num = q.value(4).toInt();
             fst_num = q.value(5).toInt();
-            qDebug() << "Eco Price: " << eco_price << " Bus Price: " << bus_price << " Fst Price: " << fst_price;
+            // qDebug() << "Eco Price: " << eco_price << " Bus Price: " << bus_price << " Fst Price: " << fst_price;
         }
     }
 
@@ -592,7 +592,7 @@ void Frm_User::on_type_comboBox_currentTextChanged(const QString &arg1)
     // Update the price displayed in the UI
     ui->book_priceEdit->setText(price);
 
-    qDebug() << "Updated Price: " << price;
+    // qDebug() << "Updated Price: " << price;
 }
 
 
@@ -620,3 +620,47 @@ void Frm_User::getSelectedFlightId()    //获取选中航班ID
         qDebug() << "No row selected.";
     }
 }
+
+void Frm_User::on_btn_refund_clicked()
+{
+    int cur = ui->self_airline->currentRow();
+
+    if(cur < 0) {
+        QMessageBox::warning(this, "错误", "未选择订单");
+        return;
+    }
+
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "提示", "是否确定退票", QMessageBox::Yes|QMessageBox::No);
+    if(reply == QMessageBox::No) return;
+
+    QSqlQuery q;
+
+    q.prepare("select FlightId, FlightType from PurchaseInfo where OrderID=:id");
+    q.bindValue(":id", ui->self_airline->item(cur, 0)->text());
+    q.exec();
+    q.next();
+    int temp_id = q.value(0).toInt();
+    int temp_type = q.value(1).toInt();
+
+
+    if(temp_type == 0)
+        q.prepare("update FlightInfo set EcoSeats=EcoSeats+1 where Flt_ID=:id");
+    else if(temp_type == 1)
+        q.prepare("update FlightInfo set BusSeats=BusSeats+1 where Flt_ID=:id");
+    else if(temp_type == 2)
+        q.prepare("update FlightInfo set FstSeats=FstSeats+1 where Flt_ID=:id");
+    q.bindValue(":id", temp_id);
+    if(q.exec()) {
+        qDebug()<<"成功修改数据库: " << temp_id << temp_type;
+    }
+
+    q.prepare("delete from PurchaseInfo where OrderId=:id");
+    q.bindValue(":id", ui->self_airline->item(cur, 0)->text());
+    if(q.exec()) {
+        QMessageBox::information(this, "提示", "退票成功");
+        setupTables();
+    }
+
+}
+

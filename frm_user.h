@@ -57,6 +57,7 @@ private slots:
     void on_btn_book_clicked();
     void on_btn_toSearch_clicked();
     void on_type_comboBox_currentTextChanged(const QString &arg1);
+    void on_btn_refund_clicked();
 };
 
 #endif // FRM_USER_H

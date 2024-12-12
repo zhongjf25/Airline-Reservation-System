@@ -55,6 +55,7 @@ public:
     QTableWidget *self_airline;
     QLabel *username_txt;
     QPushButton *btn_return_page1;
+    QPushButton *btn_refund;
     QWidget *page3;
     QPushButton *btn_purchase;
     QLabel *rank;
@@ -147,7 +148,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 25), QTime(8, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 24), QTime(16, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -213,6 +214,9 @@ public:
         btn_return_page1 = new QPushButton(page2);
         btn_return_page1->setObjectName("btn_return_page1");
         btn_return_page1->setGeometry(QRect(50, 20, 92, 28));
+        btn_refund = new QPushButton(page2);
+        btn_refund->setObjectName("btn_refund");
+        btn_refund->setGeometry(QRect(980, 110, 75, 24));
         stackedWidget->addWidget(page2);
         page3 = new QWidget();
         page3->setObjectName("page3");
@@ -325,7 +329,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -346,7 +350,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = search_airline->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("Frm_User", "\350\210\252\345\217\270", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = search_airline->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("Frm_User", "\346\227\266\351\227\264", nullptr));
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("Frm_User", "\346\227\245\346\234\237", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = search_airline->horizontalHeaderItem(4);
         ___qtablewidgetitem4->setText(QCoreApplication::translate("Frm_User", "\345\207\272\345\217\221\345\234\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = search_airline->horizontalHeaderItem(5);
@@ -396,6 +400,7 @@ public:
         ___qtablewidgetitem23->setText(QCoreApplication::translate("Frm_User", "\344\273\267\346\240\274", nullptr));
         username_txt->setText(QString());
         btn_return_page1->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
+        btn_refund->setText(QCoreApplication::translate("Frm_User", "\351\200\200\347\245\250", nullptr));
         btn_purchase->setText(QCoreApplication::translate("Frm_User", "\347\241\256\350\256\244\350\264\255\347\245\250", nullptr));
         rank->setText(QCoreApplication::translate("Frm_User", "\345\272\247\344\275\215\347\255\211\347\272\247\357\274\232", nullptr));
         type_comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\244\264\347\255\211\350\210\261", nullptr));
