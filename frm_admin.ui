@@ -39,9 +39,247 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page1">
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>971</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>航班号</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>航司</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>航班日期</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>出发地</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>目的地</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>经济舱余票</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>商务舱余票</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>头等舱余票</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>经济舱定价</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>商务舱定价</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>头等舱定价</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>出发时间</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>到达时间</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_flightNumber">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>150</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>航班号</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_flightCompany">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>0</y>
+        <width>150</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>航司</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_departure">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>0</y>
+        <width>150</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>出发地</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_destination">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>0</y>
+        <width>150</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>目的地</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit_departureDate">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>0</y>
+        <width>150</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="dateTime">
+       <datetime>
+        <hour>16</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>2024</year>
+        <month>11</month>
+        <day>29</day>
+       </datetime>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_search">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>0</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>搜索</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_reset">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>0</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>重置</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_del">
+      <property name="geometry">
+       <rect>
+        <x>900</x>
+        <y>0</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>删除</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page2">
+     <widget class="QTableWidget" name="purchaseInfoTable">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>961</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>订单ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>买家ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>航班ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>订单价格</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>舱位类型</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>买家姓名</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page3">
      <widget class="QLineEdit" name="lineEdit_addNumber">
       <property name="geometry">
        <rect>
@@ -105,7 +343,7 @@
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>16</hour>
+        <hour>8</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
@@ -294,230 +532,6 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page2">
-     <widget class="QPushButton" name="btn_delete">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>130</y>
-        <width>92</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>删除</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_deleteId">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>130</y>
-        <width>150</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>要删除的航班的ID</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page3">
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>60</y>
-        <width>971</width>
-        <height>611</height>
-       </rect>
-      </property>
-      <column>
-       <property name="text">
-        <string>ID</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>航班号</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>航司</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>航班日期</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>出发地</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>目的地</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>经济舱余票</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>商务舱余票</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>头等舱余票</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>经济舱定价</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>商务舱定价</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>头等舱定价</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>出发时间</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>到达时间</string>
-       </property>
-      </column>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_flightNumber">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>150</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>航班号</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_flightCompany">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>0</y>
-        <width>150</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>航司</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_departure">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>0</y>
-        <width>150</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>出发地</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_destination">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>0</y>
-        <width>150</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>目的地</string>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="dateEdit_departureDate">
-      <property name="geometry">
-       <rect>
-        <x>640</x>
-        <y>0</y>
-        <width>150</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="dateTime">
-       <datetime>
-        <hour>0</hour>
-        <minute>0</minute>
-        <second>0</second>
-        <year>2024</year>
-        <month>11</month>
-        <day>30</day>
-       </datetime>
-      </property>
-      <property name="calendarPopup">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_search">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>0</y>
-        <width>41</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>搜索</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_reset">
-      <property name="geometry">
-       <rect>
-        <x>850</x>
-        <y>0</y>
-        <width>41</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>重置</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_del">
-      <property name="geometry">
-       <rect>
-        <x>900</x>
-        <y>0</y>
-        <width>41</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>删除</string>
-      </property>
-     </widget>
-    </widget>
    </widget>
    <widget class="QLabel" name="titile">
     <property name="geometry">
@@ -547,7 +561,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_S">

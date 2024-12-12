@@ -15,9 +15,9 @@ Frm_Admin::Frm_Admin(QWidget *parent, Frm_Login *l)
     setupTables();
 
     // 初始化列表项
-    ui->listWidget->addItem("增加航班");
-    ui->listWidget->addItem("删除航班");
     ui->listWidget->addItem("航班信息");
+    ui->listWidget->addItem("订单信息");
+    ui->listWidget->addItem("增加航班");
 
     connect(ui->act_logout, &QAction::triggered, this, &Frm_Admin::logout);   //登出
     connect(ui->act_exit, &QAction::triggered, this, &Frm_Admin::exit);      //退出系统
@@ -59,21 +59,6 @@ void Frm_Admin::addNewFlightInfo(flight_info* new_flight_info)
         qDebug() << "Data inserted successfully";
     }
     // Load the flight data once after insertion
-    loadAllFlightInfoData();
-}
-
-void Frm_Admin::deleteFlightInfoById(qint64 deleteFlightInfoId)
-{
-    QSqlQuery q;
-    q.prepare("delete from flightinfo where Flt_ID =:_deleteFlightInfoId");
-    q.bindValue(":_deleteFlightInfoId", deleteFlightInfoId);
-
-    if (q.exec()) {
-        qDebug() << "delete flightInfo which id = " << deleteFlightInfoId << " successfully!";
-    } else {
-        qDebug() << "Error deleting data";
-    }
-
     loadAllFlightInfoData();
 }
 
@@ -182,20 +167,58 @@ void Frm_Admin::loadCertainFlightInfoData(QString _Flt_Number,QString _company, 
     }
 }
 
+void Frm_Admin::loadAllPurchaseInfoData()
+{
+    QSqlQuery query;
+    query.prepare("select OrderID, UserID, FlightID, OrderPrice, FlightType, passenger_name from purchaseinfo");
+
+    if (!query.exec()) {
+        qDebug() << "Error executing query: ";
+        return;
+    }
+
+    // Clear existing rows before adding new data
+    purchaseInfoTable->clearContents();
+    purchaseInfoTable->setRowCount(0);
+
+    int row = 0;
+    while (query.next()) {
+        // Insert a new row in the table for each record
+        purchaseInfoTable->insertRow(row);
+
+        // Set the data for each column in the current row
+        purchaseInfoTable->setItem(row, 0, new QTableWidgetItem(query.value(0).toString())); // OrderID
+        purchaseInfoTable->setItem(row, 1, new QTableWidgetItem(query.value(1).toString())); // UserID
+        purchaseInfoTable->setItem(row, 2, new QTableWidgetItem(query.value(2).toString())); // FlightID
+        purchaseInfoTable->setItem(row, 3, new QTableWidgetItem(query.value(3).toString())); // OrderPrice
+        purchaseInfoTable->setItem(row, 4, new QTableWidgetItem(query.value(4).toString())); // FlightType
+        purchaseInfoTable->setItem(row, 5, new QTableWidgetItem(query.value(5).toString())); // passenger_name
+
+        row++;
+    }
+}
+
 
 void Frm_Admin::setupTables()
 {
     table = ui->tableWidget;
+    purchaseInfoTable = ui->purchaseInfoTable;
 
     table->verticalHeader()->setVisible(false);  // Hide the vertical header (row numbers)
+    purchaseInfoTable->verticalHeader()->setVisible(false);  // Hide the vertical header (row numbers)
 
     // Clear existing rows before adding new data
     table->clearContents();
     table->setRowCount(0);
+    purchaseInfoTable->clearContents();
+    purchaseInfoTable->setRowCount(0);
 
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);     //设置为只读
     table->setSelectionBehavior(QAbstractItemView::SelectRows); // 选择整行
     table->setSelectionMode(QAbstractItemView::SingleSelection); // 只允许单行选择
+    purchaseInfoTable->setEditTriggers(QAbstractItemView::NoEditTriggers);     //设置为只读
+    purchaseInfoTable->setSelectionBehavior(QAbstractItemView::SelectRows); // 选择整行
+    purchaseInfoTable->setSelectionMode(QAbstractItemView::SingleSelection); // 只允许单行选择
 
 
     // 设置列宽相同，平均占满一行
@@ -204,8 +227,15 @@ void Frm_Admin::setupTables()
         table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
     }
 
+    // 设置列宽相同，平均占满一行
+    int columnCount2 = purchaseInfoTable->columnCount();
+    for (int i = 0; i < columnCount2; ++i) {
+        purchaseInfoTable->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+    }
+
     // 加载数据
     loadAllFlightInfoData();
+    loadAllPurchaseInfoData();
 }
 
 void Frm_Admin::onListWidgetClicked(int index)
@@ -316,19 +346,6 @@ void Frm_Admin::on_btn_add_clicked()
     delete new_flight_info;
 }
 
-
-void Frm_Admin::on_btn_delete_clicked()
-{
-    QString flightId = ui->lineEdit_deleteId->text();
-    if (flightId.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Please fill id!");
-        return;
-    }
-
-    qint64 flightIdInt = flightId.toInt();
-
-    deleteFlightInfoById(flightIdInt);
-}
 
 void Frm_Admin::on_btn_search_clicked()
 {
