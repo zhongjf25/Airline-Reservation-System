@@ -90,6 +90,8 @@ public:
         if (Frm_User->objectName().isEmpty())
             Frm_User->setObjectName("Frm_User");
         Frm_User->resize(1200, 800);
+        Frm_User->setMinimumSize(QSize(1200, 800));
+        Frm_User->setSizeIncrement(QSize(1200, 800));
         act_logout = new QAction(Frm_User);
         act_logout->setObjectName("act_logout");
         act_del = new QAction(Frm_User);
@@ -148,7 +150,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 24), QTime(16, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 24), QTime(0, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -180,7 +182,10 @@ public:
         page2->setObjectName("page2");
         username_label = new QLabel(page2);
         username_label->setObjectName("username_label");
-        username_label->setGeometry(QRect(220, 120, 40, 12));
+        username_label->setGeometry(QRect(40, 110, 51, 61));
+        QFont font;
+        font.setPointSize(12);
+        username_label->setFont(font);
         self_airline = new QTableWidget(page2);
         if (self_airline->columnCount() < 10)
             self_airline->setColumnCount(10);
@@ -207,10 +212,11 @@ public:
         if (self_airline->rowCount() < 1)
             self_airline->setRowCount(1);
         self_airline->setObjectName("self_airline");
-        self_airline->setGeometry(QRect(40, 190, 1021, 192));
+        self_airline->setGeometry(QRect(40, 190, 1021, 411));
         username_txt = new QLabel(page2);
         username_txt->setObjectName("username_txt");
-        username_txt->setGeometry(QRect(280, 120, 40, 12));
+        username_txt->setGeometry(QRect(100, 110, 91, 61));
+        username_txt->setFont(font);
         btn_return_page1 = new QPushButton(page2);
         btn_return_page1->setObjectName("btn_return_page1");
         btn_return_page1->setGeometry(QRect(50, 20, 92, 28));
@@ -307,7 +313,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 22));
+        menubar1->setGeometry(QRect(0, 0, 1200, 24));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);

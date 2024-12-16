@@ -6,6 +6,9 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QSqlQuery>
+#include <QPixmap>
+#include <QPalette>
+#include <QMainWindow>
 
 
 QT_BEGIN_NAMESPACE

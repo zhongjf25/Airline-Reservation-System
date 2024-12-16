@@ -32,6 +32,40 @@ Frm_User::Frm_User(QWidget *parent, Frm_Login *l, QString n)
             this, &Frm_User::on_type_comboBox_currentTextChanged); //连接舱位选择
     connect(ui->search_airline, &QTableWidget::itemClicked, this, &Frm_User::getSelectedFlightId);  //自动获取选中行ID
 
+    // 加载背景图片
+    QPixmap originalBkgnd(":/img/login_background.jpg"); // 图片资源的路径，根据实际情况调整
+
+    // 将 QPixmap 转换为 QImage，以便进行亮度调整
+    QImage image = originalBkgnd.toImage();
+
+    // 调整亮度：增加亮度可以通过增加每个像素的 RGB 值来实现
+    int brightnessFactor = 1000; // 增加的亮度（范围可以根据需求调整）
+
+    for (int y = 0; y < image.height(); ++y) {
+        for (int x = 0; x < image.width(); ++x) {
+            QColor color = image.pixelColor(x, y);
+            int r = qMin(color.red() + brightnessFactor, 255);
+            int g = qMin(color.green() + brightnessFactor, 255);
+            int b = qMin(color.blue() + brightnessFactor, 255);
+            image.setPixelColor(x, y, QColor(r, g, b));
+        }
+    }
+
+    // 将调整过亮度的 QImage 转换回 QPixmap
+    QPixmap bkgnd = QPixmap::fromImage(image);
+
+    // QPixmap bkgnd(originalBkgnd.size());
+    bkgnd.fill(Qt::transparent); // 使用透明填充初始化新的 QPixmap
+    QPainter p(&bkgnd);
+    p.setOpacity(0.8); // 设置透明度为80%
+    p.drawPixmap(0, 0, originalBkgnd);
+    p.end();
+
+    // 设置背景图片
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
+
 }
 
 void Frm_User::setupTables()
@@ -663,4 +697,3 @@ void Frm_User::on_btn_refund_clicked()
     }
 
 }
-

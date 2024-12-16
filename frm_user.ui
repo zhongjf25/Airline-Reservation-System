@@ -10,6 +10,18 @@
     <height>800</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -132,7 +144,7 @@
        </property>
        <property name="dateTime">
         <datetime>
-         <hour>16</hour>
+         <hour>0</hour>
          <minute>0</minute>
          <second>0</second>
          <year>2024</year>
@@ -247,11 +259,16 @@
      <widget class="QLabel" name="username_label">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>120</y>
-        <width>40</width>
-        <height>12</height>
+        <x>40</x>
+        <y>110</y>
+        <width>51</width>
+        <height>61</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>姓名：</string>
@@ -263,7 +280,7 @@
         <x>40</x>
         <y>190</y>
         <width>1021</width>
-        <height>192</height>
+        <height>411</height>
        </rect>
       </property>
       <row/>
@@ -321,11 +338,16 @@
      <widget class="QLabel" name="username_txt">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>120</y>
-        <width>40</width>
-        <height>12</height>
+        <x>100</x>
+        <y>110</y>
+        <width>91</width>
+        <height>61</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string/>
@@ -670,7 +692,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

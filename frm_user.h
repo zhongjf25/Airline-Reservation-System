@@ -13,6 +13,9 @@
 #include <QPixmap>
 #include <QPushButton>
 #include <QIcon>
+#include <QPixmap>
+#include <QPalette>
+#include <QMainWindow>
 
 namespace Ui {
 class Frm_User;

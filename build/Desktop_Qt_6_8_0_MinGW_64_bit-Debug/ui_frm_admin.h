@@ -80,6 +80,8 @@ public:
         if (Frm_Admin->objectName().isEmpty())
             Frm_Admin->setObjectName("Frm_Admin");
         Frm_Admin->resize(1200, 800);
+        Frm_Admin->setMinimumSize(QSize(1200, 800));
+        Frm_Admin->setMaximumSize(QSize(1200, 800));
         act_exit = new QAction(Frm_Admin);
         act_exit->setObjectName("act_exit");
         act_logout = new QAction(Frm_Admin);
@@ -145,7 +147,7 @@ public:
         dateEdit_departureDate = new QDateEdit(page1);
         dateEdit_departureDate->setObjectName("dateEdit_departureDate");
         dateEdit_departureDate->setGeometry(QRect(640, 0, 150, 28));
-        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 11, 29), QTime(16, 0, 0)));
+        dateEdit_departureDate->setDateTime(QDateTime(QDate(2024, 11, 29), QTime(8, 0, 0)));
         dateEdit_departureDate->setCalendarPopup(true);
         btn_search = new QPushButton(page1);
         btn_search->setObjectName("btn_search");
@@ -208,7 +210,7 @@ public:
         dateEdit_addDate = new QDateEdit(page3);
         dateEdit_addDate->setObjectName("dateEdit_addDate");
         dateEdit_addDate->setGeometry(QRect(90, 160, 150, 28));
-        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 11, 29), QTime(8, 0, 0)));
+        dateEdit_addDate->setDateTime(QDateTime(QDate(2024, 11, 29), QTime(0, 0, 0)));
         dateEdit_addDate->setCalendarPopup(true);
         btn_add = new QPushButton(page3);
         btn_add->setObjectName("btn_add");
@@ -265,7 +267,7 @@ public:
         Frm_Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Frm_Admin);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1200, 24));
+        menubar->setGeometry(QRect(0, 0, 1200, 18));
         menu_S = new QMenu(menubar);
         menu_S->setObjectName("menu_S");
         menu = new QMenu(menubar);

@@ -2,6 +2,9 @@
 #define FRM_REGISTER_H
 
 #include <QWidget>
+#include <QPixmap>
+#include <QPalette>
+#include <QMainWindow>
 #include "frm_login.h"
 
 namespace Ui {
