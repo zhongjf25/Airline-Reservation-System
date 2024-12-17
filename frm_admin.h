@@ -11,7 +11,6 @@
 #include <QTableWidget>
 #include <QPixmap>
 #include <QPalette>
-#include <QMainWindow>
 
 namespace Ui {
 class Frm_Admin;

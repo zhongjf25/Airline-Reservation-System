@@ -91,6 +91,7 @@ public:
             Frm_User->setObjectName("Frm_User");
         Frm_User->resize(1200, 800);
         Frm_User->setMinimumSize(QSize(1200, 800));
+        Frm_User->setMaximumSize(QSize(1200, 800));
         Frm_User->setSizeIncrement(QSize(1200, 800));
         act_logout = new QAction(Frm_User);
         act_logout->setObjectName("act_logout");
@@ -150,7 +151,7 @@ public:
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 24), QTime(0, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 23), QTime(16, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
@@ -313,7 +314,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 24));
+        menubar1->setGeometry(QRect(0, 0, 1200, 18));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);

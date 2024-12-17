@@ -34,34 +34,36 @@ public:
     {
         if (Frm_User_ChangePwd->objectName().isEmpty())
             Frm_User_ChangePwd->setObjectName("Frm_User_ChangePwd");
-        Frm_User_ChangePwd->resize(400, 300);
+        Frm_User_ChangePwd->resize(1200, 800);
+        Frm_User_ChangePwd->setMinimumSize(QSize(1200, 800));
+        Frm_User_ChangePwd->setMaximumSize(QSize(1200, 800));
         lbl_pwd0 = new QLabel(Frm_User_ChangePwd);
         lbl_pwd0->setObjectName("lbl_pwd0");
-        lbl_pwd0->setGeometry(QRect(50, 70, 54, 16));
+        lbl_pwd0->setGeometry(QRect(450, 310, 54, 16));
         lbl_pwd1 = new QLabel(Frm_User_ChangePwd);
         lbl_pwd1->setObjectName("lbl_pwd1");
-        lbl_pwd1->setGeometry(QRect(50, 120, 54, 16));
+        lbl_pwd1->setGeometry(QRect(450, 360, 54, 16));
         lbl_pwd2 = new QLabel(Frm_User_ChangePwd);
         lbl_pwd2->setObjectName("lbl_pwd2");
-        lbl_pwd2->setGeometry(QRect(50, 180, 54, 16));
+        lbl_pwd2->setGeometry(QRect(450, 420, 54, 16));
         txt_pwd0 = new QLineEdit(Frm_User_ChangePwd);
         txt_pwd0->setObjectName("txt_pwd0");
-        txt_pwd0->setGeometry(QRect(160, 70, 171, 20));
+        txt_pwd0->setGeometry(QRect(560, 310, 171, 20));
         txt_pwd0->setEchoMode(QLineEdit::EchoMode::Password);
         txt_pwd1 = new QLineEdit(Frm_User_ChangePwd);
         txt_pwd1->setObjectName("txt_pwd1");
-        txt_pwd1->setGeometry(QRect(160, 120, 171, 20));
+        txt_pwd1->setGeometry(QRect(560, 360, 171, 20));
         txt_pwd1->setEchoMode(QLineEdit::EchoMode::Password);
         txt_pwd2 = new QLineEdit(Frm_User_ChangePwd);
         txt_pwd2->setObjectName("txt_pwd2");
-        txt_pwd2->setGeometry(QRect(160, 180, 171, 20));
+        txt_pwd2->setGeometry(QRect(560, 420, 171, 20));
         txt_pwd2->setEchoMode(QLineEdit::EchoMode::Password);
         button_yes = new QPushButton(Frm_User_ChangePwd);
         button_yes->setObjectName("button_yes");
-        button_yes->setGeometry(QRect(90, 240, 75, 24));
+        button_yes->setGeometry(QRect(490, 480, 75, 24));
         button_no = new QPushButton(Frm_User_ChangePwd);
         button_no->setObjectName("button_no");
-        button_no->setGeometry(QRect(210, 240, 75, 24));
+        button_no->setGeometry(QRect(610, 480, 75, 24));
 
         retranslateUi(Frm_User_ChangePwd);
 

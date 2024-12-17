@@ -14,7 +14,7 @@ Frm_Login::Frm_Login(QWidget *parent)
     setWindowTitle("登录");
 
     // 加载背景图片
-    QPixmap originalBkgnd(":/img/login_background.jpg"); // 图片资源的路径，根据实际情况调整
+    QPixmap originalBkgnd(":/img/back.jpg"); // 图片资源的路径，根据实际情况调整
 
     // 将 QPixmap 转换为 QImage，以便进行亮度调整
     QImage image = originalBkgnd.toImage();
@@ -38,7 +38,7 @@ Frm_Login::Frm_Login(QWidget *parent)
     // QPixmap bkgnd(originalBkgnd.size());
     bkgnd.fill(Qt::transparent); // 使用透明填充初始化新的 QPixmap
     QPainter p(&bkgnd);
-    p.setOpacity(0.8); // 设置透明度为80%
+    p.setOpacity(0.9); // 设置透明度为80%
     p.drawPixmap(0, 0, originalBkgnd);
     p.end();
 

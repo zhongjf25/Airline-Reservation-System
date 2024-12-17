@@ -30,20 +30,22 @@ public:
     {
         if (Frm_User_Delete->objectName().isEmpty())
             Frm_User_Delete->setObjectName("Frm_User_Delete");
-        Frm_User_Delete->resize(400, 300);
+        Frm_User_Delete->resize(1200, 800);
+        Frm_User_Delete->setMinimumSize(QSize(1200, 800));
+        Frm_User_Delete->setMaximumSize(QSize(1200, 800));
         lbl_pwd = new QLabel(Frm_User_Delete);
         lbl_pwd->setObjectName("lbl_pwd");
-        lbl_pwd->setGeometry(QRect(110, 120, 54, 16));
+        lbl_pwd->setGeometry(QRect(540, 380, 54, 16));
         txt_pwd = new QLineEdit(Frm_User_Delete);
         txt_pwd->setObjectName("txt_pwd");
-        txt_pwd->setGeometry(QRect(170, 120, 113, 20));
+        txt_pwd->setGeometry(QRect(600, 380, 113, 20));
         txt_pwd->setEchoMode(QLineEdit::EchoMode::Password);
         btn_del = new QPushButton(Frm_User_Delete);
         btn_del->setObjectName("btn_del");
-        btn_del->setGeometry(QRect(100, 210, 75, 24));
+        btn_del->setGeometry(QRect(530, 470, 75, 24));
         btn_cancel = new QPushButton(Frm_User_Delete);
         btn_cancel->setObjectName("btn_cancel");
-        btn_cancel->setGeometry(QRect(200, 210, 75, 24));
+        btn_cancel->setGeometry(QRect(630, 470, 75, 24));
 
         retranslateUi(Frm_User_Delete);
 

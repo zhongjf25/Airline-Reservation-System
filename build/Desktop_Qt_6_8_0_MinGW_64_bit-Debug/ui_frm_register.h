@@ -34,33 +34,35 @@ public:
     {
         if (Frm_Register->objectName().isEmpty())
             Frm_Register->setObjectName("Frm_Register");
-        Frm_Register->resize(369, 582);
+        Frm_Register->resize(1200, 800);
+        Frm_Register->setMinimumSize(QSize(1200, 800));
+        Frm_Register->setMaximumSize(QSize(1200, 800));
         lbl_name = new QLabel(Frm_Register);
         lbl_name->setObjectName("lbl_name");
-        lbl_name->setGeometry(QRect(30, 160, 54, 16));
+        lbl_name->setGeometry(QRect(490, 270, 54, 16));
         lbl_pwd = new QLabel(Frm_Register);
         lbl_pwd->setObjectName("lbl_pwd");
-        lbl_pwd->setGeometry(QRect(30, 210, 54, 16));
+        lbl_pwd->setGeometry(QRect(490, 320, 54, 16));
         lbl_pwd2 = new QLabel(Frm_Register);
         lbl_pwd2->setObjectName("lbl_pwd2");
-        lbl_pwd2->setGeometry(QRect(30, 270, 54, 16));
+        lbl_pwd2->setGeometry(QRect(490, 380, 54, 16));
         txt_name = new QLineEdit(Frm_Register);
         txt_name->setObjectName("txt_name");
-        txt_name->setGeometry(QRect(102, 160, 161, 21));
+        txt_name->setGeometry(QRect(562, 270, 161, 21));
         txt_pwd = new QLineEdit(Frm_Register);
         txt_pwd->setObjectName("txt_pwd");
-        txt_pwd->setGeometry(QRect(102, 210, 161, 21));
+        txt_pwd->setGeometry(QRect(562, 320, 161, 21));
         txt_pwd->setEchoMode(QLineEdit::EchoMode::Password);
         txt_pwd2 = new QLineEdit(Frm_Register);
         txt_pwd2->setObjectName("txt_pwd2");
-        txt_pwd2->setGeometry(QRect(102, 270, 161, 21));
+        txt_pwd2->setGeometry(QRect(562, 380, 161, 21));
         txt_pwd2->setEchoMode(QLineEdit::EchoMode::Password);
         btn_register = new QPushButton(Frm_Register);
         btn_register->setObjectName("btn_register");
-        btn_register->setGeometry(QRect(60, 390, 75, 24));
+        btn_register->setGeometry(QRect(520, 500, 75, 24));
         btn_cancel = new QPushButton(Frm_Register);
         btn_cancel->setObjectName("btn_cancel");
-        btn_cancel->setGeometry(QRect(190, 390, 75, 24));
+        btn_cancel->setGeometry(QRect(650, 500, 75, 24));
 
         retranslateUi(Frm_Register);
 

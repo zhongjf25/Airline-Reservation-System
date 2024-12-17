@@ -3,5 +3,6 @@
         <file>img/arrow.png</file>
         <file>img/login_background.jpg</file>
         <file>img/login_background2.jpg</file>
+        <file>img/back.jpg</file>
     </qresource>
 </RCC>

@@ -73,7 +73,7 @@ public:
         label->setObjectName("label");
         label->setGeometry(QRect(460, 140, 291, 61));
         QFont font1;
-        font1.setFamilies({QString::fromUtf8("\345\215\216\346\226\207\350\241\214\346\245\267")});
+        font1.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
         font1.setPointSize(28);
         label->setFont(font1);
         lbl_pwd = new QLabel(Frm_Login);

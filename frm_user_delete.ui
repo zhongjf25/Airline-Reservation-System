@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -16,8 +28,8 @@
   <widget class="QLabel" name="lbl_pwd">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>120</y>
+     <x>540</x>
+     <y>380</y>
      <width>54</width>
      <height>16</height>
     </rect>
@@ -29,8 +41,8 @@
   <widget class="QLineEdit" name="txt_pwd">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>120</y>
+     <x>600</x>
+     <y>380</y>
      <width>113</width>
      <height>20</height>
     </rect>
@@ -42,8 +54,8 @@
   <widget class="QPushButton" name="btn_del">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>210</y>
+     <x>530</x>
+     <y>470</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -55,8 +67,8 @@
   <widget class="QPushButton" name="btn_cancel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>210</y>
+     <x>630</x>
+     <y>470</y>
      <width>75</width>
      <height>24</height>
     </rect>
