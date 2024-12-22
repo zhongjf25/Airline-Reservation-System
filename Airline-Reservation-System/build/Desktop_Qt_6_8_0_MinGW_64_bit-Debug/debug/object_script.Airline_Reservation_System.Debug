@@ -1,0 +1,16 @@
+debug/flight_info.o
+debug/frm_admin.o
+debug/frm_register.o
+debug/frm_user.o
+debug/frm_user_changepwd.o
+debug/frm_user_delete.o
+debug/main.o
+debug/frm_login.o
+debug/qrc_res.o
+debug/moc_flight_info.o
+debug/moc_frm_admin.o
+debug/moc_frm_login.o
+debug/moc_frm_register.o
+debug/moc_frm_user.o
+debug/moc_frm_user_changepwd.o
+debug/moc_frm_user_delete.o

@@ -1,0 +1,16 @@
+release/flight_info.o
+release/frm_admin.o
+release/frm_register.o
+release/frm_user.o
+release/frm_user_changepwd.o
+release/frm_user_delete.o
+release/main.o
+release/frm_login.o
+release/qrc_res.o
+release/moc_flight_info.o
+release/moc_frm_admin.o
+release/moc_frm_login.o
+release/moc_frm_register.o
+release/moc_frm_user.o
+release/moc_frm_user_changepwd.o
+release/moc_frm_user_delete.o
