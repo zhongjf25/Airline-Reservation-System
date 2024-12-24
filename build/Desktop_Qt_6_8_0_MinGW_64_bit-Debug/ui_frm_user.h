@@ -50,12 +50,14 @@ public:
     QPushButton *btn_reset;
     QLineEdit *bookEdit;
     QPushButton *btn_book;
+    QLabel *label;
     QWidget *page2;
     QLabel *username_label;
     QTableWidget *self_airline;
     QLabel *username_txt;
     QPushButton *btn_return_page1;
     QPushButton *btn_refund;
+    QLabel *label_2;
     QWidget *page3;
     QPushButton *btn_purchase;
     QLabel *rank;
@@ -104,11 +106,15 @@ public:
         lbl_username->setObjectName("lbl_username");
         centralwidget = new QWidget(Frm_User);
         centralwidget->setObjectName("centralwidget");
+        centralwidget->setMinimumSize(QSize(1200, 800));
+        centralwidget->setMaximumSize(QSize(1200, 800));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
-        stackedWidget->setGeometry(QRect(10, 20, 1171, 611));
+        stackedWidget->setGeometry(QRect(30, 30, 1171, 611));
         page1 = new QWidget();
         page1->setObjectName("page1");
+        page1->setMinimumSize(QSize(1200, 800));
+        page1->setMaximumSize(QSize(1200, 800));
         search_airline = new QTableWidget(page1);
         if (search_airline->columnCount() < 14)
             search_airline->setColumnCount(14);
@@ -144,24 +150,43 @@ public:
             search_airline->setRowCount(2);
         search_airline->setObjectName("search_airline");
         search_airline->setGeometry(QRect(40, 190, 1021, 281));
+        search_airline->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"font: 22pt \"\345\256\213\344\275\223\";\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+"font: 9pt \"\351\232\266\344\271\246\";"));
         groupBox = new QGroupBox(page1);
         groupBox->setObjectName("groupBox");
         groupBox->setGeometry(QRect(270, 70, 581, 80));
         dateEdit = new QDateEdit(groupBox);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(310, 30, 101, 21));
-        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 24), QTime(0, 0, 0)));
+        dateEdit->setDateTime(QDateTime(QDate(2024, 11, 23), QTime(0, 0, 0)));
         dateEdit->setCalendarPopup(true);
         btn_search = new QPushButton(groupBox);
         btn_search->setObjectName("btn_search");
         btn_search->setGeometry(QRect(430, 30, 51, 21));
+        btn_search->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         comboBox_departure = new QComboBox(groupBox);
         comboBox_departure->setObjectName("comboBox_departure");
         comboBox_departure->setGeometry(QRect(40, 30, 100, 22));
+        comboBox_departure->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 205, 171); \n"
+" border: 2px solid rgb(0, 0, 127); \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         comboBox_departure->setEditable(true);
         comboBox_destination = new QComboBox(groupBox);
         comboBox_destination->setObjectName("comboBox_destination");
         comboBox_destination->setGeometry(QRect(200, 30, 100, 22));
+        comboBox_destination->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 205, 171); \n"
+" border: 2px solid rgb(0, 0, 127); \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         comboBox_destination->setEditable(true);
         labelArrow = new QLabel(groupBox);
         labelArrow->setObjectName("labelArrow");
@@ -171,15 +196,40 @@ public:
         btn_reset = new QPushButton(groupBox);
         btn_reset->setObjectName("btn_reset");
         btn_reset->setGeometry(QRect(500, 30, 51, 21));
+        btn_reset->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         bookEdit = new QLineEdit(page1);
         bookEdit->setObjectName("bookEdit");
         bookEdit->setGeometry(QRect(30, 530, 101, 21));
+        bookEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 205, 171); \n"
+" border: 2px solid rgb(0, 0, 127); \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         btn_book = new QPushButton(page1);
         btn_book->setObjectName("btn_book");
         btn_book->setGeometry(QRect(490, 510, 121, 51));
+        btn_book->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"font: 22pt \"\345\256\213\344\275\223\";\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
+        label = new QLabel(page1);
+        label->setObjectName("label");
+        label->setGeometry(QRect(490, 10, 261, 41));
+        label->setStyleSheet(QString::fromUtf8("font: 28pt \"\346\245\267\344\275\223\";\n"
+"font-size: 38px;\n"
+"font-weight: bold;\n"
+"color: rgb(0, 0, 127);\n"
+""));
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName("page2");
+        page2->setMinimumSize(QSize(1200, 800));
+        page2->setMaximumSize(QSize(1200, 800));
         username_label = new QLabel(page2);
         username_label->setObjectName("username_label");
         username_label->setGeometry(QRect(40, 110, 51, 61));
@@ -213,6 +263,12 @@ public:
             self_airline->setRowCount(1);
         self_airline->setObjectName("self_airline");
         self_airline->setGeometry(QRect(40, 190, 1021, 411));
+        self_airline->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"font: 22pt \"\345\256\213\344\275\223\";\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+"font: 9pt \"\351\232\266\344\271\246\";"));
         username_txt = new QLabel(page2);
         username_txt->setObjectName("username_txt");
         username_txt->setGeometry(QRect(100, 110, 91, 61));
@@ -220,88 +276,141 @@ public:
         btn_return_page1 = new QPushButton(page2);
         btn_return_page1->setObjectName("btn_return_page1");
         btn_return_page1->setGeometry(QRect(50, 20, 92, 28));
+        btn_return_page1->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"font: 18pt \"\345\256\213\344\275\223\";\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         btn_refund = new QPushButton(page2);
         btn_refund->setObjectName("btn_refund");
-        btn_refund->setGeometry(QRect(980, 110, 75, 24));
+        btn_refund->setGeometry(QRect(980, 103, 75, 31));
+        btn_refund->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"font: 18pt \"\345\256\213\344\275\223\";\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: rgb(255, 0, 0); \n"
+" font-family: '\345\256\213\344\275\223';"));
+        label_2 = new QLabel(page2);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(430, 40, 261, 41));
+        label_2->setStyleSheet(QString::fromUtf8("font: 28pt \"\346\245\267\344\275\223\";\n"
+"font-size: 38px;\n"
+"font-weight: bold;\n"
+"color: rgb(0, 0, 127);\n"
+""));
         stackedWidget->addWidget(page2);
         page3 = new QWidget();
         page3->setObjectName("page3");
+        page3->setMinimumSize(QSize(1200, 800));
+        page3->setMaximumSize(QSize(1200, 800));
         btn_purchase = new QPushButton(page3);
         btn_purchase->setObjectName("btn_purchase");
-        btn_purchase->setGeometry(QRect(360, 390, 71, 31));
+        btn_purchase->setGeometry(QRect(340, 280, 111, 41));
+        btn_purchase->setStyleSheet(QString::fromUtf8("background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
+"font: 18pt \"\345\256\213\344\275\223\";\n"
+" border: 2px solid rgb(0, 0, 127); \n"
+"border-radius: 10px;\n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         rank = new QLabel(page3);
         rank->setObjectName("rank");
-        rank->setGeometry(QRect(270, 280, 61, 41));
+        rank->setGeometry(QRect(280, 200, 61, 41));
         type_comboBox = new QComboBox(page3);
         type_comboBox->addItem(QString());
         type_comboBox->addItem(QString());
         type_comboBox->addItem(QString());
         type_comboBox->setObjectName("type_comboBox");
-        type_comboBox->setGeometry(QRect(350, 290, 101, 21));
+        type_comboBox->setGeometry(QRect(340, 210, 101, 21));
+        type_comboBox->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         date = new QLabel(page3);
         date->setObjectName("date");
-        date->setGeometry(QRect(270, 70, 41, 31));
+        date->setGeometry(QRect(280, 80, 41, 31));
         flyNum = new QLabel(page3);
         flyNum->setObjectName("flyNum");
-        flyNum->setGeometry(QRect(270, 100, 71, 41));
+        flyNum->setGeometry(QRect(70, 120, 71, 41));
         departure_label = new QLabel(page3);
         departure_label->setObjectName("departure_label");
-        departure_label->setGeometry(QRect(270, 200, 61, 31));
+        departure_label->setGeometry(QRect(70, 160, 61, 31));
         mon = new QLabel(page3);
         mon->setObjectName("mon");
-        mon->setGeometry(QRect(280, 330, 61, 41));
+        mon->setGeometry(QRect(70, 200, 61, 41));
         label_5 = new QLabel(page3);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(270, 40, 51, 31));
+        label_5->setGeometry(QRect(70, 80, 51, 31));
         label_6 = new QLabel(page3);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(270, 140, 71, 41));
+        label_6->setGeometry(QRect(280, 120, 71, 41));
         label_7 = new QLabel(page3);
         label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(270, 240, 41, 31));
+        label_7->setGeometry(QRect(280, 160, 41, 31));
         book_dateEdit = new QLineEdit(page3);
         book_dateEdit->setObjectName("book_dateEdit");
-        book_dateEdit->setGeometry(QRect(350, 80, 111, 21));
-        book_dateEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_dateEdit->setGeometry(QRect(340, 90, 111, 21));
+        book_dateEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         book_numberEdit = new QLineEdit(page3);
         book_numberEdit->setObjectName("book_numberEdit");
-        book_numberEdit->setGeometry(QRect(350, 50, 111, 21));
+        book_numberEdit->setGeometry(QRect(120, 90, 111, 21));
         book_numberEdit->setAutoFillBackground(false);
-        book_numberEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_numberEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         book_departureDateEdit = new QLineEdit(page3);
         book_departureDateEdit->setObjectName("book_departureDateEdit");
-        book_departureDateEdit->setGeometry(QRect(350, 110, 111, 21));
-        book_departureDateEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_departureDateEdit->setGeometry(QRect(120, 130, 111, 21));
+        book_departureDateEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         book_destinationDateEdit = new QLineEdit(page3);
         book_destinationDateEdit->setObjectName("book_destinationDateEdit");
-        book_destinationDateEdit->setGeometry(QRect(350, 150, 111, 20));
+        book_destinationDateEdit->setGeometry(QRect(340, 130, 111, 20));
         book_destinationDateEdit->setAutoFillBackground(false);
-        book_destinationDateEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_destinationDateEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         book_departureEdit = new QLineEdit(page3);
         book_departureEdit->setObjectName("book_departureEdit");
-        book_departureEdit->setGeometry(QRect(350, 200, 111, 21));
-        book_departureEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_departureEdit->setGeometry(QRect(120, 170, 111, 21));
+        book_departureEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         book_destinationEdit = new QLineEdit(page3);
         book_destinationEdit->setObjectName("book_destinationEdit");
-        book_destinationEdit->setGeometry(QRect(350, 240, 111, 20));
-        book_destinationEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_destinationEdit->setGeometry(QRect(340, 170, 111, 20));
+        book_destinationEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         btn_toSearch = new QPushButton(page3);
         btn_toSearch->setObjectName("btn_toSearch");
         btn_toSearch->setGeometry(QRect(40, 20, 51, 21));
         book_priceEdit = new QLineEdit(page3);
         book_priceEdit->setObjectName("book_priceEdit");
-        book_priceEdit->setGeometry(QRect(350, 340, 111, 21));
-        book_priceEdit->setStyleSheet(QString::fromUtf8(" background-color: gainsboro;"));
+        book_priceEdit->setGeometry(QRect(120, 210, 111, 21));
+        book_priceEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(198, 211, 255); \n"
+" border: 2px solid darkgreen; \n"
+" color: darkblue; \n"
+" font-family: '\345\256\213\344\275\223';"));
         book_priceEdit->setReadOnly(true);
         flightId_label = new QLabel(page3);
         flightId_label->setObjectName("flightId_label");
-        flightId_label->setGeometry(QRect(270, 10, 51, 31));
+        flightId_label->setGeometry(QRect(130, 20, 51, 31));
         book_idEdit = new QLineEdit(page3);
         book_idEdit->setObjectName("book_idEdit");
-        book_idEdit->setGeometry(QRect(350, 20, 111, 21));
+        book_idEdit->setGeometry(QRect(170, 20, 111, 21));
         lbl_warning = new QLabel(page3);
         lbl_warning->setObjectName("lbl_warning");
-        lbl_warning->setGeometry(QRect(490, 340, 81, 16));
+        lbl_warning->setGeometry(QRect(450, 210, 81, 16));
         lbl_warning->setStyleSheet(QString::fromUtf8("color:RED"));
         stackedWidget->addWidget(page3);
         menubar = new QMenuBar();
@@ -313,7 +422,7 @@ public:
         Frm_User->setCentralWidget(centralwidget);
         menubar1 = new QMenuBar(Frm_User);
         menubar1->setObjectName("menubar1");
-        menubar1->setGeometry(QRect(0, 0, 1200, 24));
+        menubar1->setGeometry(QRect(0, 0, 1200, 18));
         menu = new QMenu(menubar1);
         menu->setObjectName("menu");
         menu_S = new QMenu(menubar1);
@@ -335,7 +444,7 @@ public:
 
         retranslateUi(Frm_User);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Frm_User);
@@ -383,6 +492,7 @@ public:
         btn_reset->setText(QCoreApplication::translate("Frm_User", "\351\207\215\347\275\256", nullptr));
         bookEdit->setPlaceholderText(QCoreApplication::translate("Frm_User", "\350\257\267\350\276\223\345\205\245\350\210\252\347\217\255\345\217\267", nullptr));
         btn_book->setText(QCoreApplication::translate("Frm_User", "\350\256\242\347\245\250", nullptr));
+        label->setText(QCoreApplication::translate("Frm_User", "sse\350\210\252\347\251\272\346\254\242\350\277\216\346\202\250", nullptr));
         username_label->setText(QCoreApplication::translate("Frm_User", "\345\247\223\345\220\215\357\274\232", nullptr));
         QTableWidgetItem *___qtablewidgetitem14 = self_airline->horizontalHeaderItem(0);
         ___qtablewidgetitem14->setText(QCoreApplication::translate("Frm_User", "\350\256\242\345\215\225ID", nullptr));
@@ -407,6 +517,7 @@ public:
         username_txt->setText(QString());
         btn_return_page1->setText(QCoreApplication::translate("Frm_User", "\350\277\224\345\233\236", nullptr));
         btn_refund->setText(QCoreApplication::translate("Frm_User", "\351\200\200\347\245\250", nullptr));
+        label_2->setText(QCoreApplication::translate("Frm_User", "sse\350\210\252\347\251\272\346\254\242\350\277\216\346\202\250", nullptr));
         btn_purchase->setText(QCoreApplication::translate("Frm_User", "\347\241\256\350\256\244\350\264\255\347\245\250", nullptr));
         rank->setText(QCoreApplication::translate("Frm_User", "\345\272\247\344\275\215\347\255\211\347\272\247\357\274\232", nullptr));
         type_comboBox->setItemText(0, QCoreApplication::translate("Frm_User", "\345\244\264\347\255\211\350\210\261", nullptr));

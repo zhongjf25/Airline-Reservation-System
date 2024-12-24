@@ -26,19 +26,43 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>1200</width>
+     <height>800</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1200</width>
+     <height>800</height>
+    </size>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
+      <x>30</x>
+      <y>30</y>
       <width>1171</width>
       <height>611</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page1">
+     <property name="minimumSize">
+      <size>
+       <width>1200</width>
+       <height>800</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1200</width>
+       <height>800</height>
+      </size>
+     </property>
      <widget class="QTableWidget" name="search_airline">
       <property name="geometry">
        <rect>
@@ -47,6 +71,14 @@
         <width>1021</width>
         <height>281</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+font: 22pt &quot;宋体&quot;;
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+font: 9pt &quot;隶书&quot;;</string>
       </property>
       <row/>
       <row/>
@@ -149,7 +181,7 @@
          <second>0</second>
          <year>2024</year>
          <month>11</month>
-         <day>24</day>
+         <day>23</day>
         </datetime>
        </property>
        <property name="calendarPopup">
@@ -165,6 +197,13 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+ font-family: '宋体';</string>
+       </property>
        <property name="text">
         <string>搜索</string>
        </property>
@@ -178,6 +217,12 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 205, 171); 
+ border: 2px solid rgb(0, 0, 127); 
+ color: darkblue; 
+ font-family: '宋体';</string>
+       </property>
        <property name="editable">
         <bool>true</bool>
        </property>
@@ -190,6 +235,12 @@
          <width>100</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 205, 171); 
+ border: 2px solid rgb(0, 0, 127); 
+ color: darkblue; 
+ font-family: '宋体';</string>
        </property>
        <property name="editable">
         <bool>true</bool>
@@ -223,6 +274,13 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+ font-family: '宋体';</string>
+       </property>
        <property name="text">
         <string>重置</string>
        </property>
@@ -237,6 +295,12 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 205, 171); 
+ border: 2px solid rgb(0, 0, 127); 
+ color: darkblue; 
+ font-family: '宋体';</string>
+      </property>
       <property name="placeholderText">
        <string>请输入航班号</string>
       </property>
@@ -250,12 +314,52 @@
         <height>51</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+font: 22pt &quot;宋体&quot;;
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+ font-family: '宋体';</string>
+      </property>
       <property name="text">
        <string>订票</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>10</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;楷体&quot;;
+font-size: 38px;
+font-weight: bold;
+color: rgb(0, 0, 127);
+</string>
+      </property>
+      <property name="text">
+       <string>sse航空欢迎您</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page2">
+     <property name="minimumSize">
+      <size>
+       <width>1200</width>
+       <height>800</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1200</width>
+       <height>800</height>
+      </size>
+     </property>
      <widget class="QLabel" name="username_label">
       <property name="geometry">
        <rect>
@@ -282,6 +386,14 @@
         <width>1021</width>
         <height>411</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+font: 22pt &quot;宋体&quot;;
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+font: 9pt &quot;隶书&quot;;</string>
       </property>
       <row/>
       <column>
@@ -362,6 +474,14 @@
         <height>28</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+font: 18pt &quot;宋体&quot;;
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+ font-family: '宋体';</string>
+      </property>
       <property name="text">
        <string>返回</string>
       </property>
@@ -370,25 +490,73 @@
       <property name="geometry">
        <rect>
         <x>980</x>
-        <y>110</y>
+        <y>103</y>
         <width>75</width>
-        <height>24</height>
+        <height>31</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+font: 18pt &quot;宋体&quot;;
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: rgb(255, 0, 0); 
+ font-family: '宋体';</string>
       </property>
       <property name="text">
        <string>退票</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>40</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;楷体&quot;;
+font-size: 38px;
+font-weight: bold;
+color: rgb(0, 0, 127);
+</string>
+      </property>
+      <property name="text">
+       <string>sse航空欢迎您</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page3">
+     <property name="minimumSize">
+      <size>
+       <width>1200</width>
+       <height>800</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1200</width>
+       <height>800</height>
+      </size>
+     </property>
      <widget class="QPushButton" name="btn_purchase">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>390</y>
-        <width>71</width>
-        <height>31</height>
+        <x>340</x>
+        <y>280</y>
+        <width>111</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 221, 174, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(255, 191, 0, 255), stop:1 rgba(0, 0, 0, 0));
+font: 18pt &quot;宋体&quot;;
+ border: 2px solid rgb(0, 0, 127); 
+border-radius: 10px;
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
       <property name="text">
        <string>确认购票</string>
@@ -397,8 +565,8 @@
      <widget class="QLabel" name="rank">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>280</y>
+        <x>280</x>
+        <y>200</y>
         <width>61</width>
         <height>41</height>
        </rect>
@@ -410,11 +578,17 @@
      <widget class="QComboBox" name="type_comboBox">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>290</y>
+        <x>340</x>
+        <y>210</y>
         <width>101</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
       <item>
        <property name="text">
@@ -435,8 +609,8 @@
      <widget class="QLabel" name="date">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>70</y>
+        <x>280</x>
+        <y>80</y>
         <width>41</width>
         <height>31</height>
        </rect>
@@ -448,8 +622,8 @@
      <widget class="QLabel" name="flyNum">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>100</y>
+        <x>70</x>
+        <y>120</y>
         <width>71</width>
         <height>41</height>
        </rect>
@@ -461,8 +635,8 @@
      <widget class="QLabel" name="departure_label">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>200</y>
+        <x>70</x>
+        <y>160</y>
         <width>61</width>
         <height>31</height>
        </rect>
@@ -474,8 +648,8 @@
      <widget class="QLabel" name="mon">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>330</y>
+        <x>70</x>
+        <y>200</y>
         <width>61</width>
         <height>41</height>
        </rect>
@@ -487,8 +661,8 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>40</y>
+        <x>70</x>
+        <y>80</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -500,8 +674,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>140</y>
+        <x>280</x>
+        <y>120</y>
         <width>71</width>
         <height>41</height>
        </rect>
@@ -513,8 +687,8 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>240</y>
+        <x>280</x>
+        <y>160</y>
         <width>41</width>
         <height>31</height>
        </rect>
@@ -526,21 +700,24 @@
      <widget class="QLineEdit" name="book_dateEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>80</y>
+        <x>340</x>
+        <y>90</y>
         <width>111</width>
         <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="book_numberEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>50</y>
+        <x>120</x>
+        <y>90</y>
         <width>111</width>
         <height>21</height>
        </rect>
@@ -549,7 +726,10 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
       <property name="text">
        <string/>
@@ -558,21 +738,24 @@
      <widget class="QLineEdit" name="book_departureDateEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>110</y>
+        <x>120</x>
+        <y>130</y>
         <width>111</width>
         <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="book_destinationDateEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>150</y>
+        <x>340</x>
+        <y>130</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -581,33 +764,42 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="book_departureEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>200</y>
+        <x>120</x>
+        <y>170</y>
         <width>111</width>
         <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="book_destinationEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>240</y>
+        <x>340</x>
+        <y>170</y>
         <width>111</width>
         <height>20</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_toSearch">
@@ -626,14 +818,17 @@
      <widget class="QLineEdit" name="book_priceEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>340</y>
+        <x>120</x>
+        <y>210</y>
         <width>111</width>
         <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"> background-color: gainsboro;</string>
+       <string notr="true">background-color:rgb(198, 211, 255); 
+ border: 2px solid darkgreen; 
+ color: darkblue; 
+ font-family: '宋体';</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -645,8 +840,8 @@
      <widget class="QLabel" name="flightId_label">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>10</y>
+        <x>130</x>
+        <y>20</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -658,7 +853,7 @@
      <widget class="QLineEdit" name="book_idEdit">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>170</x>
         <y>20</y>
         <width>111</width>
         <height>21</height>
@@ -668,8 +863,8 @@
      <widget class="QLabel" name="lbl_warning">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>340</y>
+        <x>450</x>
+        <y>210</y>
         <width>81</width>
         <height>16</height>
        </rect>
@@ -692,7 +887,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

@@ -114,6 +114,26 @@
     <string>取消</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>50</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Arial;
+font-size: 30px;
+font-weight: bold;
+color: rgb(0, 0, 127);
+font: 28pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>sse航空</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

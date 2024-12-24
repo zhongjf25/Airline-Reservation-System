@@ -73,4 +73,3 @@ void Frm_Register::on_btn_register_clicked()
 
     }
 }
-
